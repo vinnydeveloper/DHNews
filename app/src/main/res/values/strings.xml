@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">dhnews</string>
+    <string name="login">Entrar</string>
+    <string name="loginFacebook">Login with Facebook</string>
+    <string name="loginTwitter">Login with Twitter</string>
+    <string name="loginGoogle">Login with Google</string>
 </resources>
