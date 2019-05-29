@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import br.com.dhnews.cadastro.Cadastro;
 import br.com.dhnews.home.Home;
+import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
 
@@ -27,10 +28,10 @@ public class MainActivy extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_user:
-                    replaceFragment(R.id.container, new Cadastro());
+                    replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment(R.id.container, new Home());
+                    replaceFragment( new Home());
                     return true;
             }
             return false;
@@ -44,15 +45,15 @@ public class MainActivy extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(R.id.container, new Cadastro());
+        replaceFragment(new Home());
 
 
 
     }
-    public void replaceFragment(int container, Fragment fragment){
+    public void replaceFragment(Fragment fragment){
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(container, fragment);
+        transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
 
