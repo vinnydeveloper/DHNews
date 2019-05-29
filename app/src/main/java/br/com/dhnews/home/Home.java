@@ -1,4 +1,4 @@
-package br.com.dhnews.cadastro;
+package br.com.dhnews.home;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import br.com.dhnews.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Cadastro extends Fragment {
+public class Home extends Fragment {
 
 
-    public Cadastro() {
+    public Home() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Cadastro extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cadastro, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
 }
