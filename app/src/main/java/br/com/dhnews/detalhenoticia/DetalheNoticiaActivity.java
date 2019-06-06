@@ -1,10 +1,6 @@
 package br.com.dhnews.detalhenoticia;
 
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +9,10 @@ import android.widget.TextView;
 
 import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.login.Login;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
-    //Declaração de atributos
+    //Declaracao de atributos
     private TextView textViewTituloDetalheNoticia;
     private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
@@ -31,12 +26,13 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_noticia);
 
-        //Metodo para inicializar as View's
+        //Metodo para inicializar as Views
         initViews();
 
-        //*******************************ATENÇÃO****************************************************
-        //Este Metodo é temporario, pois os dados serão alimentados pela tela anterior que Lista as
-        // noticias
+        //****************************DADOS TEMPORARIOS*********************************************
+        //Estes valores fixos sao temporarios, pois os dados serao alimentados pela tela anterior
+        //que Lista as noticias
+
         textViewTituloDetalheNoticia.setText("Vaga no Supremo");
 
         textViewSubTituloDetalheNoticia.setText("Bolsonaro nega que tenha feito 'acordo' para" +
@@ -59,7 +55,8 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                 "Excepteur sint occaecat cupidatat non " +
                 "\nproident, sunt in culpa qui officia deserunt " +
                 "\nmollit anim id est laborum.");
-        //*******************Atenção****************************************************************
+
+        //****************************DADOS TEMPORARIOS*********************************************
 
         //Metodo para voltar para a tela com a Lista de noticias
         chamaListaNoticia();
@@ -67,7 +64,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         //Metodo para acessar os aplicativos de compartilhamento de dados
         compartilharNoticia();
 
-        //Metodo para chamar a tela de Login para cadastrar da opção ler noticia depois
+        //Metodo para chamar a tela de Login para cadastrar da opcao ler noticia depois
         cadastraLerDepois();
     }
 
@@ -90,8 +87,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
                 //Pendente nome da tela de lista de noticia para comunicação ????
                 Intent intentListaNoticias = new Intent(
-                        DetalheNoticiaActivity.this,
-                        MainActivy.class);
+                        DetalheNoticiaActivity.this, MainActivy.class);
 
                 startActivity(intentListaNoticias);
             }
@@ -109,8 +105,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
                 //Exibe os aplicativos disponiveis para compartilhamento de dados
                 Intent intentChooser = Intent.createChooser(
-                        intentCompartilhar,
-                        "Compartilhar via:");
+                        intentCompartilhar, "Compartilhar via:");
 
                 startActivity(intentChooser);
             }
@@ -122,14 +117,14 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Chama a tela de Login para cadastrar o ler noticia depois
-                //Intent intentLerDepois = new Intent(DetalheNoticiaActivity.this, Login.class);
-
-                //Chama a Main Activity que verifica qual icone do Menu foi acionado para chamar a
-                // tela correspondente
+                //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
+                //chamar a tela/fragmento correspondente
                 Intent intentLerDepois = new Intent(
-                        DetalheNoticiaActivity.this,
-                        MainActivy.class);
+                        DetalheNoticiaActivity.this, MainActivy.class);
+
+                //Chama o fragmento da tela de Login(atraves de um flag 'Tela' com valor 'Login')
+                //para cadastrar o ler noticia depois
+                intentLerDepois.putExtra("TELA", "LOGIN");
 
                 startActivity(intentLerDepois);
             }
