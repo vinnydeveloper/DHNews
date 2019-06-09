@@ -99,14 +99,20 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Acao de envio na intencao de chamar outra Actitivity
                 Intent intentCompartilhar = new Intent(Intent.ACTION_SEND);
-                intentCompartilhar.putExtra(Intent.EXTRA_TEXT, "Compartilhar via");
+
+                //Envia texto no compartilhamento
+                intentCompartilhar.putExtra(Intent.EXTRA_TEXT, "Compartilhando noticias");
+
+                //tipo de compartilhamento
                 intentCompartilhar.setType("text/plain");
 
-                //Exibe os aplicativos disponiveis para compartilhamento de dados
+                //Mostra os aplicativos disponiveis para compartilhamento de dados
                 Intent intentChooser = Intent.createChooser(
                         intentCompartilhar, "Compartilhar via:");
 
+                //Start na Activity de compartilhamento
                 startActivity(intentChooser);
             }
         });
