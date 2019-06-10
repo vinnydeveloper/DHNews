@@ -12,9 +12,12 @@
         <activity
             android:name=".MainActivy"
             android:label="@string/title_activity_home_activy"
+
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+
+
         <activity android:name=".splash.Splash"
             android:theme="@style/AppTheme.NoActionBar"
             >
