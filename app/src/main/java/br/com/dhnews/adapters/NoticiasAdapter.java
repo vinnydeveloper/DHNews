@@ -16,8 +16,8 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
 
     private List<Noticias> listaNoticias;
 
-    public NoticiasAdapter(List<Noticias> listaContatos) {
-        this.listaNoticias = listaContatos;
+    public NoticiasAdapter(List<Noticias> listaNoticias) {
+        this.listaNoticias = listaNoticias;
     }
 
     @NonNull
@@ -39,8 +39,6 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
     public int getItemCount() {
         return listaNoticias.size();
     }
-
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
