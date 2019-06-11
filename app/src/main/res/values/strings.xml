@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">dhnews</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home_activy">HomeActivy</string>
+    <string name="title_activity_teste">teste</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="logo">Logo</string>
+    <string name="crie_uma_conta">Crie uma Conta!</string>
+    <string name="title_news">Titulo da noticia</string>
+    <string name="subtitle_news">Subtitulo da noticia</string>
+    <string name="hours_news">Horário da noticia</string>
+    <string name="news_detail">Detalhe da noticia</string>
+</resources>
