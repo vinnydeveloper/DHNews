@@ -1,4 +1,4 @@
-package br.com.dhnews.home;
+package br.com.dhnews.Noticias;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import br.com.dhnews.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Home extends Fragment {
+public class NoticiasActivity extends Fragment {
 
 
-    public Home() {
+    public NoticiasActivity() {
         // Required empty public constructor
     }
 
