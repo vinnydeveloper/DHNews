@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.dhnews.Noticias.NoticiasActivity;
+import br.com.dhnews.home.HomeActivity;
 import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
@@ -24,7 +25,10 @@ public class MainActivy extends AppCompatActivity {
                     replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment( new NoticiasActivity());
+                    replaceFragment( new HomeActivity());
+                    return true;
+                case R.id.navigation_public:
+                    replaceFragment(new NoticiasActivity());
                     return true;
             }
             return false;
