@@ -35,7 +35,7 @@ public class MainActivy extends AppCompatActivity {
                     return true;
                 case R.id.navigation_mark:
                     replaceFragment(new LerDepoisFragment());
-                    return true
+                    return true;
             }
             return false;
         }
