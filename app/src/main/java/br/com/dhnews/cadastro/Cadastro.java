@@ -13,7 +13,7 @@ import android.widget.Button;
 
 import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.home.Home;
+import br.com.dhnews.home.HomeActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,7 +92,7 @@ public class Cadastro extends Fragment {
                 if (!(nomeCadastro.isEmpty()) && !(emailCadastro.isEmpty()) &&
                         !(senhaCadastro.isEmpty())) {
 
-                    ((MainActivy) getActivity()).replaceFragment(new Home());
+                    ((MainActivy) getActivity()).replaceFragment(new HomeActivity());
 
                 }
             }
