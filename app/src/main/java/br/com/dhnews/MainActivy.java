@@ -11,13 +11,24 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import br.com.dhnews.Pesquisa.Pesquisa;
 import br.com.dhnews.cadastro.Cadastro;
 import br.com.dhnews.home.Home;
 import br.com.dhnews.login.Login;
+
+import static br.com.dhnews.R.id.navigation;
 
 public class MainActivy extends AppCompatActivity {
 
@@ -31,8 +42,11 @@ public class MainActivy extends AppCompatActivity {
                     replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment( new Home());
+                    replaceFragment(new Home());
                     return true;
+                case R.id.navigation_search:
+                    replaceFragment( new Pesquisa());
+                   return true;
             }
             return false;
         }
@@ -45,12 +59,18 @@ public class MainActivy extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(new Home());
+        //Recebe a flag enviada por outra Activity, para direcionar o fragmento a ser exibido
+        String tela = getIntent().getStringExtra("TELA");
 
-
-
+        //Valida a flag e o fragmento que precisa ser exibido
+        if (tela != null && tela.equals("LOGIN")) {
+            replaceFragment(new Login());
+        } else {
+            replaceFragment(new Home());
+        }
     }
-    public void replaceFragment(Fragment fragment){
+
+    public void replaceFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
