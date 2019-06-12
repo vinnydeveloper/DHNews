@@ -33,7 +33,9 @@ public class MainActivy extends AppCompatActivity {
                 case R.id.navigation_search:
                     replaceFragment(new Pesquisa());
                     return true;
-
+                case R.id.navigation_mark:
+                    replaceFragment(new LerDepoisFragment());
+                    return true
             }
             return false;
         }
