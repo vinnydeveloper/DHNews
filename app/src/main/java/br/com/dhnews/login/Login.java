@@ -1,11 +1,17 @@
 package br.com.dhnews.login;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +21,10 @@ import br.com.dhnews.MainActivy;
 import br.com.dhnews.Noticias.NoticiasActivity;
 import br.com.dhnews.R;
 import br.com.dhnews.cadastro.Cadastro;
+import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.usuario.view.UsuarioActivity;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,7 +46,8 @@ public class Login extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Button btnFacebook = view.findViewById(R.id.btnFacebook);
+        Button btnGoogle = view.findViewById(R.id.btnGoogle);
         Button btnCadastra = view.findViewById(R.id.btnCadastrar);
         Button btnLogin = view.findViewById(R.id.btnLogin);
 
@@ -46,6 +57,10 @@ public class Login extends Fragment {
 
         final TextInputLayout textInputLayoutLogPassword = view.findViewById(
                 R.id.textInputLayoutPassword);
+        final SharedPreferences preferences = getContext().getSharedPreferences("APP", Context.MODE_PRIVATE);
+        textInputLayoutLogEmail.getEditText().setText(preferences.getString("EMAIL", ""));
+        textInputLayoutLogPassword.getEditText().setText(preferences.getString("SENHA", ""));
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +84,14 @@ public class Login extends Fragment {
                     return;
                 }
 
-                //Se todos os campos estiverem preenchidos chama a tela de Home
                 if (!(emailLog.isEmpty()) && !(senhaLog.isEmpty())) {
+
+                   SharedPreferences preferences= getActivity().getPreferences(MODE_PRIVATE);
+                    preferences.edit().putString("EMAIL", emailLog).commit();
+                    preferences.edit().putString("SENHA", senhaLog).commit();
+                //se preenchido automaticamente, vai pra tela usuario
+                    Intent intent = new Intent(getContext(), UsuarioActivity.class);
+                    startActivity(intent);
 
                     ((MainActivy)getActivity()).replaceFragment(new NoticiasActivity());
 
@@ -85,5 +106,7 @@ public class Login extends Fragment {
                 ((MainActivy) getActivity()).replaceFragment(new Cadastro());
             }
         });
+
+
     }
 }

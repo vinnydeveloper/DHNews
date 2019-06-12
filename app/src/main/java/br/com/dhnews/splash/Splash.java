@@ -1,11 +1,9 @@
 package br.com.dhnews.splash;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 
 import java.util.Timer;
@@ -13,7 +11,6 @@ import java.util.TimerTask;
 
 import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.login.Login;
 
 public class Splash extends AppCompatActivity {
 

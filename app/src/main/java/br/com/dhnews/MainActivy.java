@@ -1,17 +1,24 @@
 package br.com.dhnews;
 
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import br.com.dhnews.Noticias.NoticiasActivity;
 import br.com.dhnews.Pesquisa.Pesquisa;
 import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.lerdepois.views.LerDepoisFragment;
 import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
@@ -22,6 +29,11 @@ public class MainActivy extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+
+
+                case R.id.navigation_mark:
+                    replaceFragment(new LerDepoisFragment());
+                    return true;
                 case R.id.navigation_user:
                     replaceFragment(new Login());
                     return true;
@@ -32,7 +44,7 @@ public class MainActivy extends AppCompatActivity {
                     replaceFragment(new NoticiasActivity());
                     return true;
                 case R.id.navigation_search:
-                    replaceFragment( new Pesquisa());
+                    replaceFragment(new Pesquisa());
                     return true;
 
             }
