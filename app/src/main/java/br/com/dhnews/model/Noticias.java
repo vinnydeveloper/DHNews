@@ -4,13 +4,17 @@ public class Noticias {
 
     private String tituloNoticia;
     private String descricaoNoticia;
+    private String horaAssuntoNoticia;
+    private int imagemNoticias;
 
     public Noticias() {
     }
 
-    public Noticias(String tituloNoticia, String descricaoNoticia) {
+    public Noticias(String tituloNoticia, String descricaoNoticia, String horaAssuntoNoticia, int imagemNoticias) {
         this.tituloNoticia = tituloNoticia;
         this.descricaoNoticia = descricaoNoticia;
+        this.horaAssuntoNoticia = horaAssuntoNoticia;
+        this.imagemNoticias = imagemNoticias;
     }
 
     public String getTituloNoticia() {
@@ -29,7 +33,19 @@ public class Noticias {
         this.descricaoNoticia = descricaoNoticia;
     }
 
+    public String getHoraAssuntoNoticia() {
+        return horaAssuntoNoticia;
+    }
 
+    public void setHoraAssuntoNoticia(String horaAssuntoNoticia) {
+        this.horaAssuntoNoticia = horaAssuntoNoticia;
+    }
 
+    public int getImagemNoticias() {
+        return imagemNoticias;
+    }
 
+    public void setImagemNoticias(int imagemNoticias) {
+        this.imagemNoticias = imagemNoticias;
+    }
 }
