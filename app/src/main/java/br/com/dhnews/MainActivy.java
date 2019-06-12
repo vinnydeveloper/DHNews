@@ -30,6 +30,10 @@ public class MainActivy extends AppCompatActivity {
                 case R.id.navigation_public:
                     replaceFragment(new NoticiasActivity());
                     return true;
+                case R.id.navigation_search:
+                    replaceFragment(new Pesquisa());
+                    return true;
+
             }
             return false;
         }
