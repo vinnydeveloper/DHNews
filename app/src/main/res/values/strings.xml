@@ -12,4 +12,11 @@
     <string name="crie_uma_conta">Crie uma Conta!</string>
 
 
+    <string name="title_news">Titulo da noticia</string>
+    <string name="subtitle_news">Subtitulo da noticia</string>
+    <string name="hours_news">Horário da noticia</string>
+    <string name="news_detail">Detalhe da noticia</string>
+    <string name="h_2_horas">Há 2 horas</string>
+    <string name="conteudo_da_noticia">Conteudo da Noticia</string>
+    <string name="pol_tica">Política</string>
 </resources>
