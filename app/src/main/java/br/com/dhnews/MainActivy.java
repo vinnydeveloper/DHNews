@@ -31,13 +31,12 @@ public class MainActivy extends AppCompatActivity {
                     replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment(new Home());
+                    replaceFragment( new Home());
                     return true;
             }
             return false;
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,18 +45,12 @@ public class MainActivy extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //Recebe a flag enviada por outra Activity, para direcionar o fragmento a ser exibido
-        String tela = getIntent().getStringExtra("TELA");
+        replaceFragment(new Home());
 
-        //Valida a flag e o fragmento que precisa ser exibido
-        if (tela != null && tela.equals("LOGIN")) {
-            replaceFragment(new Login());
-        } else {
-            replaceFragment(new Home());
-        }
+
+
     }
-
-    public void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment){
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
