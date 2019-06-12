@@ -9,16 +9,22 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.dhnews.MainActivy;
+import br.com.dhnews.Noticias.NoticiasActivity;
 import br.com.dhnews.R;
 import br.com.dhnews.cadastro.Cadastro;
+import br.com.dhnews.home.HomeActivity;
 import br.com.dhnews.usuario.view.UsuarioActivity;
 
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,12 +85,15 @@ public class Login extends Fragment {
                 }
 
                 if (!(emailLog.isEmpty()) && !(senhaLog.isEmpty())) {
+
+                   SharedPreferences preferences= getActivity().getPreferences(MODE_PRIVATE);
                     preferences.edit().putString("EMAIL", emailLog).commit();
                     preferences.edit().putString("SENHA", senhaLog).commit();
                 //se preenchido automaticamente, vai pra tela usuario
                     Intent intent = new Intent(getContext(), UsuarioActivity.class);
                     startActivity(intent);
 
+                    ((MainActivy)getActivity()).replaceFragment(new NoticiasActivity());
 
                 }
             }

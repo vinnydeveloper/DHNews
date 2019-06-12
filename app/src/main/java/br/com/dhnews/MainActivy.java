@@ -1,15 +1,24 @@
 package br.com.dhnews;
 
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import br.com.dhnews.home.Home;
+import br.com.dhnews.Noticias.NoticiasActivity;
+import br.com.dhnews.Pesquisa.Pesquisa;
+import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.lerdepois.views.LerDepoisFragment;
 import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
@@ -20,16 +29,29 @@ public class MainActivy extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+
+
+                case R.id.navigation_mark:
+                    replaceFragment(new LerDepoisFragment());
+                    return true;
                 case R.id.navigation_user:
                     replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment( new Home());
+                    replaceFragment(new HomeActivity());
                     return true;
+                case R.id.navigation_public:
+                    replaceFragment(new NoticiasActivity());
+                    return true;
+                case R.id.navigation_search:
+                    replaceFragment(new Pesquisa());
+                    return true;
+
             }
             return false;
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +60,21 @@ public class MainActivy extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(new Home());
+        //Recebe a flag enviada por outra Activity, para direcionar o fragmento a ser exibido
+        String tela = getIntent().getStringExtra("TELA");
 
+        //Valida a flag e o fragmento que precisa ser exibido
+        if (tela != null && tela.equals("LOGIN")) {
+            replaceFragment(new Login());
+        } else if (tela != null && tela.equals("NOTICIA")) {
+            replaceFragment(new NoticiasActivity());
+        } else {
+            replaceFragment(new HomeActivity());
 
-
+        }
     }
-    public void replaceFragment(Fragment fragment){
+
+    public void replaceFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
