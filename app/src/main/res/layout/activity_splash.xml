@@ -8,7 +8,6 @@
 
     >
 
-
     <ImageView
         android:id="@+id/imageViewLogo"
          android:layout_width="0dp"

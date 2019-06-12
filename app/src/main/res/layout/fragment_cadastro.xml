@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            android:inputType="text" />
+            android:inputType="textPersonName" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -105,7 +105,8 @@
         android:gravity="center"
         android:backgroundTint="@color/google"
         android:drawableLeft="@drawable/ic_google_plus"
-        android:text="Google" />
+        android:text="Google"
+        android:padding="20dp"/>
 
 
 </LinearLayout>

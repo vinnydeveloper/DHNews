@@ -32,9 +32,6 @@ import static br.com.dhnews.R.id.navigation;
 
 public class MainActivy extends AppCompatActivity {
 
-
-
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -43,8 +40,9 @@ public class MainActivy extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_user:
                     replaceFragment(new Login());
+                    return true;
                 case R.id.navigation_home:
-                    replaceFragment( new Home());
+                    replaceFragment(new Home());
                     return true;
                 case R.id.navigation_search:
                     replaceFragment( new Pesquisa());
@@ -61,16 +59,22 @@ public class MainActivy extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        replaceFragment(new Home());
+        //Recebe a flag enviada por outra Activity, para direcionar o fragmento a ser exibido
+        String tela = getIntent().getStringExtra("TELA");
 
-
+        //Valida a flag e o fragmento que precisa ser exibido
+        if (tela != null && tela.equals("LOGIN")) {
+            replaceFragment(new Login());
+        } else {
+            replaceFragment(new Home());
+        }
     }
-    public void replaceFragment(Fragment fragment){
+
+    public void replaceFragment(Fragment fragment) {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
-
 
 }
