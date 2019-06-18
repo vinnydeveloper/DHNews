@@ -11,17 +11,17 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.dhnews.Interface.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.RecyclerViewClickListener;
 import br.com.dhnews.home.HomeActivity;
 import br.com.dhnews.model.Noticias;
 
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
 
     private List<Noticias> listaNoticias;
-    private RecyclerViewClickListener listener; //ksc
+    private RecyclerViewClickListener listener;
 
-    public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener) {//ksc
+    public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
         this.listener = listener;
     }
@@ -37,18 +37,10 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         return new ViewHolder(view);
     }
 
-    /*
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Noticias novaNoticia = listaNoticias.get(position);
 
-        viewHolder.bind(novaNoticia);
-    }
-    */
 
-    //ksc
     @Override
-    public void onBindViewHolder(@NonNull final NoticiasAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull NoticiasAdapter.ViewHolder viewHolder, int position) {
 
         final Noticias noticias = listaNoticias.get(position);
         viewHolder.setaNoticiasNaTela(noticias);
@@ -57,15 +49,6 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 listener.onClick(noticias);
-
-
-            }
-        });
-        //click na descrição da noticia como onclick
-        viewHolder.descricaoNoticia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }
@@ -91,12 +74,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
             imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
         }
 
-        /* ksc
-        public void bind(Noticias noticia) {
-            tituloNoticia.setText(noticia.getTituloNoticia());
-            descricaoNoticia.setText(noticia.getDescricaoNoticia());
-        }
-        */
+
 
         //Atribui o as views os valores da variável contato
         public void setaNoticiasNaTela(Noticias noticias){

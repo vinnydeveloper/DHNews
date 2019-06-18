@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.dhnews.Interface.RecyclerViewClickListener;
 import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.RecyclerViewClickListener;
 import br.com.dhnews.adapters.NoticiasAdapter;
 import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
 import br.com.dhnews.model.Noticias;
@@ -32,43 +32,7 @@ public class NoticiasActivity extends Fragment  implements RecyclerViewClickList
         // Required empty public constructor
     }
 
-/*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_noticias, container, false);
-    }
 
-
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        recyclerViewNoticias = findViewById(R.id.listaNoticiasRecyclerView);
-//
-//        adapter = new NoticiasAdapter(listaNoticias());
-//
-//        recyclerViewNoticias.setAdapter(adapter);
-//
-//        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(this));
-//    }
-//
-
-
-    private List<Noticias> listaNoticias(){
-        List<Noticias> noticias = new ArrayList<>();
-
-
-        noticias.add(new Noticias("Titulo da noticia 1", "Aqui fica a descrição da notícia"));
-        noticias.add(new Noticias("Titulo da noticia 2", "Aqui fica a descrição da notícia"));
-        noticias.add(new Noticias("Titulo da noticia 3", "Aqui fica a descrição da notícia"));
-
-        return noticias;
-    }
-    */
 
 
     @Override
@@ -130,27 +94,4 @@ public class NoticiasActivity extends Fragment  implements RecyclerViewClickList
 
     }
 
-    /*
-    @Override//ksc
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        ImageView imageViewBookmarkListaNoticia = view.findViewById(R.id.imagemBookMarkListaNoticia);
-
-        imageViewBookmarkListaNoticia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
-                //chamar a tela/fragmento correspondente
-                Intent intent = new Intent(getContext(), MainActivy.class);
-
-                //Chama o fragmento da tela de Login(atraves de um flag 'Tela' com valor 'Login')
-                //para cadastrar o ler noticia depois
-                intent.putExtra("TELA", "LOGIN");
-
-                startActivity(intent);
-            }
-        });
-    }*/
 }

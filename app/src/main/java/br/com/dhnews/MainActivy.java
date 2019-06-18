@@ -15,8 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import br.com.dhnews.cadastro.Cadastro;
-import br.com.dhnews.home.Home;
+import br.com.dhnews.Noticias.NoticiasActivity;
+import br.com.dhnews.Pesquisa.Pesquisa;
+import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.lerdepois.views.LerDepoisFragment;
 import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
@@ -27,12 +29,24 @@ public class MainActivy extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+
+
+                case R.id.navigation_mark:
+                    replaceFragment(new LerDepoisFragment());
+                    return true;
                 case R.id.navigation_user:
                     replaceFragment(new Login());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment(new Home());
+                    replaceFragment(new HomeActivity());
                     return true;
+                case R.id.navigation_public:
+                    replaceFragment(new NoticiasActivity());
+                    return true;
+                case R.id.navigation_search:
+                    replaceFragment(new Pesquisa());
+                    return true;
+
             }
             return false;
         }
@@ -52,8 +66,11 @@ public class MainActivy extends AppCompatActivity {
         //Valida a flag e o fragmento que precisa ser exibido
         if (tela != null && tela.equals("LOGIN")) {
             replaceFragment(new Login());
+        } else if (tela != null && tela.equals("NOTICIA")) {
+            replaceFragment(new NoticiasActivity());
         } else {
-            replaceFragment(new Home());
+            replaceFragment(new HomeActivity());
+
         }
     }
 

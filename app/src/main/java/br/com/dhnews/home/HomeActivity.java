@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.dhnews.Interface.RecyclerViewClickListener;
 import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.RecyclerViewClickListener;
 import br.com.dhnews.adapters.NoticiasAdapter;
 import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
 import br.com.dhnews.model.Noticias;
@@ -84,31 +84,7 @@ public class HomeActivity extends Fragment implements RecyclerViewClickListener 
         return noticias;
     }
 
-    /*
-    @Override//ksc
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        ImageView imageViewBookmarkListaNoticia = view.findViewById(R.id.imagemBookMarkListaNoticia);
-
-        imageViewBookmarkListaNoticia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
-                //chamar a tela/fragmento correspondente
-                Intent intent = new Intent(getContext(), MainActivy.class);
-
-                //Chama o fragmento da tela de Login(atraves de um flag 'Tela' com valor 'Login')
-                //para cadastrar o ler noticia depois
-                intent.putExtra("TELA", "LOGIN");
-
-                startActivity(intent);
-            }
-        });
-
-    }
-     */
 
     // Método para escutar evento de click em recyclerview
     @Override
@@ -118,14 +94,5 @@ public class HomeActivity extends Fragment implements RecyclerViewClickListener 
     }
 
 
-    // Método para escutar evento de click em recyclerview
-   /*
-   @Override
-   public void onClick(Noticias noticias) {
-        Intent intent = new Intent(getContext(), DetalheNoticiaActivity.class);
-        intent.putExtra("NOTICIAS", noticias);
-        startActivity(intent);
-    }
-    */
 
 }
