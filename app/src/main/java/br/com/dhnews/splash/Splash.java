@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import br.com.dhnews.MainActivy;
+import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class Splash extends AppCompatActivity {

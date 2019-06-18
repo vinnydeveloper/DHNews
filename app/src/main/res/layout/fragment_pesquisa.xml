@@ -6,11 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="30dp"
     android:orientation="vertical"
-    tools:context=".Pesquisa.Pesquisa">
+    tools:context=".pesquisa.PesquisaFragment">
 
     <android.support.v7.widget.SearchView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:queryHint="Pesquisa"
         android:id="@+id/pesquisa"
         app:iconifiedByDefault="false">

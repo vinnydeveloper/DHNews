@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.dhnews.Interface.RecyclerViewClickListener;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeActivity;
 import br.com.dhnews.model.Noticias;
 
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
@@ -38,12 +37,13 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
     }
 
 
-
     @Override
-    public void onBindViewHolder(@NonNull NoticiasAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull NoticiasAdapter.ViewHolder viewHolder, final int position) {
 
         final Noticias noticias = listaNoticias.get(position);
         viewHolder.setaNoticiasNaTela(noticias);
+
+         /*
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -51,6 +51,32 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
                 listener.onClick(noticias);
             }
         });
+        */
+
+        //Click na imagem da noticia para chamar o detalhe da noticia
+        viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
+        //Click no titulo da noticia para chamar o detalhe da noticia
+        viewHolder.tituloNoticia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
+        //Click na descrição da noticia para chamar o detalhe da noticia
+        viewHolder.descricaoNoticia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
     }
 
     @Override
@@ -59,7 +85,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tituloNoticia;
         TextView descricaoNoticia;
         TextView horaAssuntoNoticia;
@@ -75,14 +101,13 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         }
 
 
-
         //Atribui o as views os valores da variável contato
-        public void setaNoticiasNaTela(Noticias noticias){
+        public void setaNoticiasNaTela(Noticias noticias) {
             tituloNoticia.setText(noticias.getTituloNoticia());
             descricaoNoticia.setText(noticias.getDescricaoNoticia());
             horaAssuntoNoticia.setText(noticias.getHoraAssuntoNoticia());
             imagemNoticias.setImageDrawable(ContextCompat.getDrawable(
-                    imagemNoticias.getContext(),noticias.getImagemNoticias()));
+                    imagemNoticias.getContext(), noticias.getImagemNoticias()));
         }
     }
 }

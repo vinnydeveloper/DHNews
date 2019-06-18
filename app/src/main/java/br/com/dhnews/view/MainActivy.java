@@ -1,25 +1,20 @@
-package br.com.dhnews;
+package br.com.dhnews.view;
 
-import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
-import br.com.dhnews.Noticias.NoticiasActivity;
-import br.com.dhnews.Pesquisa.Pesquisa;
-import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.login.LoginFragment;
+import br.com.dhnews.noticias.NoticiasFragment;
+import br.com.dhnews.pesquisa.PesquisaFragment;
+import br.com.dhnews.R;
+import br.com.dhnews.home.HomeFragment;
 import br.com.dhnews.lerdepois.views.LerDepoisFragment;
-import br.com.dhnews.login.Login;
 
 public class MainActivy extends AppCompatActivity {
 
@@ -35,16 +30,16 @@ public class MainActivy extends AppCompatActivity {
                     replaceFragment(new LerDepoisFragment());
                     return true;
                 case R.id.navigation_user:
-                    replaceFragment(new Login());
+                    replaceFragment(new LoginFragment());
                     return true;
                 case R.id.navigation_home:
-                    replaceFragment(new HomeActivity());
+                    replaceFragment(new HomeFragment());
                     return true;
                 case R.id.navigation_public:
-                    replaceFragment(new NoticiasActivity());
+                    replaceFragment(new NoticiasFragment());
                     return true;
                 case R.id.navigation_search:
-                    replaceFragment(new Pesquisa());
+                    replaceFragment(new PesquisaFragment());
                     return true;
 
             }
@@ -65,11 +60,11 @@ public class MainActivy extends AppCompatActivity {
 
         //Valida a flag e o fragmento que precisa ser exibido
         if (tela != null && tela.equals("LOGIN")) {
-            replaceFragment(new Login());
+            replaceFragment(new LoginFragment());
         } else if (tela != null && tela.equals("NOTICIA")) {
-            replaceFragment(new NoticiasActivity());
+            replaceFragment(new NoticiasFragment());
         } else {
-            replaceFragment(new HomeActivity());
+            replaceFragment(new HomeFragment());
 
         }
     }

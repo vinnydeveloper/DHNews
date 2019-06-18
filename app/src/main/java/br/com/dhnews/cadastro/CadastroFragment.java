@@ -1,3 +1,4 @@
+
 package br.com.dhnews.cadastro;
 
 
@@ -11,17 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import br.com.dhnews.MainActivy;
+import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.home.HomeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Cadastro extends Fragment {
+public class CadastroFragment extends Fragment {
 
 
-    public Cadastro() {
+    public CadastroFragment() {
         // Required empty public constructor
     }
 
@@ -40,7 +41,7 @@ public class Cadastro extends Fragment {
 
         Button btnFinalizarCadastro = view.findViewById(R.id.btnSing);
 
-        //Declaracao de atributos para validacao do preenchimento de dados da Tela de Cadastro
+        //Declaracao de atributos para validacao do preenchimento de dados da Tela de CadastroFragment
         final TextInputLayout textInputLayoutCadNome = view.findViewById(
                 R.id.TextInputNome);
 
@@ -54,7 +55,7 @@ public class Cadastro extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //Valida o prenchimento dos dados da Tela de Cadastro
+                //Valida o prenchimento dos dados da Tela de CadastroFragment
                 String nomeCadastro = textInputLayoutCadNome.getEditText().getText().toString();
                 String emailCadastro = textInputLayoutCadEmail.getEditText().getText().toString();
                 String senhaCadastro =
@@ -92,12 +93,10 @@ public class Cadastro extends Fragment {
                 if (!(nomeCadastro.isEmpty()) && !(emailCadastro.isEmpty()) &&
                         !(senhaCadastro.isEmpty())) {
 
-                    ((MainActivy) getActivity()).replaceFragment(new HomeActivity());
+                    ((MainActivy) getActivity()).replaceFragment(new HomeFragment());
 
                 }
             }
         });
     }
-
-
 }

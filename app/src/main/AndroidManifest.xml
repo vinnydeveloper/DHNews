@@ -12,7 +12,7 @@
         <activity android:name=".lerdepois.views.LerDepoisActivity"></activity>
         <activity android:name=".usuario.view.UsuarioActivity" />
         <activity
-            android:name=".MainActivy"
+            android:name=".view.MainActivy"
             android:label="@string/title_activity_home_activy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

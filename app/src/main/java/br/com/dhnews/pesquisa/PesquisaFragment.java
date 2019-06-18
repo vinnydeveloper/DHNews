@@ -1,4 +1,4 @@
-package br.com.dhnews.Pesquisa;
+package br.com.dhnews.pesquisa;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,14 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import br.com.dhnews.MainActivy;
 import br.com.dhnews.R;
 
-public class Pesquisa extends Fragment {
-
+public class PesquisaFragment extends Fragment {
 
 
     @Override
@@ -36,9 +31,8 @@ public class Pesquisa extends Fragment {
         SearchView searchView = view.findViewById(R.id.pesquisa);
         ListView listView = view.findViewById(R.id.list);
 
-        String[] arrayList = new String[]{"Esporte","Politica","Cinema","Tecnologia"};
+        String[] arrayList = new String[]{"Esporte", "Politica", "Cinema", "Tecnologia"};
         final ArrayAdapter<String> adapter;
-
 
 
         adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, arrayList);
@@ -59,8 +53,6 @@ public class Pesquisa extends Fragment {
                 return false;
             }
         });
-
-
 
 
     }

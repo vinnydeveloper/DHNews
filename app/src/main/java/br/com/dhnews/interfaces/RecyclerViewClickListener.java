@@ -1,4 +1,4 @@
-package br.com.dhnews.Interface;
+package br.com.dhnews.interfaces;
 
 import br.com.dhnews.model.Noticias;
 

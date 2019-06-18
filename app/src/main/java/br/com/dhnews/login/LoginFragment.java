@@ -9,19 +9,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import br.com.dhnews.MainActivy;
-import br.com.dhnews.Noticias.NoticiasActivity;
+import br.com.dhnews.view.MainActivy;
+import br.com.dhnews.noticias.NoticiasFragment;
 import br.com.dhnews.R;
-import br.com.dhnews.cadastro.Cadastro;
-import br.com.dhnews.home.HomeActivity;
+import br.com.dhnews.cadastro.CadastroFragment;
 import br.com.dhnews.usuario.view.UsuarioActivity;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -29,9 +25,9 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Login extends Fragment {
+public class LoginFragment extends Fragment {
 
-    public Login() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
@@ -51,7 +47,7 @@ public class Login extends Fragment {
         Button btnCadastra = view.findViewById(R.id.btnCadastrar);
         Button btnLogin = view.findViewById(R.id.btnLogin);
 
-        //Declaracao de atributos para validacao do preenchimento de dados da Tela de Login
+        //Declaracao de atributos para validacao do preenchimento de dados da Tela de LoginFragment
         final TextInputLayout textInputLayoutLogEmail = view.findViewById(
                 R.id.textInputLayoutEmail);
 
@@ -66,7 +62,7 @@ public class Login extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //Valida o prenchimento dos dados da Tela de Login
+                //Valida o prenchimento dos dados da Tela de LoginFragment
                 String emailLog = textInputLayoutLogEmail.getEditText().getText().toString();
                 String senhaLog = textInputLayoutLogPassword.getEditText().getText().toString();
 
@@ -86,14 +82,14 @@ public class Login extends Fragment {
 
                 if (!(emailLog.isEmpty()) && !(senhaLog.isEmpty())) {
 
-                    SharedPreferences preferences= getActivity().getPreferences(MODE_PRIVATE);
+                    SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
                     preferences.edit().putString("EMAIL", emailLog).commit();
                     preferences.edit().putString("SENHA", senhaLog).commit();
                     //se preenchido automaticamente, vai pra tela usuario
                     Intent intent = new Intent(getContext(), UsuarioActivity.class);
                     startActivity(intent);
 
-                    ((MainActivy)getActivity()).replaceFragment(new NoticiasActivity());
+                    ((MainActivy) getActivity()).replaceFragment(new NoticiasFragment());
 
                 }
             }
@@ -103,7 +99,7 @@ public class Login extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ((MainActivy) getActivity()).replaceFragment(new Cadastro());
+                ((MainActivy) getActivity()).replaceFragment(new CadastroFragment());
             }
         });
 

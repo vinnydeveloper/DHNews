@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.dhnews.MainActivy;
+import br.com.dhnews.lerdepois.model.Noticia;
+import br.com.dhnews.model.Noticias;
+import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
@@ -20,6 +22,8 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
+    private ImageView imageViewFotoDetalheNoticia;
+    private Noticias noticias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,43 +33,25 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         //Metodo para inicializar as Views
         initViews();
 
-        //****************************DADOS TEMPORARIOS*********************************************
-        //Estes valores fixos sao temporarios, pois os dados serao alimentados pela tela anterior
-        //que Lista as noticias
+        //Valido se veio algum dado na intent
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            Noticias noticias = getIntent().getParcelableExtra("NOTICIAS");
 
-        textViewTituloDetalheNoticia.setText("Vaga no Supremo");
+            if (noticias != null) {
 
-        textViewSubTituloDetalheNoticia.setText("Bolsonaro nega que tenha feito 'acordo' para" +
-                "\nindicar Moro ao STF");
+                retornaDetalheListaNoticias(noticias);
 
-        textViewHorarioDetalheNoticia.setText("Há 2 horas   —  Política");
+                //Metodo para voltar para a tela com a Lista de noticias
+                chamaListaNoticia();
 
-        textViewConteudoDetalheNoticia.setText("Lorem ipsum dolor sit amet, consectetur " +
-                "\nadipiscing elit, sed do eiusmod tempor " +
-                "\nincididunt ut labore et dolore magna aliqua.\n" +
-                " \n" +
-                "Ut enim ad minim veniam, quis nostrud " +
-                "\nexercitation ullamco laboris nisi ut aliquip" +
-                "\nex ea commodo consequat. \n" +
-                "\n" +
-                "Duis aute irure dolor in reprehenderit in " +
-                "\nvoluptate velit esse cillum dolore eu fugiat " +
-                "\nnulla pariatur. \n" +
-                "\n" +
-                "Excepteur sint occaecat cupidatat non " +
-                "\nproident, sunt in culpa qui officia deserunt " +
-                "\nmollit anim id est laborum.");
+                //Metodo para acessar os aplicativos de compartilhamento de dados
+                compartilharNoticia();
 
-        //****************************DADOS TEMPORARIOS*********************************************
 
-        //Metodo para voltar para a tela com a Lista de noticias
-        chamaListaNoticia();
-
-        //Metodo para acessar os aplicativos de compartilhamento de dados
-        compartilharNoticia();
-
-        //Metodo para chamar a tela de Login para cadastrar da opcao ler noticia depois
-        cadastraLerDepois();
+                //Metodo para chamar a tela de LoginFragment para cadastrar da opcao ler noticia depois
+                cadastraLerDepois();
+            }
+        }
     }
 
     private void initViews() {
@@ -76,7 +62,23 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         imageViewBackDetalheNoticia = findViewById(R.id.imagemBackNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
+        imageViewFotoDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
     }
+
+    private void retornaDetalheListaNoticias(Noticias noticias) {
+
+        textViewTituloDetalheNoticia.setText(noticias.getTituloNoticia());
+
+        textViewSubTituloDetalheNoticia.setText(noticias.getDescricaoNoticia());
+
+        textViewHorarioDetalheNoticia.setText(noticias.getHoraAssuntoNoticia());
+
+        textViewConteudoDetalheNoticia.setText(noticias.getDescricaoNoticia());
+
+        imageViewFotoDetalheNoticia.setImageResource(noticias.getImagemNoticias());
+
+    }
+
 
     private void chamaListaNoticia() {
         imageViewBackDetalheNoticia.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +87,14 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
                 //Chama a tela com a Lista de Noticias
 
-                //Pendente nome da tela de lista de noticia para comunicação ????
+                //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
+                //chamar a tela/fragmento correspondente
                 Intent intentListaNoticias = new Intent(
                         DetalheNoticiaActivity.this, MainActivy.class);
+
+                //Chama o fragmento da tela de Noticias(atraves de um flag 'Tela' com valor
+                //'Noticia')  para retornar para a lista de noticias
+                intentListaNoticias.putExtra("TELA", "NOTICIA");
 
                 startActivity(intentListaNoticias);
             }
@@ -128,7 +135,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                 Intent intentLerDepois = new Intent(
                         DetalheNoticiaActivity.this, MainActivy.class);
 
-                //Chama o fragmento da tela de Login(atraves de um flag 'Tela' com valor 'Login')
+                //Chama o fragmento da tela de LoginFragment(atraves de um flag 'Tela' com valor 'LoginFragment')
                 //para cadastrar o ler noticia depois
                 intentLerDepois.putExtra("TELA", "LOGIN");
 

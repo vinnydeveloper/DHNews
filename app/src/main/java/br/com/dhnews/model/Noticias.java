@@ -1,6 +1,9 @@
 package br.com.dhnews.model;
 
-public class Noticias {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Noticias implements Parcelable {
 
     private String tituloNoticia;
     private String descricaoNoticia;
@@ -16,6 +19,25 @@ public class Noticias {
         this.horaAssuntoNoticia = horaAssuntoNoticia;
         this.imagemNoticias = imagemNoticias;
     }
+
+    protected Noticias(Parcel in) {
+        tituloNoticia = in.readString();
+        descricaoNoticia = in.readString();
+        horaAssuntoNoticia = in.readString();
+        imagemNoticias = in.readInt();
+    }
+
+    public static final Creator<Noticias> CREATOR = new Creator<Noticias>() {
+        @Override
+        public Noticias createFromParcel(Parcel in) {
+            return new Noticias(in);
+        }
+
+        @Override
+        public Noticias[] newArray(int size) {
+            return new Noticias[size];
+        }
+    };
 
     public String getTituloNoticia() {
         return tituloNoticia;
@@ -47,5 +69,18 @@ public class Noticias {
 
     public void setImagemNoticias(int imagemNoticias) {
         this.imagemNoticias = imagemNoticias;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(tituloNoticia);
+        dest.writeString(descricaoNoticia);
+        dest.writeString(horaAssuntoNoticia);
+        dest.writeInt(imagemNoticias);
     }
 }
