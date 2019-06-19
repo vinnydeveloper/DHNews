@@ -2,11 +2,11 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutUsuario"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".usuario.view.UsuarioActivity"
-    android:id="@+id/layoutUsuario">
+    tools:context=".usuario.view.UsuarioActivity">
 
     <ImageView
         android:id="@+id/imagemBackUser"
@@ -14,10 +14,9 @@
         android:layout_height="@dimen/icon_detail_news"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_arrow_back_grey_24dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
@@ -30,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <TextView
@@ -50,23 +48,23 @@
     <TextView
         android:id="@+id/textViewInteresses"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="30dp"
         android:text="Interesses"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeCompletoText"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintTop_toBottomOf="@+id/nomeCompletoText" />
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_marginEnd="16dp"
         android:layout_height="1dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="#607D8B"
         app:layout_constraintTop_toBottomOf="@+id/textViewInteresses"
         tools:layout_editor_absoluteX="16dp" />
@@ -94,8 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="Política"
                 android:textSize="20sp" />
 
@@ -103,63 +101,64 @@
                 android:id="@+id/checkTec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tecnologia"
-                android:textSize="20sp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="Tecnologia"
+                android:textSize="20sp" />
 
 
             <CheckBox
                 android:id="@+id/checkEsporte"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Esporte"
-                android:textSize="20sp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="Esporte"
+                android:textSize="20sp" />
+
             <CheckBox
                 android:id="@+id/checkEntre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Entretenimento"
-                android:textSize="20sp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="Entretenimento"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkModa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Moda"
-                android:textSize="20sp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="Moda"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkCulinaria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Culinária"
-                android:textSize="20sp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginEnd="16dp"
+                android:text="Culinária"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnDesconectarConta"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
                 android:backgroundTintMode="screen"
                 android:text="Desconectar minha conta"
                 android:textAllCaps="false"
                 android:textColor="#F44336"
-                android:textSize="20sp"
-                android:layout_margin="20dp"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 

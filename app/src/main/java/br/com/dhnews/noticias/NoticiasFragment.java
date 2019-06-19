@@ -54,28 +54,27 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 
         noticias.add(new Noticias("Vaga no Supremo",
                 "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-                "Há 2 horas   —  Política", R.drawable.imagenoticias01));
+                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
 
         noticias.add(new Noticias("Investigação no RJ",
-                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
-                "Há 2 horas   —  Política", R.drawable.imagenoticias02));
+                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio",
+                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
 
         noticias.add(new Noticias("Educação",
                 "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-                "Há 2 horas   —   Educação", R.drawable.imagenoticia03));
+                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
 
         noticias.add(new Noticias("Economia",
                 "Dólar fecha a R$ 4,03 e bolsa atinge menor pontuação do ano.",
-                "Há 5 horas   —  Economia", R.drawable.imagenoticia04));
+                "Há 5 horas   —  ", "Economia", R.drawable.imagenoticia04));
 
         noticias.add(new Noticias("Vaga no Supremo",
                 "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-                "Há 2 horas   —  Política", R.drawable.imagenoticias01));
+                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
 
         noticias.add(new Noticias("Educação",
                 "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-                "Há 2 horas   —   Educação", R.drawable.imagenoticia03));
-
+                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
 
         return noticias;
     }

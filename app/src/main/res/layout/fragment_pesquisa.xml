@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="30dp"
     tools:context=".pesquisa.PesquisaFragment">
 
     <android.support.v7.widget.SearchView
+        android:id="@+id/pesquisa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:queryHint="Pesquisa"
-        android:id="@+id/pesquisa"
-        app:iconifiedByDefault="false">
+        app:iconifiedByDefault="false"
+        app:queryHint="Pesquisa">
 
     </android.support.v7.widget.SearchView>
+
     <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="10dp"
-        android:id="@+id/list"></ListView>
+        android:layout_marginTop="10dp"></ListView>
 
 </LinearLayout>

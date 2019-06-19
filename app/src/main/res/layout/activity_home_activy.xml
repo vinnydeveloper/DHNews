@@ -18,18 +18,17 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:background="@color/primary"
+            app:itemIconTint="@color/primary_light"
+            app:itemTextColor="@color/primary_dark"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:itemIconTint="@color/primary_light"
-            app:labelVisibilityMode="labeled"
-            app:itemTextColor="@color/primary_dark"
             app:menu="@menu/navigation" />
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_home_activy" />
-
 
 
 </android.support.design.widget.CoordinatorLayout>

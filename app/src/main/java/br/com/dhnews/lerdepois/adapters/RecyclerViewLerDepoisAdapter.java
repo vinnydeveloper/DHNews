@@ -15,47 +15,80 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.dhnews.R;
-import br.com.dhnews.lerdepois.interfaces.RecyclerViewClickListener;
-import br.com.dhnews.lerdepois.model.Noticia;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
+import br.com.dhnews.lerdepois.views.LerDepoisFragment;
+import br.com.dhnews.model.Noticias;
 
-public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerViewLerDepoisAdapter.ViewHolder> {
-    private List<Noticia> noticias;
+public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
+        RecyclerViewLerDepoisAdapter.ViewHolder> {
+
+    private List<Noticias> listaNoticias;
     private RecyclerViewClickListener listener;
+
     public ImageButton btnMarkButton;
 
-    public RecyclerViewLerDepoisAdapter(List<Noticia> noticias, RecyclerViewClickListener listener) {
-        this.noticias = noticias;
+    public RecyclerViewLerDepoisAdapter(List<Noticias> listaNoticias,
+                                        RecyclerViewClickListener listener) {
+        this.listaNoticias = listaNoticias;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_ler_depois_adapter, viewGroup, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(
+                R.layout.recyclerview_ler_depois_adapter, viewGroup, false);
+
         ViewHolder viewHolder = new ViewHolder(itemView);
+
         return viewHolder;
-
-
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewLerDepoisAdapter.ViewHolder viewHolder, final int position) {
 
+        final Noticias noticias = listaNoticias.get(position);
+        viewHolder.setConteudoNaTela(noticias);
 
-        final Noticia noticia = noticias.get(position);
-        viewHolder.setConteudoNaTela(noticia);
+        /*
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onClick(noticia);
+                listener.onClick(noticias);
 
             }
         });
+        */
+
+        //Click na imagem da noticia para chamar o detalhe da noticia
+        viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
+        //Click no titulo da noticia para chamar o detalhe da noticia
+        viewHolder.tituloNoticia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
+        //Click na descrição da noticia para chamar o detalhe da noticia
+        viewHolder.descricaoNoticia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(noticias);
+            }
+        });
+
         viewHolder.markRemove.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
 
                 //caixa de dialogo
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(v.getContext());
@@ -69,6 +102,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
 
                     }
                 });
+
                 alertDialog.setPositiveButton("REMOVER", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -77,57 +111,53 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
 
                     }
                 });
+
                 AlertDialog alertDialog1 = alertDialog.create();
                 alertDialog1.show();
-
-
             }
         });
-
-
     }
 
 
     @Override
     public int getItemCount() {
-        return noticias.size();
+        return listaNoticias.size();
     }
 
     public void removeItem(int position) {
-        noticias.remove(position);
+        listaNoticias.remove(position);
         notifyItemRemoved(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageViewNoticia;
-        private TextView tituloNoticia;
-        private TextView conteudoNoticia;
-        private TextView assunto;
-        private TextView horaNoticia;
-        private ImageButton markRemove;
-
+        TextView tituloNoticia;
+        TextView descricaoNoticia;
+        TextView horaNoticia;
+        TextView assuntoNoticia;
+        ImageView imagemNoticias;
+        ImageButton markRemove;
 
         public ViewHolder(@NonNull View itemView) {
-
-
             super(itemView);
+
             btnMarkButton = itemView.findViewById(R.id.btnBookMarkLerDepois);
-            imageViewNoticia = itemView.findViewById(R.id.circleImageViewNoticia);
+            imagemNoticias = itemView.findViewById(R.id.circleImageViewNoticia);
             tituloNoticia = itemView.findViewById(R.id.tituloNoticia);
-            conteudoNoticia = itemView.findViewById(R.id.conteudoNoticia);
-            assunto = itemView.findViewById(R.id.assuntoNoticia);
+            descricaoNoticia = itemView.findViewById(R.id.conteudoNoticia);
+            assuntoNoticia = itemView.findViewById(R.id.assuntoNoticia);
             horaNoticia = itemView.findViewById(R.id.horarioNoticia);
             markRemove = itemView.findViewById(R.id.btnBookMarkLerDepois);
 
-
         }
 
-        public void setConteudoNaTela(Noticia noticia) {
-            imageViewNoticia.setImageDrawable(ContextCompat.getDrawable(imageViewNoticia.getContext(), noticia.getImagemNoticia()));
-            tituloNoticia.setText(noticia.getTituloText());
-            conteudoNoticia.setText(noticia.getConteudoText());
-            assunto.setText(noticia.getAssunto());
-            horaNoticia.setText(noticia.getTempoNoticia());
+        public void setConteudoNaTela(Noticias noticias) {
+
+            imagemNoticias.setImageDrawable(ContextCompat.getDrawable(
+                    imagemNoticias.getContext(), noticias.getImagemNoticias()));
+            tituloNoticia.setText(noticias.getTituloNoticia());
+            descricaoNoticia.setText(noticias.getDescricaoNoticia());
+            assuntoNoticia.setText(noticias.getAssuntoNoticia());
+            horaNoticia.setText(noticias.getHoraNoticia());
         }
     }
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.dhnews.lerdepois.model.Noticia;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
@@ -18,6 +17,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
     private TextView textViewTituloDetalheNoticia;
     private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
+    private TextView textViewAssuntoDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
@@ -58,6 +58,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
         textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
         textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
+        textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
         textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
         imageViewBackDetalheNoticia = findViewById(R.id.imagemBackNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
@@ -71,7 +72,9 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
         textViewSubTituloDetalheNoticia.setText(noticias.getDescricaoNoticia());
 
-        textViewHorarioDetalheNoticia.setText(noticias.getHoraAssuntoNoticia());
+        textViewHorarioDetalheNoticia.setText(noticias.getHoraNoticia());
+
+        textViewAssuntoDetalheNoticia.setText(noticias.getAssuntoNoticia());
 
         textViewConteudoDetalheNoticia.setText(noticias.getDescricaoNoticia());
 

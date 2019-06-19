@@ -102,9 +102,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
         android:backgroundTint="@color/google"
         android:drawableLeft="@drawable/ic_google_plus"
+        android:gravity="center"
         android:text="Google" />
 
 

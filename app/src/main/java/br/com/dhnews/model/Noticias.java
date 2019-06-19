@@ -7,23 +7,27 @@ public class Noticias implements Parcelable {
 
     private String tituloNoticia;
     private String descricaoNoticia;
-    private String horaAssuntoNoticia;
+    private String horaNoticia;
+    private String assuntoNoticia;
     private int imagemNoticias;
 
     public Noticias() {
     }
 
-    public Noticias(String tituloNoticia, String descricaoNoticia, String horaAssuntoNoticia, int imagemNoticias) {
+    public Noticias(String tituloNoticia, String descricaoNoticia, String horaNoticia,
+                    String assuntoNoticia, int imagemNoticias) {
         this.tituloNoticia = tituloNoticia;
         this.descricaoNoticia = descricaoNoticia;
-        this.horaAssuntoNoticia = horaAssuntoNoticia;
+        this.horaNoticia = horaNoticia;
+        this.assuntoNoticia = assuntoNoticia;
         this.imagemNoticias = imagemNoticias;
     }
 
     protected Noticias(Parcel in) {
         tituloNoticia = in.readString();
         descricaoNoticia = in.readString();
-        horaAssuntoNoticia = in.readString();
+        horaNoticia = in.readString();
+        assuntoNoticia = in.readString();
         imagemNoticias = in.readInt();
     }
 
@@ -55,12 +59,20 @@ public class Noticias implements Parcelable {
         this.descricaoNoticia = descricaoNoticia;
     }
 
-    public String getHoraAssuntoNoticia() {
-        return horaAssuntoNoticia;
+    public String getHoraNoticia() {
+        return horaNoticia;
     }
 
-    public void setHoraAssuntoNoticia(String horaAssuntoNoticia) {
-        this.horaAssuntoNoticia = horaAssuntoNoticia;
+    public void setHoraNoticia(String horaNoticia) {
+        this.horaNoticia = horaNoticia;
+    }
+
+    public String getAssuntoNoticia() {
+        return assuntoNoticia;
+    }
+
+    public void setAssuntoNoticia(String assuntoNoticia) {
+        this.assuntoNoticia = assuntoNoticia;
     }
 
     public int getImagemNoticias() {
@@ -80,7 +92,8 @@ public class Noticias implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(tituloNoticia);
         dest.writeString(descricaoNoticia);
-        dest.writeString(horaAssuntoNoticia);
+        dest.writeString(horaNoticia);
+        dest.writeString(assuntoNoticia);
         dest.writeInt(imagemNoticias);
     }
 }
