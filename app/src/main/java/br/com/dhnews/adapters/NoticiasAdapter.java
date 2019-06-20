@@ -1,13 +1,11 @@
 package br.com.dhnews.adapters;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,18 +13,32 @@ import java.util.List;
 
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
+import br.com.dhnews.interfaces.RecyclerViewClickListenerUsuario;
 import br.com.dhnews.model.Noticias;
+import br.com.dhnews.model.Usuario;
 
 
-public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
+public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder>  {
 
     private List<Noticias> listaNoticias;
     private RecyclerViewClickListener listener;
+    private RecyclerViewClickListenerUsuario listenerUsuario;
+    private Usuario usuario;
+
 
     public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
         this.listener = listener;
     }
+
+    /*
+    public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener,
+                           RecyclerViewClickListenerUsuario listenerUsuario) {
+        this.listaNoticias = listaNoticias;
+        this.listener = listener;
+        this.listenerUsuario = listenerUsuario;
+    }
+    */
 
     @NonNull
     @Override
@@ -78,6 +90,13 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
                 listener.onClick(noticias);
             }
         });
+
+        viewHolder.imagemBookMarkListaNoticia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listenerUsuario.onClick(usuario);
+            }
+        });
     }
 
     @Override
@@ -92,6 +111,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         TextView horaNoticia;
         TextView assuntoNoticia;
         ImageView imagemNoticias;
+        ImageView imagemBookMarkListaNoticia;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,6 +121,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
             horaNoticia = itemView.findViewById(R.id.txtHora);
             assuntoNoticia = itemView.findViewById(R.id.txtAssunto);
             imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
+            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imagemBookMarkListaNoticia);
         }
 
 
