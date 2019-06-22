@@ -18,6 +18,8 @@ import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
 import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
 import br.com.dhnews.model.Noticias;
+import br.com.dhnews.model.Usuario;
+import br.com.dhnews.view.MainActivy;
 
 
 /**
@@ -33,10 +35,9 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_home, container, false);
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
@@ -90,4 +91,21 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
         startActivity(intent);
 
     }
+
+    @Override
+    public void onClick(Usuario usuario) {
+
+        Intent intentLogin = new Intent(getContext(), MainActivy.class);
+
+        intentLogin.putExtra("TELA", "LOGIN");
+
+        startActivity(intentLogin);
+
+    }
+
+    @Override
+    public void onClick() {
+
+    }
+
 }

@@ -19,6 +19,7 @@ import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.lerdepois.adapters.RecyclerViewLerDepoisAdapter;
 import br.com.dhnews.model.Noticias;
+import br.com.dhnews.model.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,14 +37,13 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_ler_depois, container, false);
+
         // Add findViewById para recycler
-
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.recyclerViewMark);
-        // Configurar recyclerview e adapater
 
+        // Configurar recyclerview e adapater
         adapter = new RecyclerViewLerDepoisAdapter(getNoticias(), this);
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -95,6 +95,16 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
         intent.putExtra("NOTICIAS", noticias);
 
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onClick(Usuario usuario) {
+
+    }
+
+    @Override
+    public void onClick() {
 
     }
 }

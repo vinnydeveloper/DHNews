@@ -13,16 +13,14 @@ import java.util.List;
 
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.interfaces.RecyclerViewClickListenerUsuario;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 
 
-public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder>  {
+public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
 
     private List<Noticias> listaNoticias;
     private RecyclerViewClickListener listener;
-    private RecyclerViewClickListenerUsuario listenerUsuario;
     private Usuario usuario;
 
 
@@ -30,15 +28,6 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         this.listaNoticias = listaNoticias;
         this.listener = listener;
     }
-
-    /*
-    public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener,
-                           RecyclerViewClickListenerUsuario listenerUsuario) {
-        this.listaNoticias = listaNoticias;
-        this.listener = listener;
-        this.listenerUsuario = listenerUsuario;
-    }
-    */
 
     @NonNull
     @Override
@@ -56,16 +45,6 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
 
         final Noticias noticias = listaNoticias.get(position);
         viewHolder.setaNoticiasNaTela(noticias);
-
-         /*
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                listener.onClick(noticias);
-            }
-        });
-        */
 
         //Click na imagem da noticia para chamar o detalhe da noticia
         viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +73,14 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         viewHolder.imagemBookMarkListaNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listenerUsuario.onClick(usuario);
+
+                Usuario usuarioLocal = new Usuario();
+
+                if (usuario == null) {
+                    usuarioLocal.setEmailUsuario("teste");
+                }
+
+                listener.onClick(usuarioLocal);
             }
         });
     }

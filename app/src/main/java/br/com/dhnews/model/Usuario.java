@@ -1,33 +1,31 @@
 package br.com.dhnews.model;
 
-import android.widget.TextView;
-
 public class Usuario {
 
-    private TextView emailUsuario;
-    private TextView senhaUsuario;
+    private String emailUsuario;
+    private String senhaUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(TextView emailUsuario, TextView senhaUsuario) {
+    public Usuario(String emailUsuario, String senhaUsuario) {
         this.emailUsuario = emailUsuario;
         this.senhaUsuario = senhaUsuario;
     }
 
-    public TextView getEmailUsuario() {
+    public String getEmailUsuario() {
         return emailUsuario;
     }
 
-    public void setEmailUsuario(TextView emailUsuario) {
+    public void setEmailUsuario(String emailUsuario) {
         this.emailUsuario = emailUsuario;
     }
 
-    public TextView getSenhaUsuario() {
+    public String getSenhaUsuario() {
         return senhaUsuario;
     }
 
-    public void setSenhaUsuario(TextView senhaUsuario) {
+    public void setSenhaUsuario(String senhaUsuario) {
         this.senhaUsuario = senhaUsuario;
     }
 }
