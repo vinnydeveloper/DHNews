@@ -58,7 +58,7 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
 
         noticias.add(new Noticias("Investigação no RJ",
-                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio",
+                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
 
         noticias.add(new Noticias("Educação",
@@ -99,11 +99,6 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
         intentLogin.putExtra("TELA", "LOGIN");
 
         startActivity(intentLogin);
-
-    }
-
-    @Override
-    public void onClick() {
 
     }
 }

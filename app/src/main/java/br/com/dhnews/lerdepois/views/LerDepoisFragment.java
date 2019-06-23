@@ -65,7 +65,7 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
 
         noticias.add(new Noticias("Investigação no RJ",
-                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio",
+                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
 
         noticias.add(new Noticias("Educação",
@@ -100,11 +100,6 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
 
     @Override
     public void onClick(Usuario usuario) {
-
-    }
-
-    @Override
-    public void onClick() {
 
     }
 }

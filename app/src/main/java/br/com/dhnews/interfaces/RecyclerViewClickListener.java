@@ -8,7 +8,4 @@ public interface RecyclerViewClickListener {
     void onClick(Noticias noticias);
 
     void onClick(Usuario usuario);
-
-    void onClick();
-
 }
