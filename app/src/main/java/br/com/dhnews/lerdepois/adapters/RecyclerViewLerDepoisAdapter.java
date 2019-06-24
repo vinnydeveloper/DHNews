@@ -51,16 +51,6 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         final Noticias noticias = listaNoticias.get(position);
         viewHolder.setConteudoNaTela(noticias);
 
-        /*
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onClick(noticias);
-
-            }
-        });
-        */
-
         //Click na imagem da noticia para chamar o detalhe da noticia
         viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +117,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
     public void removeItem(int position) {
         listaNoticias.remove(position);
         notifyItemRemoved(position);
+        notifyItemChanged(position,listaNoticias.size());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
