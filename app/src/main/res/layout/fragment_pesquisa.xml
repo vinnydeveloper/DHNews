@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
     tools:context=".pesquisa.PesquisaFragment">
 
     <android.support.v7.widget.SearchView
