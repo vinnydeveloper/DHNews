@@ -63,6 +63,8 @@ public class MainActivy extends AppCompatActivity {
             replaceFragment(new LoginFragment());
         } else if (tela != null && tela.equals("NOTICIA")) {
             replaceFragment(new NoticiasFragment());
+        } else if (tela != null && tela.equals("LERDEPOIS")) {
+            replaceFragment(new LerDepoisFragment());
         } else {
             replaceFragment(new HomeFragment());
 

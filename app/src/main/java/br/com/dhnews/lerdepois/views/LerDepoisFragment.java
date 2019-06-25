@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.dhnews.R;
-import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.lerdepois.adapters.RecyclerViewLerDepoisAdapter;
+import br.com.dhnews.lerdepois.detalhe.DetalheLerDepoisActivity;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 
@@ -90,7 +90,7 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
     @Override
     public void onClick(Noticias noticias) {
 
-        Intent intent = new Intent(getContext(), DetalheNoticiaActivity.class);
+        Intent intent = new Intent(getContext(), DetalheLerDepoisActivity.class);
 
         intent.putExtra("NOTICIAS", noticias);
 

@@ -93,9 +93,9 @@
             android:id="@+id/imagemBookMarkListaNoticia"
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_bookmark_border_black"
+            android:src="@drawable/ic_bookmark_border_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
