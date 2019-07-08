@@ -1,6 +1,8 @@
 package br.com.dhnews.detalhenoticia;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -64,6 +66,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
         imageViewFotoDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
+        imageViewFotoDetalheNoticia.setColorFilter(Color.parseColor("#8190A5"), PorterDuff.Mode.MULTIPLY);
     }
 
     private void retornaDetalheListaNoticias(Noticias noticias) {
