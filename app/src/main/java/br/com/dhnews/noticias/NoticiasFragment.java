@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.dhnews.data.database.Database;
+import br.com.dhnews.data.database.dao.NoticiasDAO;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
@@ -26,6 +28,8 @@ import br.com.dhnews.view.MainActivy;
  */
 public class NoticiasFragment extends Fragment implements RecyclerViewClickListener {
 
+    private NoticiasDAO dao;
+
     public NoticiasFragment() {
         // Required empty public constructor
     }
@@ -36,6 +40,10 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_noticias, container, false);
+
+        // Inicialização do DAO
+        Database databaseRoom = Database.getDatabase(getContext());
+        dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);

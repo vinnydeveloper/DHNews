@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.dhnews.R;
+import br.com.dhnews.data.database.Database;
+import br.com.dhnews.data.database.dao.NoticiasDAO;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.lerdepois.adapters.RecyclerViewLerDepoisAdapter;
 import br.com.dhnews.lerdepois.detalhe.DetalheLerDepoisActivity;
@@ -28,6 +30,7 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
 
     private ImageButton btnRemoverNoticia;
     RecyclerViewLerDepoisAdapter adapter;
+    private NoticiasDAO dao;
 
     public LerDepoisFragment() {
         // Required empty public constructor
@@ -39,6 +42,10 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_ler_depois, container, false);
+
+        // Inicialização do DAO
+        Database databaseRoom = Database.getDatabase(getContext());
+        dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.recyclerViewMark);

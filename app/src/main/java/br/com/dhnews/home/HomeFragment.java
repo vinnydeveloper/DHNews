@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
+import br.com.dhnews.data.database.Database;
+import br.com.dhnews.data.database.dao.NoticiasDAO;
 import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.view.MainActivy;
@@ -26,6 +28,8 @@ import br.com.dhnews.view.MainActivy;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements RecyclerViewClickListener {
+
+    private NoticiasDAO dao;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -38,10 +42,14 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        // Inicialização do DAO
+        Database databaseRoom = Database.getDatabase(getContext());
+        dao = databaseRoom.noticiasDAO();
+
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
-        // Configurar recyclerview e adapater
+        // Configurar recyclerview e adapter
         NoticiasAdapter adapter = new NoticiasAdapter(getNoticias(), this);
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -53,6 +61,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     private List<Noticias> getNoticias() {
 
         List<Noticias> noticias = new ArrayList<>();
+
 
         noticias.add(new Noticias("Vaga no Supremo",
                 "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",

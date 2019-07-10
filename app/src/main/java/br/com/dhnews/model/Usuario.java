@@ -1,6 +1,13 @@
 package br.com.dhnews.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "usuarios")
 public class Usuario {
+
+    @PrimaryKey(autoGenerate = true)
+    private long id;
 
     private String emailUsuario;
     private String senhaUsuario;
@@ -11,6 +18,14 @@ public class Usuario {
     public Usuario(String emailUsuario, String senhaUsuario) {
         this.emailUsuario = emailUsuario;
         this.senhaUsuario = senhaUsuario;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getEmailUsuario() {
