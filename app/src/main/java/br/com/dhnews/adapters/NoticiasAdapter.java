@@ -13,18 +13,19 @@ import java.util.List;
 
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
+import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 
 
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
 
-    private List<Noticias> listaNoticias;
+    private List<Article> listaNoticias;
     private RecyclerViewClickListener listener;
     private Usuario usuario;
 
 
-    public NoticiasAdapter(List<Noticias> listaNoticias, RecyclerViewClickListener listener) {
+    public NoticiasAdapter(List<Article> listaNoticias, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
         this.listener = listener;
     }
@@ -43,7 +44,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull NoticiasAdapter.ViewHolder viewHolder, final int position) {
 
-        final Noticias noticias = listaNoticias.get(position);
+        final Article noticias = listaNoticias.get(position);
         viewHolder.setaNoticiasNaTela(noticias);
 
         //Click na imagem da noticia para chamar o detalhe da noticia
