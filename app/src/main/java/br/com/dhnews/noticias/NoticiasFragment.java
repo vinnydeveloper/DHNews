@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.dhnews.data.database.Database;
-import br.com.dhnews.data.database.dao.NoticiasDAO;
+//import br.com.dhnews.data.database.dao.NoticiasDAO;
 import br.com.dhnews.data.database.dao.SourceDAO;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
