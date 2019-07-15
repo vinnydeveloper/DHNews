@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.com.dhnews.data.database.Database;
 import br.com.dhnews.data.database.dao.NoticiasDAO;
+import br.com.dhnews.data.database.dao.SourceDAO;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
@@ -28,7 +29,7 @@ import br.com.dhnews.view.MainActivy;
  */
 public class NoticiasFragment extends Fragment implements RecyclerViewClickListener {
 
-    private NoticiasDAO dao;
+    private SourceDAO dao;
 
     public NoticiasFragment() {
         // Required empty public constructor

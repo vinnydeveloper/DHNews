@@ -9,6 +9,8 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
+import br.com.dhnews.model.Article;
+
 public class Converters {
 
     //Conversão para Datas
@@ -36,5 +38,11 @@ public class Converters {
     public String fromList(List<String> list) {
         Gson gson = new Gson();
         return gson.toJson(list);
+    }
+    @TypeConverter
+    public List<Article> fromArticleList(String value) {
+        Type listType = (Type) new TypeToken<List<Article>>() {
+        }.getType();
+        return new Gson().fromJson(value, listType);
     }
 }

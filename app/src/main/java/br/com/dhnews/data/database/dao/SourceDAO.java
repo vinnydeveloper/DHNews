@@ -10,32 +10,33 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 import br.com.dhnews.model.Noticias;
+import br.com.dhnews.model.Source;
 import io.reactivex.Flowable;
 
 @Dao
-public interface NoticiasDAO {
+public interface SourceDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Noticias noticias);
+    void insert(Source noticias);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Noticias> noticias);
+    void insertAll(List<Source> noticias);
 
     @Update
-    void update(Noticias noticias);
+    void update(Source noticias);
 
     @Delete
-    void delete(Noticias noticias);
+    void delete(Source noticias);
 
     @Query("SELECT * FROM noticias")
-    List<Noticias> getAll();
+    List<Source> getAll();
 
     @Query("SELECT * FROM noticias")
-    Flowable<List<Noticias>> getAllRxJava();
+    Flowable<List<Source>> getAllRxJava();
 
     @Query("SELECT * FROM noticias WHERE id = :id")
-    Noticias getById(long id);
+    Source getById(long id);
 
-    @Query("SELECT * FROM noticias WHERE status = :status")
-    Noticias getByTitle(String tituloNoticia);
+    @Query("SELECT * FROM noticias WHERE name = name")
+    Source getByName(String name);
 }
