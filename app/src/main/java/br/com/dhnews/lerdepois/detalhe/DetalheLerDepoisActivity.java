@@ -3,6 +3,8 @@ package br.com.dhnews.lerdepois.detalhe;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -67,6 +69,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
         imageViewShareDetalheLerDepois = findViewById(R.id.imagemShareDetalheLerDepois);
         imageViewBookMarkDetalheLerDepois = findViewById(R.id.imagemBookMarkDetalheLerDepois);
         imageViewFotoDetalheLerDepois = findViewById(R.id.imagemDetalheLerDepois);
+        imageViewFotoDetalheLerDepois.setColorFilter(Color.parseColor("#8190A5"), PorterDuff.Mode.MULTIPLY);
     }
 
     private void retornaDetalheListaLerDepois(Noticias noticias) {
