@@ -60,6 +60,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+
         textViewTituloDetalheLerDepois = findViewById(R.id.textViewTituloDetalheLerDepois);
         textViewSubTituloDetalheLerDepois = findViewById(R.id.textViewSubTituloDetalheLerDepois);
         textViewHorarioDetalheLerDepois = findViewById(R.id.textViewHorarioDetalheLerDepois);
