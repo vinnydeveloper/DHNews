@@ -1,6 +1,7 @@
 package br.com.dhnews.model;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "usuarios")
@@ -12,6 +13,7 @@ public class Usuario {
     private String emailUsuario;
     private String senhaUsuario;
 
+    @Ignore
     public Usuario() {
     }
 

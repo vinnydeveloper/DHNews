@@ -23,7 +23,7 @@ public interface SourceDAO {
     void insertAll(List<Source> noticias);
 
     @Update
-    void update(Source noticias);
+    void update(Source source);
 
     @Delete
     void delete(Source noticias);

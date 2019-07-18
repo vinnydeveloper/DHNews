@@ -23,14 +23,15 @@ import br.com.dhnews.model.Usuario;
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {
 
     private List<Article> listaNoticias;
-    private Noticias article;
+//    private Noticias article;
+    private List<Noticias> listaNot2;
     private RecyclerViewClickListener listener;
     private Usuario usuario;
 
 
-    public NoticiasAdapter(List<Article> listaNoticias, Noticias article, RecyclerViewClickListener listener, Usuario usuario) {
+    public NoticiasAdapter(List<Article> listaNoticias, List<Noticias> listaNot2, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
-        this.article = article;
+        this.listaNot2 = listaNot2;
         this.listener = listener;
         this.usuario = usuario;
     }
@@ -50,13 +51,15 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
     public void onBindViewHolder(@NonNull NoticiasAdapter.ViewHolder viewHolder, final int position) {
 
         final Article noticias = listaNoticias.get(position);
-        viewHolder.setaNoticiasNaTela(noticias,article);
+        final Noticias noticias2 = listaNot2.get(position);
+
+        viewHolder.setaNoticiasNaTela(noticias,noticias2);
 
         //Click na imagem da noticia para chamar o detalhe da noticia
         viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(article);
+                listener.onClick(noticias2);
             }
         });
 
@@ -64,7 +67,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         viewHolder.tituloNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(article);
+                listener.onClick(noticias2);
             }
         });
 
@@ -72,7 +75,7 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
         viewHolder.descricaoNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(article);
+                listener.onClick(noticias2);
             }
         });
 
@@ -89,6 +92,11 @@ public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHo
                 listener.onClick(usuarioLocal);
             }
         });
+    }
+    public void update(List<Article> noticiasList,List<Noticias> noticiasList2){
+        this.listaNoticias = noticiasList;
+        this.listaNot2 = noticiasList2;
+        notifyDataSetChanged();
     }
 
     @Override

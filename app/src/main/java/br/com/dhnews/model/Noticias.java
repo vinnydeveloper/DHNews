@@ -1,5 +1,7 @@
 package br.com.dhnews.model;
 
+
+
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -8,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-//@Entity(tableName = "noticias")
+@Entity(tableName = "noticias")
 public class Noticias  {
 
     @SerializedName("status")
@@ -23,7 +25,6 @@ public class Noticias  {
     @SerializedName("articles")
     @Expose
     private List<Article> article;
-
     public String getStatus() {
         return status;
     }

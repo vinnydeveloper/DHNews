@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
@@ -25,7 +28,8 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
     private ImageView imageViewFotoDetalheNoticia;
-    private Noticias noticias;
+    private Article not;
+    private Noticias not2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
             if (noticias != null) {
 
-                retornaDetalheListaNoticias(noticias);
+                retornaDetalheListaNoticias(not,not2);
 
                 //Metodo para voltar para a tela com a Lista de noticias
                 chamaListaNoticia();
@@ -69,22 +73,31 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         imageViewFotoDetalheNoticia.setColorFilter(Color.parseColor("#8190A5"), PorterDuff.Mode.MULTIPLY);
     }
 
-    private void retornaDetalheListaNoticias(Noticias noticias) {
+    private void retornaDetalheListaNoticias(Article not,Noticias not2) {
 
-        textViewTituloDetalheNoticia.setText(noticias.getTituloNoticia());
+        textViewTituloDetalheNoticia.setText(not.getTitle());
 
-        textViewSubTituloDetalheNoticia.setText(noticias.getDescricaoNoticia());
+        textViewSubTituloDetalheNoticia.setText(not.getDescription());
 
-        textViewHorarioDetalheNoticia.setText(noticias.getHoraNoticia());
+        textViewHorarioDetalheNoticia.setText(not.getPublishedAt());
 
-        textViewAssuntoDetalheNoticia.setText(noticias.getAssuntoNoticia());
+        textViewAssuntoDetalheNoticia.setText((CharSequence) not2.getArticle());
 
-        textViewConteudoDetalheNoticia.setText(noticias.getDescricaoNoticia());
+        textViewConteudoDetalheNoticia.setText(not.getDescription());
 
-        imageViewFotoDetalheNoticia.setImageResource(noticias.getImagemNoticias());
+        getImage(not);
 
     }
-
+    public void getImage(Article result){
+        if (result.getUrlToImage() != null){
+            Picasso.get().setIndicatorsEnabled(true);
+            Picasso.get()
+                    .load(result.getUrlToImage())
+                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageViewFotoDetalheNoticia);
+        }
+    }
 
     private void chamaListaNoticia() {
         imageViewBackDetalheNoticia.setOnClickListener(new View.OnClickListener() {
