@@ -2,6 +2,7 @@ package br.com.dhnews.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -17,6 +18,15 @@ public class Source {
     @Expose
     @SerializedName("name")
     private String name;
+
+    @Ignore
+    public Source() {
+    }
+
+    public Source(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

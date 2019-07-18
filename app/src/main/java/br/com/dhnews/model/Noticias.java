@@ -10,14 +10,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-@Entity(tableName = "noticias")
+//@Entity(tableName = "noticias")
 public class Noticias  {
 
     @SerializedName("status")
     @Expose
     private String status;
 
-    @PrimaryKey(autoGenerate = true)
+ //   @PrimaryKey(autoGenerate = true)
     @SerializedName("totalResult")
     @Expose
     private int totalResult;

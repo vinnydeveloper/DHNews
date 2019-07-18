@@ -20,7 +20,7 @@ public interface SourceDAO {
     void insert(Source noticias);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(List<Source> noticias);
+    void insertAll(List<Source> source);
 
     @Update
     void update(Source source);
@@ -34,9 +34,9 @@ public interface SourceDAO {
     @Query("SELECT * FROM noticias")
     Flowable<List<Source>> getAllRxJava();
 
-    @Query("SELECT * FROM noticias WHERE id = :id")
-    Source getById(long id);
+    @Query("SELECT id,name FROM noticias WHERE id = :id")
+    Source getById(Long id);
 
-    @Query("SELECT * FROM noticias WHERE name = name")
+    @Query("SELECT id,name FROM noticias WHERE name = :name")
     Source getByName(String name);
 }

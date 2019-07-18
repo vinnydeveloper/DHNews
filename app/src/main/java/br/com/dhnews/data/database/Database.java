@@ -12,7 +12,7 @@ import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Source;
 import br.com.dhnews.model.Usuario;
 
-@android.arch.persistence.room.Database(entities = {Noticias.class,Usuario.class}, version = 1, exportSchema = false)
+@android.arch.persistence.room.Database(entities = {Source.class,Usuario.class}, version = 1, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class Database extends RoomDatabase {
     private static volatile Database INSTANCE;

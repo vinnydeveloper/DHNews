@@ -27,15 +27,15 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         RecyclerViewLerDepoisAdapter.ViewHolder> {
 
     private List<Article> listaNoticias;
-    private Noticias article;
+    private List<Noticias> listaArticle;
     private RecyclerViewClickListener listener;
 
     public ImageButton btnMarkButton;
 
 
-    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias, Noticias article, RecyclerViewClickListener listener) {
+    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias, List<Noticias> listaArticle, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
-        this.article = article;
+        this.listaArticle = listaArticle;
         this.listener = listener;
     }
 
@@ -55,6 +55,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
     public void onBindViewHolder(@NonNull RecyclerViewLerDepoisAdapter.ViewHolder viewHolder, final int position) {
 
         final Article noticias = listaNoticias.get(position);
+        final Noticias article = listaArticle.get(position);
         viewHolder.setConteudoNaTela(noticias,article);
 
         //Click na imagem da noticia para chamar o detalhe da noticia
