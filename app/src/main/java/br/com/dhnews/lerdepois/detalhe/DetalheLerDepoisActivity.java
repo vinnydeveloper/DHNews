@@ -11,7 +11,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.com.dhnews.R;
+import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.view.MainActivy;
 
@@ -27,7 +30,9 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
     private ImageView imageViewShareDetalheLerDepois;
     private ImageView imageViewBookMarkDetalheLerDepois;
     private ImageView imageViewFotoDetalheLerDepois;
-    private Noticias noticias;
+    private Article noticia;
+    private Noticias noticias1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
             if (noticias != null) {
 
                 //Retorna o detalhe da noticia que foi selecionada para Ler depois
-                retornaDetalheListaLerDepois(noticias);
+                retornaDetalheListaLerDepois(noticia,noticias1);
 
                 //Metodo para voltar para a tela com a Lista de noticias que será lida depois
                 chamaListaNoticiaLerDepois();
@@ -73,20 +78,30 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
         imageViewFotoDetalheLerDepois.setColorFilter(Color.parseColor("#8190A5"), PorterDuff.Mode.MULTIPLY);
     }
 
-    private void retornaDetalheListaLerDepois(Noticias noticias) {
+    private void retornaDetalheListaLerDepois(Article noticias,Noticias noticias1) {
 
-        textViewTituloDetalheLerDepois.setText(noticias.getTituloNoticia());
+        textViewTituloDetalheLerDepois.setText(noticias.getTitle());
 
-        textViewSubTituloDetalheLerDepois.setText(noticias.getDescricaoNoticia());
+        textViewSubTituloDetalheLerDepois.setText(noticias.getDescription());
 
-        textViewHorarioDetalheLerDepois.setText(noticias.getHoraNoticia());
+        textViewHorarioDetalheLerDepois.setText(noticias.getPublishedAt());
 
-        textViewAssuntoDetalheLerDepois.setText(noticias.getAssuntoNoticia());
+        textViewAssuntoDetalheLerDepois.setText((CharSequence) noticias1.getArticle());
 
-        textViewConteudoDetalheLerDepois.setText(noticias.getDescricaoNoticia());
+        textViewConteudoDetalheLerDepois.setText(noticias.getDescription());
 
-        imageViewFotoDetalheLerDepois.setImageResource(noticias.getImagemNoticias());
+        getImage(noticias);
 
+    }
+    public void getImage(Article result){
+        if (result.getUrlToImage() != null){
+            Picasso.get().setIndicatorsEnabled(true);
+            Picasso.get()
+                    .load(result.getUrlToImage())
+                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageViewFotoDetalheLerDepois);
+        }
     }
 
 

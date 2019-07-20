@@ -60,8 +60,7 @@ public class LoginFragment extends Fragment {
         final TextInputLayout textInputLayoutLogEmail = view.findViewById(
                 R.id.textInputLayoutEmail);
 
-        final TextInputLayout textInputLayoutLogPassword = view.findViewById(
-                R.id.textInputLayoutPassword);
+        final TextInputLayout textInputLayoutLogPassword = view.findViewById(R.id.textInputLayoutPassword);
         final SharedPreferences preferences = getContext().getSharedPreferences("APP", Context.MODE_PRIVATE);
         textInputLayoutLogEmail.getEditText().setText(preferences.getString("EMAIL", ""));
         textInputLayoutLogPassword.getEditText().setText(preferences.getString("SENHA", ""));

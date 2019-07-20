@@ -1,5 +1,57 @@
 package br.com.dhnews.model;
 
+
+
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+//@Entity(tableName = "noticias")
+public class Noticias  {
+
+    @SerializedName("status")
+    @Expose
+    private String status;
+
+ //   @PrimaryKey(autoGenerate = true)
+    @SerializedName("totalResult")
+    @Expose
+    private int totalResult;
+
+    @SerializedName("articles")
+    @Expose
+    private List<Article> article;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTotalResult() {
+        return totalResult;
+    }
+
+    public void setTotalResult(int totalResult) {
+        this.totalResult = totalResult;
+    }
+
+    public List<Article> getArticle() {
+        return article;
+    }
+
+    public void setArticle(List<Article> article) {
+        this.article = article;
+    }
+
+    /*
+package br.com.dhnews.model;
+
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
@@ -118,5 +170,7 @@ public class Noticias implements Parcelable {
 
 
 
+
+}*/
 
 }

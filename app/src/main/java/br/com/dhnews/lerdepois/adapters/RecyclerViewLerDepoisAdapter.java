@@ -12,24 +12,30 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import br.com.dhnews.R;
+import br.com.dhnews.adapters.NoticiasAdapter;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.lerdepois.views.LerDepoisFragment;
+import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 
 public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         RecyclerViewLerDepoisAdapter.ViewHolder> {
 
-    private List<Noticias> listaNoticias;
+    private List<Article> listaNoticias;
+    private List<Noticias> listaArticle;
     private RecyclerViewClickListener listener;
 
     public ImageButton btnMarkButton;
 
-    public RecyclerViewLerDepoisAdapter(List<Noticias> listaNoticias,
-                                        RecyclerViewClickListener listener) {
+
+    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias, List<Noticias> listaArticle, RecyclerViewClickListener listener) {
         this.listaNoticias = listaNoticias;
+        this.listaArticle = listaArticle;
         this.listener = listener;
     }
 
@@ -48,14 +54,15 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewLerDepoisAdapter.ViewHolder viewHolder, final int position) {
 
-        final Noticias noticias = listaNoticias.get(position);
-        viewHolder.setConteudoNaTela(noticias);
+        final Article noticias = listaNoticias.get(position);
+        final Noticias article = listaArticle.get(position);
+        viewHolder.setConteudoNaTela(noticias,article);
 
         //Click na imagem da noticia para chamar o detalhe da noticia
         viewHolder.imagemNoticias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(noticias);
+                listener.onClick(article);
             }
         });
 
@@ -63,7 +70,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         viewHolder.tituloNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(noticias);
+                listener.onClick(article);
             }
         });
 
@@ -71,7 +78,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         viewHolder.descricaoNoticia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(noticias);
+                listener.onClick(article);
             }
         });
 
@@ -140,15 +147,24 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
             markRemove = itemView.findViewById(R.id.btnBookMarkLerDepois);
 
         }
+        public void getImage(Article result){
+            if (result.getUrlToImage() != null){
+                Picasso.get().setIndicatorsEnabled(true);
+                Picasso.get()
+                        .load(result.getUrlToImage())
+                        .error(R.mipmap.ic_launcher)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .into(imagemNoticias);
+            }
+        }
 
-        public void setConteudoNaTela(Noticias noticias) {
+        public void setConteudoNaTela(Article noticias,Noticias not) {
 
-            imagemNoticias.setImageDrawable(ContextCompat.getDrawable(
-                    imagemNoticias.getContext(), noticias.getImagemNoticias()));
-            tituloNoticia.setText(noticias.getTituloNoticia());
-            descricaoNoticia.setText(noticias.getDescricaoNoticia());
-            assuntoNoticia.setText(noticias.getAssuntoNoticia());
-            horaNoticia.setText(noticias.getHoraNoticia());
+            getImage(noticias);
+            tituloNoticia.setText(noticias.getTitle());
+            descricaoNoticia.setText(noticias.getDescription());
+            assuntoNoticia.setText((CharSequence) not.getArticle().get(not.getArticle().indexOf(noticias)));
+            horaNoticia.setText(noticias.getPublishedAt());
         }
     }
 }
