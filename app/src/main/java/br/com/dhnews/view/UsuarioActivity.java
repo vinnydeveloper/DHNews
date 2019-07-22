@@ -1,4 +1,4 @@
-package br.com.dhnews.usuario.view;
+package br.com.dhnews.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class UsuarioActivity extends AppCompatActivity {

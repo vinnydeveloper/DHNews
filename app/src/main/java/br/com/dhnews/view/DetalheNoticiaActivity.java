@@ -1,4 +1,4 @@
-package br.com.dhnews.detalhenoticia;
+package br.com.dhnews.view;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
-import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {

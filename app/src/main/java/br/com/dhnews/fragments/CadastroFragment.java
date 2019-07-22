@@ -1,5 +1,5 @@
 
-package br.com.dhnews.cadastro;
+package br.com.dhnews.fragments;
 
 
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.widget.Button;
 
 import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeFragment;
 
 /**
  * A simple {@link Fragment} subclass.

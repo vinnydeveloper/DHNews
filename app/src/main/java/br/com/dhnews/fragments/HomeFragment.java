@@ -1,4 +1,4 @@
-package br.com.dhnews.noticias;
+package br.com.dhnews.fragments;
 
 
 import android.content.Intent;
@@ -14,13 +14,12 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.dhnews.data.database.Database;
-//import br.com.dhnews.data.database.dao.NoticiasDAO;
-import br.com.dhnews.data.database.dao.SourceDAO;
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
-import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
+import br.com.dhnews.data.database.DatabaseRoom;
+import br.com.dhnews.data.database.dao.NoticiasDAO;
+import br.com.dhnews.view.DetalheNoticiaActivity;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Source;
@@ -30,20 +29,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NoticiasFragment extends Fragment implements RecyclerViewClickListener {
+public class HomeFragment extends Fragment implements RecyclerViewClickListener {
 
-    private SourceDAO dao;
+    private NoticiasDAO dao;
     private List<Article> noticiasList = new ArrayList<>();
     private List<Noticias> noticiasList2 = new ArrayList<>();
     private NoticiasAdapter adapter;
 
-
-
-
-    public NoticiasFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -55,16 +52,16 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
         View view = inflater.inflate(R.layout.fragment_noticias, container, false);
 
         // Inicialização do DAO
-        Database databaseRoom = Database.getDatabase(getContext());
+        DatabaseRoom databaseRoom = DatabaseRoom.getDatabase(getContext());
         dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
-        // Configurar recyclerview e adapater
+        // Configurar recyclerview e adapter
         NoticiasAdapter adapter = new NoticiasAdapter(noticiasList,noticiasList2,this);
 
-        dao = Database.getDatabase(getContext()).noticiasDAO();
+        dao = DatabaseRoom.getDatabase(getContext()).noticiasDAO();
 
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,10 +71,11 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 
         return view;
     }
-
+//
 //    private List<Noticias> getNoticias() {
 //
 //        List<Noticias> noticias = new ArrayList<>();
+//
 //
 //        noticias.add(new Noticias("Vaga no Supremo",
 //                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
@@ -105,23 +103,24 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 //
 //        return noticias;
 //    }
-public void buscarTodasNoticias() {
 
-    dao.getAllRxJava()
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Consumer<List<Source>>() {
-                @Override
-                public void accept(List<Source> contatos) throws Exception {
-                    adapter.update(noticiasList, noticiasList2);
-                }
-            }, new Consumer<Throwable>() {
-                @Override
-                public void accept(Throwable throwable) throws Exception {
-                    Log.i("TAG", "buscarTodosNoticias: " + throwable.getMessage());
-                }
-            });
-}
+    public void buscarTodasNoticias() {
+
+        dao.getAllRxJava()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Source>>() {
+                    @Override
+                    public void accept(List<Source> contatos) throws Exception {
+                        adapter.update(noticiasList, noticiasList2);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i("TAG", "buscarTodosNoticias: " + throwable.getMessage());
+                    }
+                });
+    }
 
     @Override
     public void onClick(Noticias noticias) {
@@ -144,4 +143,5 @@ public void buscarTodasNoticias() {
         startActivity(intentLogin);
 
     }
+
 }

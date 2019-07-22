@@ -1,4 +1,4 @@
-package br.com.dhnews.login;
+package br.com.dhnews.fragments;
 
 
 import android.content.Context;
@@ -15,11 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.dhnews.R;
-import br.com.dhnews.cadastro.CadastroFragment;
-import br.com.dhnews.data.database.Database;
+import br.com.dhnews.data.database.DatabaseRoom;
 import br.com.dhnews.data.database.dao.UsuariosDAO;
-import br.com.dhnews.noticias.NoticiasFragment;
-import br.com.dhnews.usuario.view.UsuarioActivity;
+import br.com.dhnews.view.UsuarioActivity;
 import br.com.dhnews.view.MainActivy;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -48,7 +46,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Inicialização do DAO
-        Database databaseRoom = Database.getDatabase(getContext());
+        DatabaseRoom databaseRoom = DatabaseRoom.getDatabase(getContext());
         dao = databaseRoom.usuariosDAO();
 
         Button btnFacebook = view.findViewById(R.id.btnFacebook);

@@ -9,12 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import br.com.dhnews.login.LoginFragment;
-import br.com.dhnews.noticias.NoticiasFragment;
-import br.com.dhnews.pesquisa.PesquisaFragment;
+import br.com.dhnews.fragments.LoginFragment;
+import br.com.dhnews.fragments.NoticiasFragment;
+import br.com.dhnews.fragments.PesquisaFragment;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeFragment;
-import br.com.dhnews.lerdepois.views.LerDepoisFragment;
+import br.com.dhnews.fragments.HomeFragment;
+import br.com.dhnews.fragments.LerDepoisFragment;
 
 public class MainActivy extends AppCompatActivity {
 

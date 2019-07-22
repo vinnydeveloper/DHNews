@@ -1,4 +1,4 @@
-package br.com.dhnews.api;
+package br.com.dhnews.data.network;
 
 import br.com.dhnews.model.Noticias;
 import retrofit2.Call;
@@ -8,9 +8,10 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     @GET("top-headlines")
-    Call<Noticias> getNoticias(
+    Call<Noticias> searchItem(
 
             @Query("country") String country ,
             @Query("apiKey") String apiKey
     );
+
 }

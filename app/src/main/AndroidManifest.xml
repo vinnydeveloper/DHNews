@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.dhnews">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lerdepois.detalhe.DetalheLerDepoisActivity"></activity>
-        <activity android:name=".lerdepois.views.LerDepoisActivity" />
-        <activity android:name=".usuario.view.UsuarioActivity" />
+        <activity android:name=".view.DetalheLerDepoisActivity"></activity>
+        <activity android:name=".view.LerDepoisActivity" />
+        <activity android:name=".view.UsuarioActivity" />
         <activity
             android:name=".view.MainActivy"
             android:label="@string/title_activity_home_activy"
@@ -30,7 +31,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".detalhenoticia.DetalheNoticiaActivity" />
+        <activity android:name=".view.DetalheNoticiaActivity" />
     </application>
 
 </manifest>

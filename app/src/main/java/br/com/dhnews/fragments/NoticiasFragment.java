@@ -1,7 +1,6 @@
-package br.com.dhnews.lerdepois.views;
+package br.com.dhnews.fragments;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,20 +10,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.dhnews.data.database.DatabaseRoom;
+import br.com.dhnews.data.database.dao.NoticiasDAO;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.NoticiasAdapter;
-import br.com.dhnews.data.database.Database;
-//import br.com.dhnews.data.database.dao.NoticiasDAO;
-import br.com.dhnews.data.database.dao.SourceDAO;
-import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
-import br.com.dhnews.lerdepois.adapters.RecyclerViewLerDepoisAdapter;
-import br.com.dhnews.lerdepois.detalhe.DetalheLerDepoisActivity;
+import br.com.dhnews.view.DetalheNoticiaActivity;
 import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Source;
@@ -37,16 +32,17 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LerDepoisFragment extends Fragment implements RecyclerViewClickListener {
+public class NoticiasFragment extends Fragment implements RecyclerViewClickListener {
 
-    private ImageButton btnRemoverNoticia;
-    RecyclerViewLerDepoisAdapter adapter;
-    private SourceDAO dao;
+    private NoticiasDAO dao;
     private List<Article> noticiasList = new ArrayList<>();
     private List<Noticias> noticiasList2 = new ArrayList<>();
-    private NoticiasAdapter adapter2;
+    private NoticiasAdapter adapter;
 
-    public LerDepoisFragment() {
+
+
+
+    public NoticiasFragment() {
         // Required empty public constructor
     }
 
@@ -58,27 +54,27 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
         View view = inflater.inflate(R.layout.fragment_noticias, container, false);
 
         // Inicialização do DAO
-        Database databaseRoom = Database.getDatabase(getContext());
+        DatabaseRoom databaseRoom = DatabaseRoom.getDatabase(getContext());
         dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        NoticiasAdapter adapter2 = new NoticiasAdapter(noticiasList,noticiasList2,this);
+        NoticiasAdapter adapter = new NoticiasAdapter(noticiasList,noticiasList2,this);
 
-        dao = Database.getDatabase(getContext()).noticiasDAO();
+        dao = DatabaseRoom.getDatabase(getContext()).noticiasDAO();
 
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewNoticias.setAdapter(adapter2);
+        recyclerViewNoticias.setAdapter(adapter);
 
         buscarTodasNoticias();
 
         return view;
     }
 
-    //    private List<Noticias> getNoticias() {
+//    private List<Noticias> getNoticias() {
 //
 //        List<Noticias> noticias = new ArrayList<>();
 //
@@ -108,23 +104,23 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
 //
 //        return noticias;
 //    }
-    public void buscarTodasNoticias() {
+public void buscarTodasNoticias() {
 
-        dao.getAllRxJava()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<Source>>() {
-                    @Override
-                    public void accept(List<Source> contatos) throws Exception {
-                        adapter2.update(noticiasList, noticiasList2);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.i("TAG", "buscarTodosNoticias: " + throwable.getMessage());
-                    }
-                });
-    }
+    dao.getAllRxJava()
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Consumer<List<Source>>() {
+                @Override
+                public void accept(List<Source> contatos) throws Exception {
+                    adapter.update(noticiasList, noticiasList2);
+                }
+            }, new Consumer<Throwable>() {
+                @Override
+                public void accept(Throwable throwable) throws Exception {
+                    Log.i("TAG", "buscarTodosNoticias: " + throwable.getMessage());
+                }
+            });
+}
 
     @Override
     public void onClick(Noticias noticias) {

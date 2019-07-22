@@ -1,4 +1,4 @@
-package br.com.dhnews.api;
+package br.com.dhnews.data.network;
 
 
 import okhttp3.OkHttpClient;
@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
     public static final String BASE_URL = "https://newsapi.org/v2/";
+    public static final String API_KEY  = "4da8ff924e6643659c34ace3a7f3d98b";
     public static Retrofit retrofit;
 
     public static Retrofit getApiClient(){
@@ -28,6 +29,11 @@ public class ApiClient {
     public static OkHttpClient.Builder getUnsafeOKHttpClient(){
 
         return null;
+    }
+
+    // Retornamos a instancia da API criada com o retrofit
+    public static ApiClient getApiService() {
+        return getApiClient().create(ApiClient.class);
     }
 
 

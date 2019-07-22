@@ -5,6 +5,6 @@
     android:id="@+id/containerLerDepois"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".lerdepois.views.LerDepoisActivity">
+    tools:context=".view.LerDepoisActivity">
 
 </android.support.constraint.ConstraintLayout>
