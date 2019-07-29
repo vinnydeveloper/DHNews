@@ -1,7 +1,7 @@
-package br.com.dhnews.splash;
+package br.com.dhnews.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private Timer timer = new Timer();
 
@@ -41,7 +40,7 @@ public class Splash extends AppCompatActivity {
 
     private void jump() {
         timer.cancel();
-        Intent intent = new Intent(Splash.this, MainActivy.class);
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

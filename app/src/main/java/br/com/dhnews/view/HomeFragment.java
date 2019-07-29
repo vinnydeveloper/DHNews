@@ -1,11 +1,11 @@
-package br.com.dhnews.home;
+package br.com.dhnews.view;
 
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +15,9 @@ import java.util.List;
 
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.adapters.NoticiasAdapter;
-import br.com.dhnews.detalhenoticia.DetalheNoticiaActivity;
+import br.com.dhnews.adapters.RecyclerViewNoticiasAdapter;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
-import br.com.dhnews.view.MainActivy;
 
 
 /**
@@ -42,10 +40,11 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        NoticiasAdapter adapter = new NoticiasAdapter(getNoticias(), this);
+        RecyclerViewNoticiasAdapter adapter;
+    //    adapter = new RecyclerViewNoticiasAdapter(getNoticias());
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewNoticias.setAdapter(adapter);
+       // recyclerViewNoticias.setAdapter(adapter);
 
         return view;
     }
@@ -95,7 +94,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
     @Override
     public void onClick(Usuario usuario) {
 
-        Intent intentLogin = new Intent(getContext(), MainActivy.class);
+        Intent intentLogin = new Intent(getContext(), MainActivity.class);
 
         intentLogin.putExtra("TELA", "LOGIN");
 

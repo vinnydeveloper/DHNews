@@ -1,22 +1,18 @@
 package br.com.dhnews.view;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import br.com.dhnews.login.LoginFragment;
-import br.com.dhnews.noticias.NoticiasFragment;
-import br.com.dhnews.pesquisa.PesquisaFragment;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeFragment;
 import br.com.dhnews.lerdepois.views.LerDepoisFragment;
 
-public class MainActivy extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

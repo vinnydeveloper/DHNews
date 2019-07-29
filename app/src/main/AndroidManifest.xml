@@ -11,13 +11,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".lerdepois.detalhe.DetalheLerDepoisActivity"></activity>
         <activity android:name=".lerdepois.views.LerDepoisActivity" />
-        <activity android:name=".usuario.view.UsuarioActivity" />
+        <activity android:name=".view.UsuarioActivity" />
         <activity
-            android:name=".view.MainActivy"
+            android:name=".view.MainActivity"
             android:label="@string/title_activity_home_activy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".splash.Splash"
+            android:name=".view.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".detalhenoticia.DetalheNoticiaActivity" />
+        <activity android:name=".view.DetalheNoticiaActivity" />
     </application>
 
 </manifest>

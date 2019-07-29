@@ -3,7 +3,7 @@ package br.com.dhnews.lerdepois.detalhe;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import br.com.dhnews.R;
 import br.com.dhnews.model.Noticias;
-import br.com.dhnews.view.MainActivy;
+import br.com.dhnews.view.MainActivity;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
 
@@ -96,7 +96,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
                 //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
                 //chamar a tela/fragmento correspondente
                 Intent intentListaLerDepois = new Intent(
-                        DetalheLerDepoisActivity.this, MainActivy.class);
+                        DetalheLerDepoisActivity.this, MainActivity.class);
 
                 //Chama o fragmento da tela de Noticias Ler depois(atraves de um flag 'Tela'
                 // com valor 'LERDEPOIS')  para retornar para a lista de noticias ler depois
@@ -172,7 +172,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
                         //Chama a Main Activity que verifica qual opcao do Menu Principal foi
                         // acionado para chamar a tela/fragmento correspondente
                         Intent intentListaNoticias = new Intent(
-                                DetalheLerDepoisActivity.this, MainActivy.class);
+                                DetalheLerDepoisActivity.this, MainActivity.class);
 
                         //Chama o fragmento da tela de Noticias(atraves de um flag 'Tela' com valor
                         //'Noticia')  para retornar para a lista de noticias

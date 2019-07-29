@@ -1,14 +1,13 @@
-package br.com.dhnews.detalhenoticia;
+package br.com.dhnews.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.dhnews.model.Noticias;
-import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
@@ -93,7 +92,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                 //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
                 //chamar a tela/fragmento correspondente
                 Intent intentListaNoticias = new Intent(
-                        DetalheNoticiaActivity.this, MainActivy.class);
+                        DetalheNoticiaActivity.this, MainActivity.class);
 
                 //Chama o fragmento da tela de Noticias(atraves de um flag 'Tela' com valor
                 //'Noticia')  para retornar para a lista de noticias
@@ -136,7 +135,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                 //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
                 //chamar a tela/fragmento correspondente
                 Intent intentLerDepois = new Intent(
-                        DetalheNoticiaActivity.this, MainActivy.class);
+                        DetalheNoticiaActivity.this, MainActivity.class);
 
                 //Chama o fragmento da tela de LoginFragment(atraves de um flag 'Tela' com valor 'LoginFragment')
                 //para cadastrar o ler noticia depois

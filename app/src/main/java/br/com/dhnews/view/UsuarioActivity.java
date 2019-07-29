@@ -1,17 +1,16 @@
-package br.com.dhnews.usuario.view;
+package br.com.dhnews.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import br.com.dhnews.view.MainActivy;
 import br.com.dhnews.R;
 
 public class UsuarioActivity extends AppCompatActivity {
@@ -75,7 +74,7 @@ public class UsuarioActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 //Ao clicar em Desconectar, vai para Home(main activity)
-                Intent intent = new Intent(UsuarioActivity.this, MainActivy.class);
+                Intent intent = new Intent(UsuarioActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }
@@ -85,7 +84,7 @@ public class UsuarioActivity extends AppCompatActivity {
     }
 
     public void botaoVoltar() {
-        Intent intent = new Intent(UsuarioActivity.this, MainActivy.class);
+        Intent intent = new Intent(UsuarioActivity.this, MainActivity.class);
 
         startActivity(intent);
     }

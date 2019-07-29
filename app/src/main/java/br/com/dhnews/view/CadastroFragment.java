@@ -1,20 +1,20 @@
 
-package br.com.dhnews.cadastro;
+package br.com.dhnews.view;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import br.com.dhnews.view.MainActivy;
+import br.com.dhnews.view.MainActivity;
 import br.com.dhnews.R;
-import br.com.dhnews.home.HomeFragment;
+import br.com.dhnews.view.HomeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,7 +93,7 @@ public class CadastroFragment extends Fragment {
                 if (!(nomeCadastro.isEmpty()) && !(emailCadastro.isEmpty()) &&
                         !(senhaCadastro.isEmpty())) {
 
-                    ((MainActivy) getActivity()).replaceFragment(new HomeFragment());
+                    ((MainActivity) getActivity()).replaceFragment(new HomeFragment());
 
                 }
             }
