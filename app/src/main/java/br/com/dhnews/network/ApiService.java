@@ -16,7 +16,7 @@ public class ApiService {
 
     // Url da api
 
-    private static final String BASE_URL = "https://newsapi.org/";
+    private static final String BASE_URL = "https://newsapi.org/v2/";
     public static final String PUBLIC_KEY = "47bee8f305194e94973f8881bf183b87";
 
 

@@ -9,7 +9,7 @@ import static br.com.dhnews.network.ApiService.PUBLIC_KEY;
 public class NoticiasRepository {
 
     public Single<NoticiasResponse> getNoticias() {
-        return ApiService.getApiService().getNoticias("br", PUBLIC_KEY);
+        return ApiService.getApiService().getNoticias("BR", PUBLIC_KEY);
 
     }
 }
