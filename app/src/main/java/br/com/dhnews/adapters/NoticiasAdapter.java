@@ -1,8 +1,8 @@
 package br.com.dhnews.adapters;
 
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +13,8 @@ import java.util.List;
 
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.model.Noticias;
-import br.com.dhnews.model.Usuario;
+import br.com.dhnews.models.Noticias;
+import br.com.dhnews.models.Usuario;
 
 
 public class NoticiasAdapter extends RecyclerView.Adapter<NoticiasAdapter.ViewHolder> {

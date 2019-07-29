@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".pesquisa.PesquisaFragment">
+    tools:context=".fragments.PesquisaFragment">
 
-    <android.support.v7.widget.SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/pesquisa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:iconifiedByDefault="false"
         app:queryHint="Pesquisa">
 
-    </android.support.v7.widget.SearchView>
+    </androidx.appcompat.widget.SearchView>
 
     <ListView
         android:id="@+id/list"

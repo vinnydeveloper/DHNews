@@ -1,4 +1,4 @@
-package br.com.dhnews.model;
+package br.com.dhnews.models;
 
 public class Usuario {
 

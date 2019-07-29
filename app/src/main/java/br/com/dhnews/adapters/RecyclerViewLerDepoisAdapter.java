@@ -1,10 +1,10 @@
-package br.com.dhnews.lerdepois.adapters;
+package br.com.dhnews.adapters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +16,7 @@ import java.util.List;
 
 import br.com.dhnews.R;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
-import br.com.dhnews.lerdepois.views.LerDepoisFragment;
-import br.com.dhnews.model.Noticias;
+import br.com.dhnews.models.Noticias;
 
 public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         RecyclerViewLerDepoisAdapter.ViewHolder> {

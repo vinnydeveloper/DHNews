@@ -1,7 +1,7 @@
 package br.com.dhnews.interfaces;
 
-import br.com.dhnews.model.Noticias;
-import br.com.dhnews.model.Usuario;
+import br.com.dhnews.models.Noticias;
+import br.com.dhnews.models.Usuario;
 
 public interface RecyclerViewClickListener {
 

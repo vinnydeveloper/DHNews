@@ -1,10 +1,11 @@
-package br.com.dhnews.lerdepois.views;
+package br.com.dhnews.views;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.dhnews.R;
+import br.com.dhnews.fragments.LerDepoisFragment;
 
 public class LerDepoisActivity extends AppCompatActivity {
 

@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lerdepois.detalhe.DetalheLerDepoisActivity"></activity>
-        <activity android:name=".lerdepois.views.LerDepoisActivity" />
-        <activity android:name=".usuario.view.UsuarioActivity" />
+        <activity android:name=".views.DetalheLerDepoisActivity"></activity>
+        <activity android:name=".views.LerDepoisActivity" />
+        <activity android:name=".views.UsuarioActivity" />
         <activity
-            android:name=".view.MainActivy"
+            android:name=".views.MainActivy"
             android:label="@string/title_activity_home_activy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".splash.Splash"
+            android:name=".views.Splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".detalhenoticia.DetalheNoticiaActivity" />
+        <activity android:name=".views.DetalheNoticiaActivity" />
     </application>
 
 </manifest>
