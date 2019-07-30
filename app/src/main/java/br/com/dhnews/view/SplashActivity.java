@@ -29,7 +29,6 @@ public class SplashActivity extends AppCompatActivity {
                 jump();
             }
         });
-
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

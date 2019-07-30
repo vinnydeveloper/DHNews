@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.R;
+import br.com.dhnews.model.noticias.Article;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
@@ -34,7 +37,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
         //Valido se veio algum dado na intent
         if (getIntent() != null && getIntent().getExtras() != null) {
-            Noticias noticias = getIntent().getParcelableExtra("NOTICIAS");
+            Article noticias = getIntent().getParcelableExtra("NOTICIAS");
 
             if (noticias != null) {
 
@@ -65,19 +68,23 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         imageViewFotoDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
     }
 
-    private void retornaDetalheListaNoticias(Noticias noticias) {
+    private void retornaDetalheListaNoticias(Article noticias) {
 
-        textViewTituloDetalheNoticia.setText(noticias.getTituloNoticia());
+        textViewTituloDetalheNoticia.setText(noticias.getTitle());
 
-        textViewSubTituloDetalheNoticia.setText(noticias.getDescricaoNoticia());
+        textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
 
-        textViewHorarioDetalheNoticia.setText(noticias.getHoraNoticia());
+        textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
 
-        textViewAssuntoDetalheNoticia.setText(noticias.getAssuntoNoticia());
+        textViewAssuntoDetalheNoticia.setText("Viniicus");
 
-        textViewConteudoDetalheNoticia.setText(noticias.getDescricaoNoticia());
+        textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
-        imageViewFotoDetalheNoticia.setImageResource(noticias.getImagemNoticias());
+        Picasso.get().load(noticias.getUrlToImage() +
+                "/portrait_incredible." + noticias.getUrlToImage())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+                .into(imageViewFotoDetalheNoticia);
 
     }
 

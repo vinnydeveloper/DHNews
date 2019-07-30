@@ -1,11 +1,5 @@
 package br.com.dhnews.adapters;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.stetho.common.android.FragmentCompat;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
-import br.com.dhnews.model.Article;
-import br.com.dhnews.model.Noticias;
-import br.com.dhnews.model.Usuario;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.DetalheNoticiaActivity;
 
 
@@ -32,42 +26,45 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
     private List<Article> listaNoticias;
 
 
-    public RecyclerViewNoticiasAdapter(List<Article> newsList) {
-        this.listaNoticias = newsList;
+    public RecyclerViewNoticiasAdapter(List<Article> listaNoticias) {
+        this.listaNoticias = listaNoticias;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_lista_item_noticias, viewGroup, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate
+                (R.layout.layout_lista_item_noticias, viewGroup, false);
+
         return new ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Article result = this.listaNoticias.get(position);
-        holder.bind(result);
-//
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            String transitionName = "image_" + position;
-//                Intent intent = new Intent(holder.itemView.getContext(),
-//                        DetalheNoticiaActivity.class);
-//                intent.putExtra("noticia", result);
-//                intent.putExtra("transitionName", transitionName);
-//
-//                holder.imagemNoticias.setTransitionName(transitionName);
-//
-//                ActivityOptionsCompat options = ActivityOptionsCompat.
-//                        makeSceneTransitionAnimation((Activity) holder.itemView.getContext(),
-//                                holder.imagemNoticias, transitionName);
-//
-//                holder.itemView.getContext().startActivity(intent, options.toBundle());
-//            }
-//        });
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        Article result = listaNoticias.get(position);
+        viewHolder.bind(result);
+
+        viewHolder.itemView.setOnClickListener(v -> {
+        String transitionName = "image_" + position;
+            Intent intent = new Intent(viewHolder.itemView.getContext(),
+                    DetalheNoticiaActivity.class);
+            intent.putExtra("NOTICIAS", result);
+            intent.putExtra("transitionName", transitionName);
+
+            viewHolder.imagemNoticias.setTransitionName(transitionName);
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((Activity) viewHolder.itemView.getContext(),
+                            viewHolder.imagemNoticias, transitionName);
+
+            viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
+        });
 
     }
 
@@ -86,7 +83,7 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        private ImageView imagemNoticias;
        private ImageView imagemBookMarkListaNoticia;
 
-       ViewHolder(View itemView) {
+       public ViewHolder(@NonNull View itemView) {
            super(itemView);
            tituloNoticia = itemView.findViewById(R.id.txtTitulo);
            descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
@@ -97,6 +94,7 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        }
 
        public void bind(Article result) {
+
            tituloNoticia.setText(result.getTitle());
            horaNoticia.setText(result.getPublishedAt());
            descricaoNoticia.setText(result.getDescription());
@@ -112,14 +110,8 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
            }
        }
    }
-
-   public void clear() {
-        this.listaNoticias.clear();
-        notifyDataSetChanged();
-   }
         public void update(List<Article> resultList) {
-
-                    this.listaNoticias = resultList;
+            this.listaNoticias = resultList;
             notifyDataSetChanged();
 
         }

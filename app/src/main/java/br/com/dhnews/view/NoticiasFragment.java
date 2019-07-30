@@ -1,26 +1,24 @@
 package br.com.dhnews.view;
 
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.RecyclerViewNoticiasAdapter;
-import br.com.dhnews.model.Article;
-import br.com.dhnews.model.Noticias;
+import br.com.dhnews.interfaces.RecyclerViewClickListener;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.viewmodel.NoticiasViewModel;
 
@@ -52,30 +50,30 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 //        dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
-        RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
+        recyclerView = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        RecyclerViewNoticiasAdapter adapter = new RecyclerViewNoticiasAdapter(noticiasList);
+        noticiasAdapter  = new RecyclerViewNoticiasAdapter(noticiasList);
 
        // dao = DatabaseRoom.getDatabase(getContext()).noticiasDAO();
 
 
-        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewNoticias.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(noticiasAdapter);
 
         viewModel = ViewModelProviders.of(this).get(NoticiasViewModel.class);
 
         viewModel.getNoticias();
 
-        viewModel.getResults().observe(this, results ->
-                noticiasAdapter.update
-                (results));
+        viewModel.getResults().observe(this, results -> noticiasAdapter.update(results));
 
         return view;
     }
 
+
+
     @Override
-    public void onClick(Noticias noticias) {
+    public void onClick(br.com.dhnews.model.Noticias noticias) {
 
     }
 
