@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <View
+            android:id="@+id/view3"
             android:layout_width="match_parent"
             android:layout_height="@dimen/image_detail_news"
             android:background="#000000"></View>
@@ -24,10 +25,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/image_detail_news"
             android:scaleType="centerCrop"
+            card_view:layout_constraintBottom_toBottomOf="@+id/view3"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintHorizontal_bias="1.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="0.0"
             card_view:srcCompat="@drawable/imagedetalhenoticia" />
 
         <ImageView
@@ -45,101 +48,113 @@
 
         <TextView
             android:id="@+id/textViewTituloNoticiaDetalhe"
-            android:layout_width="278dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/lato_bold"
             android:text="@string/title_news"
             android:textColor="@color/primary_text_light"
-            android:textSize="@dimen/title_detail_news"
+            android:textSize="28sp"
             android:textStyle="bold"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.23"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/imagemBackNoticiaDetalhe" />
 
-        <TextView
-            android:id="@+id/textViewSubTituloNoticiaDetalhe"
-            android:layout_width="273dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/subtitle_news"
-            android:textColor="@color/primary_text_light"
-            android:textSize="@dimen/text_detail_news"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintTop_toBottomOf="@+id/textViewTituloNoticiaDetalhe" />
+        <!--<TextView-->
+
+        <!--android:id="@+id/textTitle"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/text_margin"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:text="AMAZING SPIDER-MAN (2014) #1 \n(MHAN VARIANT)"-->
+        <!--style="@style/textFix"-->
+        <!--android:textSize="22sp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/textViewSubTituloNoticiaDetalhe"-->
+        <!--android:layout_width="273dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:text="@string/subtitle_news"-->
+        <!--android:textColor="@color/primary_text_light"-->
+        <!--android:textSize="@dimen/text_detail_news"-->
+        <!--card_view:layout_constraintEnd_toEndOf="parent"-->
+        <!--card_view:layout_constraintHorizontal_bias="0.0"-->
+        <!--card_view:layout_constraintStart_toStartOf="@+id/imagemNoticiaDetalhe"-->
+        <!--card_view:layout_constraintTop_toBottomOf="@+id/textViewTituloNoticiaDetalhe" />-->
 
         <TextView
             android:id="@+id/textViewHorarioNoticiaDetalhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/lato_light"
             android:text="@string/hours_news"
             android:textColor="@color/primary_text_light"
             android:textSize="@dimen/text_detail_news"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/textViewSubTituloNoticiaDetalhe" />
+            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+            card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textViewAssuntoNoticiaDetalhe"
-            android:layout_width="86dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:id="@+id/textViewFonteNoticiaDetalhe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/lato_light"
             android:text="@string/pol_tica"
             android:textColor="@color/primary_text_light"
             android:textSize="@dimen/text_detail_news"
-            card_view:layout_constraintBottom_toBottomOf="@+id/textViewHorarioNoticiaDetalhe"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe"
-            card_view:layout_constraintTop_toTopOf="@+id/textViewHorarioNoticiaDetalhe"
-            card_view:layout_constraintVertical_bias="0.0" />
+            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+            card_view:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe" />
 
         <ImageView
             android:id="@+id/imagemShareNoticiaDetalhe"
             android:layout_width="@dimen/icon_detail_news"
             android:layout_height="@dimen/icon_detail_news"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            card_view:layout_constraintBottom_toBottomOf="@+id/textViewAssuntoNoticiaDetalhe"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toEndOf="@+id/textViewAssuntoNoticiaDetalhe"
-            card_view:layout_constraintTop_toTopOf="@+id/textViewAssuntoNoticiaDetalhe"
-            card_view:layout_constraintVertical_bias="1.0"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+            card_view:layout_constraintEnd_toStartOf="@+id/imagemBookMarkNoticiaDetalhe"
             card_view:srcCompat="@drawable/ic_share_white_24dp" />
 
         <ImageView
             android:id="@+id/imagemBookMarkNoticiaDetalhe"
             android:layout_width="@dimen/icon_detail_news"
             android:layout_height="@dimen/icon_detail_news"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imagemShareNoticiaDetalhe"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.413"
-            card_view:layout_constraintStart_toEndOf="@+id/imagemShareNoticiaDetalhe"
-            card_view:layout_constraintTop_toTopOf="@+id/imagemShareNoticiaDetalhe"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="TODO"
+            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+            card_view:layout_constraintEnd_toEndOf="@+id/imagemNoticiaDetalhe"
             card_view:srcCompat="@drawable/ic_bookmark_border_white_24dp" />
 
         <TextView
             android:id="@+id/textViewConteudoNoticiaDetalhe"
-            android:layout_width="287dp"
-            android:layout_height="235dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/lato"
             android:text="@string/news_detail"
             android:textColor="@color/icons"
-            android:textSize="@dimen/text_detail_news"
+            android:textSize="18sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"

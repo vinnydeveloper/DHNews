@@ -1,5 +1,6 @@
 package br.com.dhnews.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,20 +13,22 @@ import com.squareup.picasso.Picasso;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
+import br.com.dhnews.model.noticias.Source;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
     //Declaracao de atributos
     private TextView textViewTituloDetalheNoticia;
-    private TextView textViewSubTituloDetalheNoticia;
+  //  private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
-    private TextView textViewAssuntoDetalheNoticia;
+   // private TextView textViewAssuntoDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
-    private ImageView imageViewFotoDetalheNoticia;
+    private ImageView imageViewDetalheNoticia;
     private Noticias noticias;
+    private View textViewFonteNoticia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,35 +59,44 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("WrongViewCast")
     private void initViews() {
         textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
-        textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
+      //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
         textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
-        textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
+     //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
         textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
         imageViewBackDetalheNoticia = findViewById(R.id.imagemBackNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
-        imageViewFotoDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
+        imageViewDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
+        textViewFonteNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
     }
 
     private void retornaDetalheListaNoticias(Article noticias) {
 
         textViewTituloDetalheNoticia.setText(noticias.getTitle());
 
-        textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
+       // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
 
         textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
 
-        textViewAssuntoDetalheNoticia.setText("Viniicus");
+       // textViewAssuntoDetalheNoticia.setText("Vinicus");
 
+       // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
-        Picasso.get().load(noticias.getUrlToImage() +
-                "/portrait_incredible." + noticias.getUrlToImage())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-                .into(imageViewFotoDetalheNoticia);
+
+        if (noticias.getUrlToImage() != null) {
+
+            Picasso.get().setIndicatorsEnabled(true);
+            Picasso.get()
+                    .load(noticias.getUrlToImage())
+                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageViewDetalheNoticia);
+        }
+
 
     }
 

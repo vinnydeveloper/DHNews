@@ -6,6 +6,7 @@ import io.reactivex.Single;
 
 import static br.com.dhnews.network.ApiService.PUBLIC_KEY;
 
+
 public class NoticiasRepository {
 
     public Single<Noticias> getNoticias() {
