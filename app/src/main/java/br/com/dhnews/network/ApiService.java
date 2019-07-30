@@ -33,13 +33,11 @@ public class ApiService {
             httpClient.connectTimeout(30, TimeUnit.SECONDS);
             httpClient.writeTimeout(30, TimeUnit.SECONDS);
 
-            // Se for Debug habilitamos os logs
-            if (BuildConfig.DEBUG) {
+
                 HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
                 httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                 httpClient.addInterceptor(httpLoggingInterceptor);
                 httpClient.addNetworkInterceptor(new StethoInterceptor());
-            }
 
             // Inicializamos o retrofit
             retrofit = new Retrofit.Builder()

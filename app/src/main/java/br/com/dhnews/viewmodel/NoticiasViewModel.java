@@ -10,10 +10,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
-import br.com.dhnews.model.Article;
-import br.com.dhnews.model.NoticiasResponse;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.repository.NoticiasRepository;
-import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -49,9 +47,6 @@ public class NoticiasViewModel extends AndroidViewModel {
 
     public void getNoticias() {
 
-
-        Single<NoticiasResponse> teste = repository.getNoticias();
-        System.out.println(teste);
         disposable.add(repository.getNoticias()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -59,9 +54,7 @@ public class NoticiasViewModel extends AndroidViewModel {
                     loadingLiveData.setValue(true))
                 .doAfterTerminate(() -> loadingLiveData.setValue(false))
                 .subscribe(noticiasResponse -> resultLiveData.setValue(noticiasResponse.getArticles())
-                , throwable -> {
-                    Log.i("LOG", "Error: " + throwable.getMessage());
-                        }));
+                , throwable ->  Log.i("LOG", "Error: " + throwable.getMessage())));
                 }
 
 }
