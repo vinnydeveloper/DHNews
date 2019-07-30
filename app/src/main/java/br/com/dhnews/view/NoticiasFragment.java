@@ -50,16 +50,16 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 //        dao = databaseRoom.noticiasDAO();
 
         // Add findViewById para recycler
-        RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
+        recyclerView = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        RecyclerViewNoticiasAdapter adapter = new RecyclerViewNoticiasAdapter(noticiasList);
+        noticiasAdapter  = new RecyclerViewNoticiasAdapter(noticiasList);
 
        // dao = DatabaseRoom.getDatabase(getContext()).noticiasDAO();
 
 
-        recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewNoticias.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(noticiasAdapter);
 
         viewModel = ViewModelProviders.of(this).get(NoticiasViewModel.class);
 

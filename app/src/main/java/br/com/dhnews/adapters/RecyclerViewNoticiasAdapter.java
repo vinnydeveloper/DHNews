@@ -50,23 +50,20 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
         Article result = listaNoticias.get(position);
         viewHolder.bind(result);
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            String transitionName = "image_" + position;
-                Intent intent = new Intent(viewHolder.itemView.getContext(),
-                        DetalheNoticiaActivity.class);
-                intent.putExtra("noticia", result);
-                intent.putExtra("transitionName", transitionName);
+        viewHolder.itemView.setOnClickListener(v -> {
+        String transitionName = "image_" + position;
+            Intent intent = new Intent(viewHolder.itemView.getContext(),
+                    DetalheNoticiaActivity.class);
+            intent.putExtra("NOTICIAS", result);
+            intent.putExtra("transitionName", transitionName);
 
-                viewHolder.imagemNoticias.setTransitionName(transitionName);
+            viewHolder.imagemNoticias.setTransitionName(transitionName);
 
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation((Activity) viewHolder.itemView.getContext(),
-                                viewHolder.imagemNoticias, transitionName);
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((Activity) viewHolder.itemView.getContext(),
+                            viewHolder.imagemNoticias, transitionName);
 
-                viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
-            }
+            viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
         });
 
     }
