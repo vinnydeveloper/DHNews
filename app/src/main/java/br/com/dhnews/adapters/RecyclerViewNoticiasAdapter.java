@@ -32,48 +32,42 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
     private List<Article> listaNoticias;
 
 
-    public RecyclerViewNoticiasAdapter(List<Article> listaNoticias) {
-        this.listaNoticias = listaNoticias;
+    public RecyclerViewNoticiasAdapter(List<Article> newsList) {
+        this.listaNoticias = newsList;
     }
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate
-                (R.layout.layout_lista_item_noticias, viewGroup, false);
-
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_lista_item_noticias, viewGroup, false);
         return new ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        Article result = listaNoticias.get(position);
-        viewHolder.bind(result);
-
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            String transitionName = "image_" + position;
-                Intent intent = new Intent(viewHolder.itemView.getContext(),
-                        DetalheNoticiaActivity.class);
-                intent.putExtra("noticia", result);
-                intent.putExtra("transitionName", transitionName);
-
-                viewHolder.imagemNoticias.setTransitionName(transitionName);
-
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation((Activity) viewHolder.itemView.getContext(),
-                                viewHolder.imagemNoticias, transitionName);
-
-                viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
-            }
-        });
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Article result = this.listaNoticias.get(position);
+        holder.bind(result);
+//
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            String transitionName = "image_" + position;
+//                Intent intent = new Intent(holder.itemView.getContext(),
+//                        DetalheNoticiaActivity.class);
+//                intent.putExtra("noticia", result);
+//                intent.putExtra("transitionName", transitionName);
+//
+//                holder.imagemNoticias.setTransitionName(transitionName);
+//
+//                ActivityOptionsCompat options = ActivityOptionsCompat.
+//                        makeSceneTransitionAnimation((Activity) holder.itemView.getContext(),
+//                                holder.imagemNoticias, transitionName);
+//
+//                holder.itemView.getContext().startActivity(intent, options.toBundle());
+//            }
+//        });
 
     }
 
@@ -92,7 +86,7 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        private ImageView imagemNoticias;
        private ImageView imagemBookMarkListaNoticia;
 
-       public ViewHolder(@NonNull View itemView) {
+       ViewHolder(View itemView) {
            super(itemView);
            tituloNoticia = itemView.findViewById(R.id.txtTitulo);
            descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
@@ -103,20 +97,29 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        }
 
        public void bind(Article result) {
-           Picasso.get().load(result.getUrlToImage() +
-                   "/portrait_incredible." + result.getUrlToImage())
-                   .placeholder(R.drawable.ic_launcher_background)
-                   .error(R.drawable.ic_launcher_background)
-                   .into(imagemNoticias);
-
            tituloNoticia.setText(result.getTitle());
            horaNoticia.setText(result.getPublishedAt());
            descricaoNoticia.setText(result.getDescription());
 
+           if (result.getUrlToImage() != null) {
+
+               Picasso.get().setIndicatorsEnabled(true);
+               Picasso.get()
+                       .load(result.getUrlToImage())
+                       .error(R.mipmap.ic_launcher)
+                       .placeholder(R.mipmap.ic_launcher)
+                       .into(imagemNoticias);
+           }
        }
    }
+
+   public void clear() {
+        this.listaNoticias.clear();
+        notifyDataSetChanged();
+   }
         public void update(List<Article> resultList) {
-            this.listaNoticias = resultList;
+
+                    this.listaNoticias = resultList;
             notifyDataSetChanged();
 
         }

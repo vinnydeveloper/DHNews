@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 
 public interface API {
 
-    @GET("top-headlines?")
+    @GET("top-headlines")
     Single<NoticiasResponse> getNoticias(@Query("country") String country,
                                          @Query("apikey") String apikey
                                       //   @Query("title") String title

@@ -1,30 +1,56 @@
 
 package br.com.dhnews.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.gson.annotations.Expose;
 
 
-public class Article implements Parcelable {
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-    @Expose
-    private Object author;
-    @Expose
-    private String content;
-    @Expose
-    private String description;
-    @Expose
-    private String publishedAt;
-    @Expose
-    private Source source;
-    @Expose
+import com.google.gson.annotations.SerializedName;
+
+
+@Entity(tableName = "articles")
+public class Article {
+
+    @PrimaryKey
+    @NonNull
+    @SerializedName("title")
     private String title;
-    @Expose
+
+    @SerializedName("description")
+    private String description;
+
+    @SerializedName("author")
+    private Object author;
+
+    @SerializedName("url")
     private String url;
-    @Expose
+
+    @SerializedName("urlToImage")
     private String urlToImage;
+
+    @SerializedName("publishedAt")
+    private String publishedAt;
+
+    @SerializedName("source")
+    private Source source;
+
+    @SerializedName("content")
+    private String content;
+
+
+    public Article(@NonNull String title, String description, Object author, String url, String urlToImage, String publishedAt, Source source, String content) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.source = source;
+        this.content = content;
+    }
+
 
     public Object getAuthor() {
         return author;
@@ -90,13 +116,5 @@ public class Article implements Parcelable {
         this.urlToImage = urlToImage;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
