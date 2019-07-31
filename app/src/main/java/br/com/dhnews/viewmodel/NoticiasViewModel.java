@@ -15,6 +15,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
+import static br.com.dhnews.util.AppUtil.isNetworkConnected;
+
 public class NoticiasViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Article>> resultLiveData = new MutableLiveData<>();
@@ -42,6 +44,17 @@ public class NoticiasViewModel extends AndroidViewModel {
     public LiveData<Boolean> Loading(){
         return loadingLiveData;
     }
+
+    public void searchItem(String item, int limite) {
+        if (isNetworkConnected(getApplication())) {
+            getNoticias();
+//        } else {
+//            getNoticias();
+        }
+    }
+
+
+
 
     public void getNoticias() {
 

@@ -79,9 +79,11 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
     public int getItemCount() {
         return listaNoticias.size();
     }
+ {
+    }
 
 
-   class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
        private TextView tituloNoticia;
        private TextView descricaoNoticia;
@@ -122,5 +124,10 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
             this.listaNoticias = resultList;
             notifyDataSetChanged();
 
+        }
+
+        public void clear(){
+        this.listaNoticias.clear();
+        notifyDataSetChanged();
         }
     }

@@ -94,6 +94,7 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 //                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
 //                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
 //
+//
 //        noticias.add(new Noticias("Educação",
 //                "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
 //                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
