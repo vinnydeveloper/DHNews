@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="12dp"
             android:fontFamily="@font/lato_bold"
             android:text="@string/title_news"
             android:textColor="@color/primary_text_light"
@@ -61,39 +61,6 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/imagemBackNoticiaDetalhe" />
-
-        <!--<TextView-->
-
-        <!--android:id="@+id/textTitle"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/text_margin"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginLeft="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginRight="8dp"-->
-        <!--android:text="AMAZING SPIDER-MAN (2014) #1 \n(MHAN VARIANT)"-->
-        <!--style="@style/textFix"-->
-        <!--android:textSize="22sp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-        <!--<TextView-->
-        <!--android:id="@+id/textViewSubTituloNoticiaDetalhe"-->
-        <!--android:layout_width="273dp"-->
-        <!--android:layout_height="70dp"-->
-        <!--android:layout_marginStart="16dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:text="@string/subtitle_news"-->
-        <!--android:textColor="@color/primary_text_light"-->
-        <!--android:textSize="@dimen/text_detail_news"-->
-        <!--card_view:layout_constraintEnd_toEndOf="parent"-->
-        <!--card_view:layout_constraintHorizontal_bias="0.0"-->
-        <!--card_view:layout_constraintStart_toStartOf="@+id/imagemNoticiaDetalhe"-->
-        <!--card_view:layout_constraintTop_toBottomOf="@+id/textViewTituloNoticiaDetalhe" />-->
 
         <TextView
             android:id="@+id/textViewHorarioNoticiaDetalhe"
@@ -145,8 +112,8 @@
 
         <TextView
             android:id="@+id/textViewConteudoNoticiaDetalhe"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -157,8 +124,10 @@
             android:textSize="18sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/imagemNoticiaDetalhe" />
+            card_view:layout_constraintTop_toBottomOf="@+id/imagemNoticiaDetalhe"
+            card_view:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

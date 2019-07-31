@@ -3,11 +3,14 @@ package br.com.dhnews.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.squareup.picasso.Picasso;
 
 import br.com.dhnews.model.Noticias;
@@ -19,9 +22,9 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
     //Declaracao de atributos
     private TextView textViewTituloDetalheNoticia;
-  //  private TextView textViewSubTituloDetalheNoticia;
+    //  private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
-   // private TextView textViewAssuntoDetalheNoticia;
+    // private TextView textViewAssuntoDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
@@ -62,9 +65,9 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     private void initViews() {
         textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
-      //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
+        //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
         textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
-     //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
+        //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
         textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
         imageViewBackDetalheNoticia = findViewById(R.id.imagemBackNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
@@ -77,13 +80,13 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
         textViewTituloDetalheNoticia.setText(noticias.getTitle());
 
-       // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
+        // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
 
         textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
 
-       // textViewAssuntoDetalheNoticia.setText("Vinicus");
+        // textViewAssuntoDetalheNoticia.setText("Vinicus");
 
-       // textViewFonteNoticia.setText(noticias.getSource());
+        // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
 

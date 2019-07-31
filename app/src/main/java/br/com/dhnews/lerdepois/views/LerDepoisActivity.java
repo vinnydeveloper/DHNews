@@ -11,7 +11,7 @@ public class LerDepoisActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ler_depois);
+        setContentView(R.layout.fragment_ler_depois);
 
         replaceFragment(new LerDepoisFragment());
 

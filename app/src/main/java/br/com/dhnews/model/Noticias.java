@@ -96,4 +96,6 @@ public class Noticias implements Parcelable {
         dest.writeString(assuntoNoticia);
         dest.writeInt(imagemNoticias);
     }
+
+
 }

@@ -4,10 +4,13 @@ package br.com.dhnews.model.noticias;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.Expose;
 
 
-public class Article implements Parcelable {
+@Entity(tableName = "Article")
+public class Article {
 
     @Expose
     private Object author;
@@ -35,17 +38,6 @@ public class Article implements Parcelable {
         urlToImage = in.readString();
     }
 
-    public static final Creator<Article> CREATOR = new Creator<Article>() {
-        @Override
-        public Article createFromParcel(Parcel in) {
-            return new Article(in);
-        }
-
-        @Override
-        public Article[] newArray(int size) {
-            return new Article[size];
-        }
-    };
 
     public Object getAuthor() {
         return author;
@@ -111,18 +103,5 @@ public class Article implements Parcelable {
         this.urlToImage = urlToImage;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(content);
-        dest.writeString(description);
-        dest.writeString(publishedAt);
-        dest.writeString(title);
-        dest.writeString(url);
-        dest.writeString(urlToImage);
-    }
 }
