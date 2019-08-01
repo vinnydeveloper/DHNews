@@ -1,6 +1,5 @@
 package br.com.dhnews.network;
 
-import br.com.dhnews.model.NoticiasResponse;
 import br.com.dhnews.model.noticias.Noticias;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -18,6 +17,7 @@ public interface API {
     @GET("everything")
     Observable<Noticias> buscaNoticia(@Query("q") String item,
                                       @Query("pageSize") int limite,
+                                      @Query("language") String country,
                                       @Query("apikey") String apikey);
 
 }

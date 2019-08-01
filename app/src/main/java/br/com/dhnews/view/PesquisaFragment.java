@@ -1,5 +1,6 @@
 package br.com.dhnews.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -49,7 +51,11 @@ public class PesquisaFragment extends Fragment {
         editTextSearch = view.findViewById(R.id.editPesquisa);
         viewModel = ViewModelProviders.of(this).get(NoticiasViewModel.class);
         adapter = new RecyclerViewNoticiasAdapter(results);
+        editTextSearch.requestFocus();
 
+        InputMethodManager mgr = (InputMethodManager)getActivity().getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        mgr.showSoftInput(editTextSearch, InputMethodManager.SHOW_IMPLICIT);
 
       recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
               recyclerView.setAdapter(adapter);
@@ -111,6 +117,8 @@ public class PesquisaFragment extends Fragment {
             }
         });
     }
+
+
 
 //        String[] arrayList = new String[]{"Esporte", "Politica", "Cinema", "Tecnologia"};
 //        final ArrayAdapter<String> adapter;

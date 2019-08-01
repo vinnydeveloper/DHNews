@@ -47,7 +47,7 @@ public class NoticiasViewModel extends AndroidViewModel {
 
     public void searchItem(String item, int limite) {
         if (isNetworkConnected(getApplication())) {
-            getNoticias();
+            getNoticiasSearch(item, limite);
 //        } else {
 //            getNoticias();
         }
@@ -60,6 +60,19 @@ public class NoticiasViewModel extends AndroidViewModel {
 
         disposable.add(
                 repository.getNoticias()
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(disposable1 -> loadingLiveData.setValue(true))
+                        .doAfterTerminate(() -> loadingLiveData.setValue(false))
+                        .subscribe(noticias -> resultLiveData.setValue(noticias.getArticles())
+                                , throwable -> errorLiveData.setValue(throwable))
+        );
+    }
+
+    public void getNoticiasSearch(String item, int limite) {
+
+        disposable.add(
+                repository.searchItems(item, limite)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe(disposable1 -> loadingLiveData.setValue(true))

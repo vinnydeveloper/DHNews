@@ -1,11 +1,5 @@
 package br.com.dhnews.adapters;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -20,12 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
+import br.com.dhnews.model.noticias.Source;
 import br.com.dhnews.view.DetalheNoticiaActivity;
+
+import static br.com.dhnews.util.AppUtil.formatarData;
 
 
 public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerViewNoticiasAdapter.ViewHolder> {
@@ -105,9 +105,11 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        public void bind(Article result) {
 
 
+           Source autor = result.getSource();
            tituloNoticia.setText(result.getTitle());
-           horaNoticia.setText(result.getPublishedAt());
+           horaNoticia.setText(formatarData(result.getPublishedAt()));
            descricaoNoticia.setText(result.getDescription());
+           categoriaNoticia.setText(autor.getName());
 
            if (result.getUrlToImage() != null) {
 

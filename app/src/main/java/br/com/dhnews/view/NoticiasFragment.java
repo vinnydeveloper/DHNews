@@ -45,18 +45,9 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 
         View view = inflater.inflate(R.layout.fragment_noticias, container, false);
 
-//        // Inicialização do DAO
-//        DatabaseRoom databaseRoom = DatabaseRoom.getDatabase(getContext());
-//        dao = databaseRoom.noticiasDAO();
-
-        // Add findViewById para recycler
         recyclerView = view.findViewById(R.id.listaNoticiasRecyclerView);
 
-        // Configurar recyclerview e adapater
         noticiasAdapter  = new RecyclerViewNoticiasAdapter(noticiasList);
-
-       // dao = DatabaseRoom.getDatabase(getContext()).noticiasDAO();
-
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(noticiasAdapter);
@@ -81,79 +72,6 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
     public void onClick(Usuario usuario) {
 
     }
-
-    //    private List<Noticias> getNoticias() {
-//
-//        List<Noticias> noticias = new ArrayList<>();
-//
-//        noticias.add(new Noticias("Vaga no Supremo",
-//                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-//                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
-//
-//        noticias.add(new Noticias("Investigação no RJ",
-//                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
-//                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
-//
-//
-//        noticias.add(new Noticias("Educação",
-//                "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-//                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
-//
-//        noticias.add(new Noticias("Economia",
-//                "Dólar fecha a R$ 4,03 e bolsa atinge menor pontuação do ano.",
-//                "Há 5 horas   —  ", "Economia", R.drawable.imagenoticia04));
-//
-//        noticias.add(new Noticias("Vaga no Supremo",
-//                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-//                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
-//
-//        noticias.add(new Noticias("Educação",
-//                "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-//                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
-//
-//        return noticias;
-//    }
-//    public void buscarTodasNoticias() {
-//
-//        dao.getAllRxJava()
-//                .subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Consumer<List<Source>>() {
-//                    @Override
-//                    public void accept(List<Source> contatos) throws Exception {
-//                        adapter.update(noticiasList, noticiasList2);
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(Throwable throwable) throws Exception {
-//                        Log.i("TAG", "buscarTodosNoticias: " + throwable.getMessage());
-//                    }
-//                });
-//    }
-//
-//    @Override
-//    public void onClick(Noticias noticias) {
-//
-//        Intent intent = new Intent(getContext(), DetalheNoticiaActivity.class);
-//
-//        intent.putExtra("NOTICIAS", "DETALHE");
-//
-//        startActivity(intent);
-//
-//    }
-//
-//    @Override
-//    public void onClick(Usuario usuario) {
-//
-//        Intent intentLogin = new Intent(getContext(), MainActivy.class);
-//
-//        intentLogin.putExtra("TELA", "LOGIN");
-//
-//        startActivity(intentLogin);
-//
-//    }
-
-
     private void setScrollListener() {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

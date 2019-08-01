@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (tela != null && tela.equals("LERDEPOIS")) {
             replaceFragment(new LerDepoisFragment());
         } else {
-            replaceFragment(new HomeFragment());
+            replaceFragment(new NoticiasFragment());
 
         }
     }

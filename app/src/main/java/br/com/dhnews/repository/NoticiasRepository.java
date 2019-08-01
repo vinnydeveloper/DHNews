@@ -1,8 +1,6 @@
 package br.com.dhnews.repository;
 
-import br.com.dhnews.model.NoticiasResponse;
 import br.com.dhnews.model.noticias.Noticias;
-import br.com.dhnews.network.API;
 import br.com.dhnews.network.ApiService;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -18,6 +16,6 @@ public class NoticiasRepository {
     }
 
     public Observable<Noticias> searchItems(String item, int limite) {
-        return ApiService.getApiService().buscaNoticia("q", 10, PUBLIC_KEY);
+        return ApiService.getApiService().buscaNoticia(item, 10,"pt", PUBLIC_KEY);
     }
 }
