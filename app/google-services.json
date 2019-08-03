@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "981079449550",
+    "firebase_url": "https://dhnews-4c852.firebaseio.com",
+    "project_id": "dhnews-4c852",
+    "storage_bucket": "dhnews-4c852.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981079449550:android:653cf61d23a7be21",
+        "android_client_info": {
+          "package_name": "br.com.dhnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981079449550-4e5fo4k6lfn85iv2faqhqv431fvdd0hc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.dhnews",
+            "certificate_hash": "1b0640848fe97a8b39b4f28bdf31cbcd1ecd2cdf"
+          }
+        },
+        {
+          "client_id": "981079449550-4v0clknv22gpjt5b1roiltht80magor3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-IVM1cWS9Tnou_UbeqNnlFW4Kf9dQWTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981079449550-4v0clknv22gpjt5b1roiltht80magor3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

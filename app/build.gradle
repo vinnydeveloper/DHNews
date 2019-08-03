@@ -32,6 +32,7 @@ dependencies {
     // Dependecias Archutecture components
     // Room database
     implementation "androidx.room:room-runtime:2.1.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "androidx.room:room-compiler:2.1.0"
     implementation "androidx.room:room-rxjava2:2.1.0"
 
@@ -68,4 +69,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    /*########################### FIRE BASE ################################*/
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-auth:18.1.0'
 }
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
