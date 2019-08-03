@@ -1,134 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollViewNoticiaDetalhe"
-    style="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".view.DetalheNoticiaActivity"
-    tools:ignore="MissingConstraints">
+    android:fitsSystemWindows="true"
+    tools:context=".view.DetalheNoticiaActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="270dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <View
-            android:id="@+id/view3"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/image_detail_news"
-            android:background="#000000"></View>
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="250dp"-->
+                <!--android:scaleType="centerCrop"-->
+                <!--android:src="@drawable/splash"/>-->
+            <ImageView
+                android:id="@+id/imagemNoticiaDetalhe"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_detail_news"
+                android:scaleType="centerCrop"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintVertical_bias="0.0"
+                card_view:srcCompat="@drawable/imagem_detalhe" />
 
-        <ImageView
-            android:id="@+id/imagemNoticiaDetalhe"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/image_detail_news"
-            android:scaleType="centerCrop"
-            card_view:layout_constraintBottom_toBottomOf="@+id/view3"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="1.0"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.0"
-            card_view:srcCompat="@drawable/imagedetalhenoticia" />
 
-        <ImageView
-            android:id="@+id/imagemBackNoticiaDetalhe"
-            android:layout_width="@dimen/icon_detail_news"
-            android:layout_height="@dimen/icon_detail_news"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.022"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="@+id/imagemNoticiaDetalhe"
-            card_view:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <TextView
-            android:id="@+id/textViewTituloNoticiaDetalhe"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="12dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="@string/title_news"
-            android:textColor="@color/primary_text_light"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/imagemBackNoticiaDetalhe" />
 
-        <TextView
-            android:id="@+id/textViewHorarioNoticiaDetalhe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="24dp"
-            android:focusableInTouchMode="false"
-            android:fontFamily="@font/lato_light"
-            android:text="@string/hours_news"
-            android:textColor="@color/primary_text_light"
-            android:textSize="@dimen/text_detail_news"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintStart_toStartOf="parent" />
+            <ImageView
+                    android:id="@+id/imageBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_back"/>
+            </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/textViewFonteNoticiaDetalhe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/lato_light"
-            android:text="@string/pol_tica"
-            android:textColor="@color/primary_text_light"
-            android:textSize="@dimen/text_detail_news"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-        <ImageView
-            android:id="@+id/imagemShareNoticiaDetalhe"
-            android:layout_width="@dimen/icon_detail_news"
-            android:layout_height="@dimen/icon_detail_news"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintEnd_toStartOf="@+id/imagemBookMarkNoticiaDetalhe"
-            card_view:srcCompat="@drawable/ic_share_white_24dp" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/imagemBookMarkNoticiaDetalhe"
-            android:layout_width="@dimen/icon_detail_news"
-            android:layout_height="@dimen/icon_detail_news"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="TODO"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintEnd_toEndOf="@+id/imagemNoticiaDetalhe"
-            card_view:srcCompat="@drawable/ic_bookmark_border_white_24dp" />
-
-        <TextView
-            android:id="@+id/textViewConteudoNoticiaDetalhe"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/lato"
-            android:text="@string/news_detail"
-            android:textColor="@color/icons"
-            android:textSize="18sp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/imagemNoticiaDetalhe"
-            card_view:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    <include layout="@layout/content_detalhe" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

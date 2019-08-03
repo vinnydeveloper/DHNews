@@ -6,7 +6,7 @@
     <dimen name="text_detail_news">18sp</dimen>
     <dimen name="title_detail_news">26sp</dimen>
     <dimen name="icon_detail_news">34dp</dimen>
-    <dimen name="image_detail_news">269dp</dimen>
+    <dimen name="image_detail_news">270dp</dimen>
     <dimen name="margin_210_dp">210dp</dimen>
     <dimen name="cardview_elevation">5dp</dimen>
     <dimen name="margin_70_dp">70dp</dimen>

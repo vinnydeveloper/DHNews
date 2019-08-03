@@ -17,4 +17,6 @@
     <string name="h_2_horas">Há 2 horas</string>
     <string name="conteudo_da_noticia">Conteudo da Noticia</string>
     <string name="pol_tica">Política</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+
 </resources>
