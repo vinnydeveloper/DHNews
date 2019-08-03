@@ -1,4 +1,4 @@
-package br.com.dhnews.lerdepois.views;
+package br.com.dhnews.view;
 
 
 import android.content.Intent;
@@ -16,8 +16,8 @@ import java.util.List;
 
 import br.com.dhnews.R;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
-import br.com.dhnews.lerdepois.adapters.RecyclerViewLerDepoisAdapter;
-import br.com.dhnews.lerdepois.detalhe.DetalheLerDepoisActivity;
+import br.com.dhnews.adapters.RecyclerViewLerDepoisAdapter;
+import br.com.dhnews.view.DetalheLerDepoisActivity;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 

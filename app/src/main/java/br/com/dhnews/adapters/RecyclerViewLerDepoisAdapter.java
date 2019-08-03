@@ -1,4 +1,4 @@
-package br.com.dhnews.lerdepois.adapters;
+package br.com.dhnews.adapters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
