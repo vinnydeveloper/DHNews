@@ -1,4 +1,4 @@
-package br.com.dhnews.lerdepois.detalhe;
+package br.com.dhnews.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import br.com.dhnews.R;
 import br.com.dhnews.model.Noticias;
-import br.com.dhnews.view.MainActivity;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
 

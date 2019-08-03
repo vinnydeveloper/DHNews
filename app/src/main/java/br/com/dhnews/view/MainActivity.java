@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.dhnews.R;
-import br.com.dhnews.lerdepois.views.LerDepoisFragment;
 
 public class MainActivity extends AppCompatActivity {
 
