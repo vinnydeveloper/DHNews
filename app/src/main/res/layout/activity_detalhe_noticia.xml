@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimaryDark"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
             <!--<ImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="250dp"-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:src="@drawable/splash"/>-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="250dp"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@drawable/splash"/>-->
             <ImageView
                 android:id="@+id/imagemNoticiaDetalhe"
                 android:layout_width="match_parent"
@@ -39,6 +39,43 @@
                 card_view:layout_constraintVertical_bias="0.0"
                 card_view:srcCompat="@drawable/imagem_detalhe" />
 
+            <TextView
+                android:id="@+id/textViewTituloNoticiaDetalhe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/title_news"
+                android:textColor="@color/primary_text_light"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewHorarioNoticiaDetalhe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="230dp"
+                android:fontFamily="@font/lato_light"
+                android:text="@string/hours_news"
+                android:textColor="@color/primary_text_light"
+                android:textSize="@dimen/text_detail_news" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/textViewFonteNoticiaDetalhe"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginTop="230dp"-->
+                <!--android:fontFamily="@font/lato_light"-->
+                <!--android:text="@string/pol_tica"-->
+                <!--android:textColor="@color/primary_text_light"-->
+                <!--android:textSize="@dimen/text_detail_news"-->
+                <!--card_view:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe"-->
+                <!--/>-->
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -48,11 +85,11 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
 
-            <ImageView
+                <ImageView
                     android:id="@+id/imageBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_back"/>
+                    android:src="@drawable/ic_arrow_back" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

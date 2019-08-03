@@ -75,9 +75,9 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
 
 
-     //   textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
+        textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
         //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
-      //  textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
+      textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
         //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
       //  imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         //imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
@@ -86,11 +86,11 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
     private void retornaDetalheListaNoticias(Article noticias) {
 
-       // textViewTituloDetalheNoticia.setText(noticias.getTitle());
+       textViewTituloDetalheNoticia.setText(noticias.getTitle());
 
         // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
 
-     //   textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
+        textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
 
 
 
@@ -99,7 +99,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
-        toolbar.setTitle(noticias.getTitle());
+     //   toolbar.setTitle(noticias.getTitle());
 
         if (noticias.getUrlToImage() != null) {
 
