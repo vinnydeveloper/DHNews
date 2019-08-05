@@ -37,7 +37,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
 
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(
-                R.layout.recyclerview_ler_depois_adapter, viewGroup, false);
+                R.layout.item_favoritos, viewGroup, false);
 
         ViewHolder viewHolder = new ViewHolder(itemView);
 
@@ -139,13 +139,13 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            btnMarkButton = itemView.findViewById(R.id.btnBookMarkLerDepois);
-            imagemNoticias = itemView.findViewById(R.id.circleImageViewNoticia);
+            btnMarkButton = itemView.findViewById(R.id.bookmarkFavorito);
+            imagemNoticias = itemView.findViewById(R.id.imageViewNoticia);
             tituloNoticia = itemView.findViewById(R.id.tituloNoticia);
             descricaoNoticia = itemView.findViewById(R.id.conteudoNoticia);
-            assuntoNoticia = itemView.findViewById(R.id.assuntoNoticia);
+            assuntoNoticia = itemView.findViewById(R.id.fonteNoticia);
             horaNoticia = itemView.findViewById(R.id.horarioNoticia);
-            markRemove = itemView.findViewById(R.id.btnBookMarkLerDepois);
+            markRemove = itemView.findViewById(R.id.bookmarkFavorito);
 
         }
 

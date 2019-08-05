@@ -153,8 +153,8 @@ public class LoginFragment extends Fragment {
         return user != null;
     }
     private void signIn() {
-        Intent signInIntent = mGoogleApiClient.getSignInIntent();
-        (signInIntent, RC_SIGN_IN);
+//        Intent signInIntent = mGoogleApiClient.getSignInIntent();
+//        (signInIntent, RC_SIGN_IN);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -102,10 +102,10 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
 
 
            Source autor = result.getSource();
+           categoriaNoticia.setText(autor.getName());
            tituloNoticia.setText(result.getTitle());
            horaNoticia.setText(formatarData(result.getPublishedAt()));
            descricaoNoticia.setText(result.getDescription());
-           categoriaNoticia.setText(autor.getName());
 
            if (result.getUrlToImage() != null) {
 

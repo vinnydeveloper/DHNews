@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/circleImageViewNoticia"
+            android:id="@+id/imageViewNoticia"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/circleImageViewNoticia"
+            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -53,10 +53,10 @@
             android:fontFamily="@font/lato"
             android:text="Descricao Noticia"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnBookMarkLerDepois"
+            app:layout_constraintBottom_toTopOf="@+id/bookmarkFavorito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/circleImageViewNoticia"
+            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia"
             app:layout_constraintTop_toBottomOf="@+id/tituloNoticia"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -72,10 +72,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/circleImageViewNoticia" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia" />
 
         <TextView
-            android:id="@+id/assuntoNoticia"
+            android:id="@+id/fonteNoticia"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -83,13 +83,13 @@
             android:layout_marginBottom="8dp"
             android:text="Politica"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnBookMarkLerDepois"
+            app:layout_constraintEnd_toStartOf="@+id/bookmarkFavorito"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/horarioNoticia" />
 
         <ImageButton
-            android:id="@+id/btnBookMarkLerDepois"
+            android:id="@+id/bookmarkFavorito"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginEnd="24dp"

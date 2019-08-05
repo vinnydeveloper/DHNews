@@ -53,10 +53,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
 
         List<Noticias> noticias = new ArrayList<>();
 
-        noticias.add(new Noticias("Vaga no Supremo",
-                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
-
+  
         noticias.add(new Noticias("Investigação no RJ",
                 "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
