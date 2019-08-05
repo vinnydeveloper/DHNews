@@ -9,8 +9,8 @@
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.DetalheNoticiaActivity"
-    tools:ignore="MissingConstraints"
-    tools:showIn="@layout/activity_detalhe_noticia">
+    tools:showIn="@layout/activity_detalhe_noticia"
+    tools:ignore="MissingConstraints">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +23,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/lato"
             android:text="@string/news_detail"

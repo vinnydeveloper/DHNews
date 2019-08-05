@@ -18,5 +18,6 @@
     <string name="conteudo_da_noticia">Conteudo da Noticia</string>
     <string name="pol_tica">Política</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="botao_compartilhar">botao_compartilhar</string>
 
 </resources>

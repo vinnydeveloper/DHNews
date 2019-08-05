@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#fff"
     tools:context=".view.DetalheNoticiaActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
@@ -22,60 +24,93 @@
             app:contentScrim="?attr/colorPrimaryDark"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
-            <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="250dp"-->
-            <!--android:scaleType="centerCrop"-->
-            <!--android:src="@drawable/splash"/>-->
-            <ImageView
-                android:id="@+id/imagemNoticiaDetalhe"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/image_detail_news"
-                android:scaleType="centerCrop"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintVertical_bias="0.0"
-                card_view:srcCompat="@drawable/imagem_detalhe" />
+                android:layout_height="match_parent"
+                android:background="#fff">
 
-            <TextView
-                android:id="@+id/textViewTituloNoticiaDetalhe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="@string/title_news"
-                android:textColor="@color/primary_text_light"
-                android:textSize="28sp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textViewHorarioNoticiaDetalhe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="230dp"
-                android:fontFamily="@font/lato_light"
-                android:text="@string/hours_news"
-                android:textColor="@color/primary_text_light"
-                android:textSize="@dimen/text_detail_news" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/textViewFonteNoticiaDetalhe"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="16dp"-->
-                <!--android:layout_marginTop="230dp"-->
-                <!--android:fontFamily="@font/lato_light"-->
-                <!--android:text="@string/pol_tica"-->
-                <!--android:textColor="@color/primary_text_light"-->
-                <!--android:textSize="@dimen/text_detail_news"-->
-                <!--card_view:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe"-->
-                <!--/>-->
+                <ImageView
+                    android:id="@+id/imagemNoticiaDetalhe"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="@+id/view3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/imagedetalhenoticia" />
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:background="#99000000" />
+                <TextView
+                    android:id="@+id/textViewTituloNoticiaDetalhe"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:layout_marginEnd="12dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="@string/title_news"
+                    android:textColor="@color/primary_text_light"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/textViewHorarioNoticiaDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/lato_light"
+                    android:text="@string/hours_news"
+                    android:textColor="@color/primary_text_light"
+                    android:textSize="@dimen/text_detail_news"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/textViewFonteNoticiaDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/lato_light"
+                    android:text="@string/pol_tica"
+                    android:textColor="@color/primary_text_light"
+                    android:textSize="@dimen/text_detail_news"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+                    app:layout_constraintStart_toEndOf="@+id/textViewHorarioNoticiaDetalhe" />
+
+                <ImageView
+                    android:id="@+id/imagemShareNoticiaDetalhe"
+                    android:layout_width="@dimen/icon_detail_news"
+                    android:layout_height="@dimen/icon_detail_news"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                   app:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+                    app:layout_constraintEnd_toStartOf="@+id/imagemBookMarkNoticiaDetalhe"
+                   app:srcCompat="@drawable/ic_share_white_24dp" />
+
+                <ImageView
+                    android:id="@+id/imagemBookMarkNoticiaDetalhe"
+                    android:layout_width="@dimen/icon_detail_news"
+                    android:layout_height="@dimen/icon_detail_news"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imagemNoticiaDetalhe"
+                    app:layout_constraintEnd_toEndOf="@+id/imagemNoticiaDetalhe"
+                    app:srcCompat="@drawable/ic_bookmark_border_white_24dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -97,4 +132,5 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_detalhe" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
