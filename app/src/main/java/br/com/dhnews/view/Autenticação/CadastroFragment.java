@@ -1,5 +1,5 @@
 
-package br.com.dhnews.view;
+package br.com.dhnews.view.Autenticação;
 
 
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import br.com.dhnews.view.MainActivity;
 import br.com.dhnews.R;
-import br.com.dhnews.view.HomeFragment;
+import br.com.dhnews.view.Home.HomeFragment;
+import br.com.dhnews.view.MainActivity;
 
 /**
  * A simple {@link Fragment} subclass.

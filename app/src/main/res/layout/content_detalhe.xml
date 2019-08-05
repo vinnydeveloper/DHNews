@@ -8,7 +8,7 @@
     android:background="#fff"
     android:fillViewport="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.DetalheNoticiaActivity"
+    tools:context=".view.Noticias.DetalheNoticiaActivity"
     tools:showIn="@layout/activity_detalhe_noticia"
     tools:ignore="MissingConstraints">
 

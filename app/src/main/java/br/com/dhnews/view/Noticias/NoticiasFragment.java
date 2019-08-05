@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.Noticias;
 
 
 import android.os.Bundle;

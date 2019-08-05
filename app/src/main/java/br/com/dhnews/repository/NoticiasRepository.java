@@ -1,11 +1,11 @@
 package br.com.dhnews.repository;
 
 import br.com.dhnews.model.noticias.Noticias;
-import br.com.dhnews.network.ApiService;
+import br.com.dhnews.data.network.ApiService;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
-import static br.com.dhnews.network.ApiService.PUBLIC_KEY;
+import static br.com.dhnews.data.network.ApiService.PUBLIC_KEY;
 
 
 public class NoticiasRepository {

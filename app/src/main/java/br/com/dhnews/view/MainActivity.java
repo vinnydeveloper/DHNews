@@ -1,47 +1,45 @@
 package br.com.dhnews.view;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.MenuItem;
 
 import br.com.dhnews.R;
-import br.com.dhnews.lerdepois.views.LerDepoisFragment;
+import br.com.dhnews.view.Autenticação.LoginFragment;
+import br.com.dhnews.view.Favoritos.FavoritosFragment;
+import br.com.dhnews.view.Home.HomeFragment;
+import br.com.dhnews.view.Noticias.NoticiasFragment;
+import br.com.dhnews.view.Pesquisa.PesquisaFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+            = item -> {
+                switch (item.getItemId()) {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+                    case R.id.navigation_mark:
+                        replaceFragment(new FavoritosFragment());
+                        return true;
+                    case R.id.navigation_user:
+                        replaceFragment(new LoginFragment());
+                        return true;
+                    case R.id.navigation_home:
+                        replaceFragment(new HomeFragment());
+                        return true;
+                    case R.id.navigation_public:
+                        replaceFragment(new NoticiasFragment());
+                        return true;
+                    case R.id.navigation_search:
+                        replaceFragment(new PesquisaFragment());
+                        return true;
 
-
-                case R.id.navigation_mark:
-                    replaceFragment(new LerDepoisFragment());
-                    return true;
-                case R.id.navigation_user:
-                    replaceFragment(new LoginFragment());
-                    return true;
-                case R.id.navigation_home:
-                    replaceFragment(new HomeFragment());
-                    return true;
-                case R.id.navigation_public:
-                    replaceFragment(new NoticiasFragment());
-                    return true;
-                case R.id.navigation_search:
-                    replaceFragment(new PesquisaFragment());
-                    return true;
-
-            }
-            return false;
-        }
-    };
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (tela != null && tela.equals("NOTICIA")) {
             replaceFragment(new NoticiasFragment());
         } else if (tela != null && tela.equals("LERDEPOIS")) {
-            replaceFragment(new LerDepoisFragment());
+            replaceFragment(new FavoritosFragment());
         } else {
             replaceFragment(new NoticiasFragment());
 

@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.Favoritos;
 
 
 import android.os.Bundle;

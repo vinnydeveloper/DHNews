@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.Autenticação;
 
 
 import android.content.Context;
@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.dhnews.R;
+import br.com.dhnews.view.Autenticação.CadastroFragment;
+import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.Noticias.NoticiasFragment;
+import br.com.dhnews.view.UsuarioActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 

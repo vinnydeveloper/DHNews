@@ -1,6 +1,5 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.Noticias;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
-import br.com.dhnews.model.noticias.Source;
+import br.com.dhnews.view.MainActivity;
 
 import static br.com.dhnews.util.AppUtil.formatarData;
 
