@@ -9,7 +9,6 @@ import br.com.dhnews.database.NoticiasDAO;
 import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.model.noticias.Noticias;
 import br.com.dhnews.data.network.ApiService;
-import br.com.dhnews.network.ApiService;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;

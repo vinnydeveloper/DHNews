@@ -1,6 +1,7 @@
 package br.com.dhnews.view.Noticias;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -22,6 +23,7 @@ import static br.com.dhnews.util.AppUtil.formatarData;
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
     //Declaracao de atributos
+
     private TextView textViewTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
     private TextView textViewFonteDetalheNoticia;
@@ -32,6 +34,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
     private ImageView imageViewDetalheNoticia;
     private AppBarLayout appBarLayout;
     private Noticias noticias;
+    private Article result;
     private Toolbar toolbar;
     private View textViewFonteNoticia;
 
@@ -66,7 +69,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         }
     }
 
-  //  @SuppressLint("WrongViewCast")
+    //  @SuppressLint("WrongViewCast")
     private void initViews() {
         toolbar = findViewById(R.id.toolbar);
         imageViewBackDetalheNoticia = findViewById(R.id.imageBack);
@@ -76,25 +79,21 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
 
         textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
-      textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
-     textViewFonteDetalheNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
-       imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
-      imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
+        textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
+        textViewFonteDetalheNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
+        imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
+        imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
     }
 
     private void retornaDetalheListaNoticias(Article noticias) {
 
-       textViewTituloDetalheNoticia.setText(noticias.getTitle());
-
-
+        textViewTituloDetalheNoticia.setText(result.getTitle());
         textViewHorarioDetalheNoticia.setText(formatarData(noticias.getPublishedAt()));
-
-
 
         // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
-     //   toolbar.setTitle(noticias.getTitle());
+        //   toolbar.setTitle(noticias.getTitle());
 
         if (noticias.getUrlToImage() != null) {
 
@@ -105,7 +104,6 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                     .placeholder(R.mipmap.ic_launcher)
                     .into(imageViewDetalheNoticia);
         }
-
 
 
     }
