@@ -22,6 +22,8 @@ import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.viewmodel.NoticiasViewModel;
 
+import static br.com.dhnews.util.AppUtil.isNetworkConnected;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -54,7 +56,11 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 
         viewModel = ViewModelProviders.of(this).get(NoticiasViewModel.class);
 
-        viewModel.getNoticias();
+        if (isNetworkConnected(getContext())) {
+            viewModel.getNoticias();
+        } else {
+            viewModel.getFromLocal();
+        }
 
         viewModel.getResults().observe(this, results -> noticiasAdapter.update(results));
 

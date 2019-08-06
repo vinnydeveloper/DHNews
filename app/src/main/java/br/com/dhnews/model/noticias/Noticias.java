@@ -1,10 +1,11 @@
 
 package br.com.dhnews.model.noticias;
 
+import androidx.room.Entity;
+
 import com.google.gson.annotations.Expose;
 
 import java.util.List;
-
 
 public class Noticias {
 
