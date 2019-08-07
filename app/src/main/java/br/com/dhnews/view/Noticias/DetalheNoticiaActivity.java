@@ -23,18 +23,28 @@ import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
-    //Declaracao de atributos
+    //TextView
     private TextView textViewTituloDetalheNoticia;
-    //  private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
-    // private TextView textViewAssuntoDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
+    private TextView textViewFonteNoticia;
+
+
+    //ImageView
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
     private ImageView imageViewDetalheNoticia;
+
+
+    //Toolbar
+    private Toolbar toolbar;
+    private AppBarLayout appBarLayout;
+
+
+    //Data
     private Noticias noticias;
-    private View textViewFonteNoticia;
+    private Article result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

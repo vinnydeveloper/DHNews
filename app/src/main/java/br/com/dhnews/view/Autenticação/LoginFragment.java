@@ -88,11 +88,11 @@ public class LoginFragment extends Fragment {
                     SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
                     preferences.edit().putString("EMAIL", emailLog).commit();
                     preferences.edit().putString("SENHA", senhaLog).commit();
-                    //se preenchido automaticamente, vai pra tela usuario
-                    Intent intent = new Intent(getContext(), UsuarioFragment.class);
-                    startActivity(intent);
 
-                    ((MainActivity) getActivity()).replaceFragment(new NoticiasFragment());
+                    //se preenchido automaticamente, vai pra tela usuario
+                    ((MainActivity) getActivity()).replaceFragment(new UsuarioFragment());
+
+
 
                 }
             }
