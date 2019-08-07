@@ -11,6 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.dhnews.R;
 import br.com.dhnews.view.Home.HomeFragment;
@@ -21,6 +34,7 @@ import br.com.dhnews.view.MainActivity;
  */
 public class CadastroFragment extends Fragment {
 
+    private FirebaseAuth mAuth;
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -32,6 +46,7 @@ public class CadastroFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
+        mAuth = FirebaseAuth.getInstance();
         return inflater.inflate(R.layout.fragment_cadastro, container, false);
     }
 
@@ -93,10 +108,35 @@ public class CadastroFragment extends Fragment {
                 if (!(nomeCadastro.isEmpty()) && !(emailCadastro.isEmpty()) &&
                         !(senhaCadastro.isEmpty())) {
 
-                    ((MainActivity) getActivity()).replaceFragment(new HomeFragment());
+                    mAuth.createUserWithEmailAndPassword(emailCadastro, senhaCadastro)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(nomeCadastro)
+                                                .build();
+                                        user.updateProfile(profileUpdates)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            ((MainActivity) getActivity()).replaceFragment(new NoticiasFragment());
+                                                        }
+                                                    }
+                                                });
+                                    } else {
+                                        Toast.makeText(((MainActivity) getActivity()).getApplicationContext(),
+                                                task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
 
                 }
             }
         });
     }
+
 }

@@ -78,16 +78,6 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnFacebook"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/facebook"
-        android:drawableLeft="@drawable/ic_facebook_logo"
-        android:gravity="center"
-        android:text="Facebook" />
-
-    <Button
         android:id="@+id/btnGoogle"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
