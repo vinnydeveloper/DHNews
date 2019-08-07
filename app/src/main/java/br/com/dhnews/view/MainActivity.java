@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import br.com.dhnews.R;
+import br.com.dhnews.view.autenticacao.LoginFragment;
+import br.com.dhnews.view.home.HomeFragment;
+import br.com.dhnews.view.lerdepois.LerDepoisFragment;
+import br.com.dhnews.view.noticias.NoticiasFragment;
+import br.com.dhnews.view.pesquisa.PesquisaFragment;
 
 public class MainActivity extends AppCompatActivity {
 

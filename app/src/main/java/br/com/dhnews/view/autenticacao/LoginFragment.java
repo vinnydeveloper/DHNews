@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.autenticacao;
 
 
 import android.content.Context;
@@ -15,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -33,6 +32,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import br.com.dhnews.R;
+import br.com.dhnews.view.MainActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".view.DetalheLerDepoisActivity"
+    tools:context=".view.lerdepois.DetalheLerDepoisActivity"
     tools:ignore="MissingConstraints">
 
     <androidx.constraintlayout.widget.ConstraintLayout

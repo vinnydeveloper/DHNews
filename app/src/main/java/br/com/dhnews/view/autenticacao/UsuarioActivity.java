@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.autenticacao;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.dhnews.R;
+import br.com.dhnews.view.MainActivity;
 
 public class UsuarioActivity extends AppCompatActivity {
 

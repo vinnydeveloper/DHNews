@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.lerdepois;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;

@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.lerdepois;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.dhnews.R;
-import br.com.dhnews.model.Noticias;
+import br.com.dhnews.model.Article;
+import br.com.dhnews.view.MainActivity;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
     private ImageView imageViewShareDetalheLerDepois;
     private ImageView imageViewBookMarkDetalheLerDepois;
     private ImageView imageViewFotoDetalheLerDepois;
-    private Noticias noticias;
+    private Article article;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +37,17 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
         //Valido se veio algum dado na intent
         if (getIntent() != null && getIntent().getExtras() != null) {
-            Noticias noticias = getIntent().getParcelableExtra("NOTICIAS");
+            Article article = getIntent().getParcelableExtra("NOTICIAS");
 
-            if (noticias != null) {
+            if (article != null) {
 
                 //Retorna o detalhe da noticia que foi selecionada para Ler depois
-                retornaDetalheListaLerDepois(noticias);
+                retornaDetalheListaLerDepois(article);
 
-                //Metodo para voltar para a tela com a Lista de noticias que será lida depois
+                //Metodo para voltar para a tela com a Lista de article que será lida depois
                 chamaListaNoticiaLerDepois();
 
-                //Metodo para acessar os aplicativos de compartilhamento de dados das noticias
+                //Metodo para acessar os aplicativos de compartilhamento de dados das article
                 //que podem ser lidas depois
                 compartilharNoticiaLerDepois();
 
@@ -68,19 +69,19 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
         imageViewFotoDetalheLerDepois = findViewById(R.id.imagemDetalheLerDepois);
     }
 
-    private void retornaDetalheListaLerDepois(Noticias noticias) {
+    private void retornaDetalheListaLerDepois(Article article) {
 
-        textViewTituloDetalheLerDepois.setText(noticias.getTituloNoticia());
+        textViewTituloDetalheLerDepois.setText(article.getTituloNoticia());
 
-        textViewSubTituloDetalheLerDepois.setText(noticias.getDescricaoNoticia());
+        textViewSubTituloDetalheLerDepois.setText(article.getDescricaoNoticia());
 
-        textViewHorarioDetalheLerDepois.setText(noticias.getHoraNoticia());
+        textViewHorarioDetalheLerDepois.setText(article.getHoraNoticia());
 
-        textViewAssuntoDetalheLerDepois.setText(noticias.getAssuntoNoticia());
+        textViewAssuntoDetalheLerDepois.setText(article.getAssuntoNoticia());
 
-        textViewConteudoDetalheLerDepois.setText(noticias.getDescricaoNoticia());
+        textViewConteudoDetalheLerDepois.setText(article.getDescricaoNoticia());
 
-        imageViewFotoDetalheLerDepois.setImageResource(noticias.getImagemNoticias());
+        imageViewFotoDetalheLerDepois.setImageResource(article.getImagemNoticias());
 
     }
 
@@ -90,15 +91,15 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Chama a tela com a Lista de Noticias ler depois
+                //Chama a tela com a Lista de Article ler depois
 
                 //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
                 //chamar a tela/fragmento correspondente
                 Intent intentListaLerDepois = new Intent(
                         DetalheLerDepoisActivity.this, MainActivity.class);
 
-                //Chama o fragmento da tela de Noticias Ler depois(atraves de um flag 'Tela'
-                // com valor 'LERDEPOIS')  para retornar para a lista de noticias ler depois
+                //Chama o fragmento da tela de Article Ler depois(atraves de um flag 'Tela'
+                // com valor 'LERDEPOIS')  para retornar para a lista de article ler depois
                 intentListaLerDepois.putExtra("TELA", "LERDEPOIS");
 
                 startActivity(intentListaLerDepois);
@@ -116,7 +117,7 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
                 //Envia texto no compartilhamento
                 intentCompartilhar.putExtra(
-                        Intent.EXTRA_TEXT, "Compartilhando noticias ler depois");
+                        Intent.EXTRA_TEXT, "Compartilhando article ler depois");
 
                 //tipo de compartilhamento
                 intentCompartilhar.setType("text/plain");
@@ -158,8 +159,8 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
                         Intent intentLerDepois = new Intent(
                          DetalheLerDepoisActivity.this, DetalheNoticiaActivity.class);
 
-                        //Envia flag para retornar para a lista de noticias sem ler depois
-                        intentLerDepois.putExtra("NOTICIAS", noticias);
+                        //Envia flag para retornar para a lista de article sem ler depois
+                        intentLerDepois.putExtra("NOTICIAS", article);
 
                         startActivity(intentLerDepois);
                         */
@@ -167,14 +168,15 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
                         //**************************************************************************
                         //Ajuste temporário até a inclusão do banco de dados para validação de dados
                         //**************************************************************************
-                        //Chama a tela com a Lista de Noticias
+                        //Chama a tela com a Lista de Article
                         //Chama a Main Activity que verifica qual opcao do Menu Principal foi
                         // acionado para chamar a tela/fragmento correspondente
+
                         Intent intentListaNoticias = new Intent(
                                 DetalheLerDepoisActivity.this, MainActivity.class);
 
-                        //Chama o fragmento da tela de Noticias(atraves de um flag 'Tela' com valor
-                        //'Noticia')  para retornar para a lista de noticias
+                        //Chama o fragmento da tela de Article(atraves de um flag 'Tela' com valor
+                        //'Noticia')  para retornar para a lista de article
                         intentListaNoticias.putExtra("TELA", "NOTICIA");
 
                         startActivity(intentListaNoticias);

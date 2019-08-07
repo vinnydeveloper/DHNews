@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.home;
 
 
 import android.content.Intent;
@@ -9,27 +9,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.dhnews.R;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
-import br.com.dhnews.adapters.RecyclerViewLerDepoisAdapter;
-import br.com.dhnews.view.DetalheLerDepoisActivity;
-import br.com.dhnews.model.Noticias;
+import br.com.dhnews.R;
+import br.com.dhnews.adapters.RecyclerViewNoticiasAdapter;
+import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Usuario;
+import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LerDepoisFragment extends Fragment implements RecyclerViewClickListener {
+public class HomeFragment extends Fragment implements RecyclerViewClickListener {
 
-    private ImageButton btnRemoverNoticia;
-    RecyclerViewLerDepoisAdapter adapter;
-
-    public LerDepoisFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -38,49 +36,43 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_ler_depois, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // Add findViewById para recycler
-        RecyclerView recyclerViewNoticias = view.findViewById(R.id.recyclerViewMark);
+        RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        adapter = new RecyclerViewLerDepoisAdapter(getNoticias(), this);
+        RecyclerViewNoticiasAdapter adapter;
+    //    adapter = new RecyclerViewNoticiasAdapter(getNoticias());
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        recyclerViewNoticias.setAdapter(adapter);
-
-        btnRemoverNoticia = view.findViewById(R.id.btnBookMarkLerDepois);
+       // recyclerViewNoticias.setAdapter(adapter);
 
         return view;
     }
 
-    //Recebe lista
-    private List<Noticias> getNoticias() {
+    private List<Article> getNoticias() {
 
-        List<Noticias> noticias = new ArrayList<>();
+        List<Article> noticias = new ArrayList<>();
 
-        noticias.add(new Noticias("Vaga no Supremo",
-                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
-
-        noticias.add(new Noticias("Investigação no RJ",
+  
+        noticias.add(new Article("Investigação no RJ",
                 "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
 
-        noticias.add(new Noticias("Educação",
+        noticias.add(new Article("Educação",
                 "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
                 "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
 
-        noticias.add(new Noticias("Economia",
+        noticias.add(new Article("Economia",
                 "Dólar fecha a R$ 4,03 e bolsa atinge menor pontuação do ano.",
                 "Há 5 horas   —  ", "Economia", R.drawable.imagenoticia04));
 
-        noticias.add(new Noticias("Vaga no Supremo",
+        noticias.add(new Article("Vaga no Supremo",
                 "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
                 "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
 
-        noticias.add(new Noticias("Educação",
+        noticias.add(new Article("Educação",
                 "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
                 "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
 
@@ -88,11 +80,16 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
     }
 
     @Override
-    public void onClick(Noticias noticias) {
+    public void onClick(br.com.dhnews.model.noticias.Article article) {
 
-        Intent intent = new Intent(getContext(), DetalheLerDepoisActivity.class);
+    }
 
-        intent.putExtra("NOTICIAS", noticias);
+    @Override
+    public void onClick(Article article) {
+
+        Intent intent = new Intent(getContext(), DetalheNoticiaActivity.class);
+
+        intent.putExtra("NOTICIAS", article);
 
         startActivity(intent);
 
@@ -101,5 +98,12 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
     @Override
     public void onClick(Usuario usuario) {
 
+        Intent intentLogin = new Intent(getContext(), MainActivity.class);
+
+        intentLogin.putExtra("TELA", "LOGIN");
+
+        startActivity(intentLogin);
+
     }
+
 }

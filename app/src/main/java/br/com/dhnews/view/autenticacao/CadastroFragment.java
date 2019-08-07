@@ -1,5 +1,5 @@
 
-package br.com.dhnews.view;
+package br.com.dhnews.view.autenticacao;
 
 
 import android.os.Bundle;
@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.dhnews.R;
+import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.noticias.NoticiasFragment;
 
 /**
  * A simple {@link Fragment} subclass.

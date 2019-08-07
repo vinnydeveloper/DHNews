@@ -1,4 +1,4 @@
-package br.com.dhnews.view;
+package br.com.dhnews.view.pesquisa;
 
 import android.content.Context;
 import android.os.Bundle;

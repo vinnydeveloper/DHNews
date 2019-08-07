@@ -19,7 +19,7 @@ import java.util.List;
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.model.noticias.Source;
-import br.com.dhnews.view.DetalheNoticiaActivity;
+import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
 
 import static br.com.dhnews.util.AppUtil.formatarData;
 
