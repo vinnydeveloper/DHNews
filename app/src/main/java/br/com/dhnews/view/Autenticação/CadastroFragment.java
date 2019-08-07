@@ -28,6 +28,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import br.com.dhnews.R;
 import br.com.dhnews.view.Home.HomeFragment;
 import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.Noticias.NoticiasFragment;
 
 /**
  * A simple {@link Fragment} subclass.

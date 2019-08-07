@@ -1,5 +1,6 @@
 package br.com.dhnews.view.Noticias;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,19 +24,16 @@ import static br.com.dhnews.util.AppUtil.formatarData;
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
     //Declaracao de atributos
-
     private TextView textViewTituloDetalheNoticia;
+    //  private TextView textViewSubTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
-    private TextView textViewFonteDetalheNoticia;
+    // private TextView textViewAssuntoDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
     private ImageView imageViewDetalheNoticia;
-    private AppBarLayout appBarLayout;
     private Noticias noticias;
-    private Article result;
-    private Toolbar toolbar;
     private View textViewFonteNoticia;
 
     @Override
@@ -43,10 +41,8 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_noticia);
 
-
         //Metodo para inicializar as Views
         initViews();
-        setSupportActionBar(toolbar);
 
         //Valido se veio algum dado na intent
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -69,31 +65,33 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         }
     }
 
-    //  @SuppressLint("WrongViewCast")
+    @SuppressLint("WrongViewCast")
     private void initViews() {
-        toolbar = findViewById(R.id.toolbar);
-        imageViewBackDetalheNoticia = findViewById(R.id.imageBack);
-        imageViewDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
-        appBarLayout = findViewById(R.id.appBar);
-        textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
-
-
         textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
+        //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
         textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
-        textViewFonteDetalheNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
+        //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
+        textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
+        imageViewBackDetalheNoticia = findViewById(R.id.imageBack);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
+        imageViewDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
+        textViewFonteNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
     }
 
     private void retornaDetalheListaNoticias(Article noticias) {
 
-        textViewTituloDetalheNoticia.setText(result.getTitle());
-        textViewHorarioDetalheNoticia.setText(formatarData(noticias.getPublishedAt()));
+        textViewTituloDetalheNoticia.setText(noticias.getTitle());
+
+        // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
+
+        textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
+
+        // textViewAssuntoDetalheNoticia.setText("Vinicus");
 
         // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
-        //   toolbar.setTitle(noticias.getTitle());
 
         if (noticias.getUrlToImage() != null) {
 

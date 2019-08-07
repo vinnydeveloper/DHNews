@@ -33,7 +33,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.256"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="198dp" />
+        tools:layout_editor_absoluteY="198dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewInteresses"
