@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutUsuario"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/perfilusuario"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,10 +31,7 @@
         android:textColor="#000000"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="198dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewInteresses"
@@ -62,22 +59,17 @@
         tools:layout_editor_absoluteX="16dp" />
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:orientation="vertical"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/view"-->
+        <!--app:layout_constraintVertical_bias="1.0">-->
 
             <CheckBox
                 android:id="@+id/checkPoliticas"
@@ -140,6 +132,16 @@
                 android:text="Culinária"
                 android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/btnInteresse"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:text="Selecionar Interesses"
+        />
+
             <Button
                 android:id="@+id/btnDesconectarConta"
                 android:layout_width="match_parent"
@@ -152,9 +154,8 @@
                 android:textColor="#F44336"
                 android:textSize="20sp" />
 
-        </LinearLayout>
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
