@@ -23,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UsuarioFragment extends Fragment {
     CircleImageView circleImageViewUser;
     TextView nomeCompletoText;
-    Button  btnLogout;
+    TextView  btnLogout;
 
     private FirebaseAuth mAuth;
     public UsuarioFragment() {

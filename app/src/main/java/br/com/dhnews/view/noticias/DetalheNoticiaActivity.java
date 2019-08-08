@@ -52,7 +52,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
         //Metodo para inicializar as Views
         initViews();
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
