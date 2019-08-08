@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardViewLerDepois"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardPreventCornerOverlap="false"
@@ -13,22 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ImageView
-            android:id="@+id/imageViewNoticia"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/iconeNoticia"
+            android:layout_width="100dp"
+            android:layout_height="110dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/image"
+            android:src="@drawable/imagem_detalhe"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tituloNoticia"
+            android:id="@+id/txtTitulo"
             style="@style/TituloTheme"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -36,14 +37,14 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="TituloNoticia"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia"
+            app:layout_constraintStart_toEndOf="@+id/iconeNoticia"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/conteudoNoticia"
+            android:id="@+id/txtDescricao"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -53,15 +54,15 @@
             android:fontFamily="@font/lato"
             android:text="Descricao Noticia"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/bookmarkFavorito"
+            app:layout_constraintBottom_toTopOf="@+id/imagemBookMarkListaNoticia"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia"
-            app:layout_constraintTop_toBottomOf="@+id/tituloNoticia"
+            app:layout_constraintStart_toEndOf="@+id/iconeNoticia"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitulo"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/horarioNoticia"
+            android:id="@+id/txtHora"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -72,10 +73,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageViewNoticia" />
+            app:layout_constraintStart_toEndOf="@+id/iconeNoticia" />
 
         <TextView
-            android:id="@+id/fonteNoticia"
+            android:id="@+id/txtFonte"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -83,18 +84,18 @@
             android:layout_marginBottom="8dp"
             android:text="Politica"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/bookmarkFavorito"
+            app:layout_constraintEnd_toStartOf="@+id/imagemBookMarkListaNoticia"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
-            card_view:layout_constraintStart_toEndOf="@+id/horarioNoticia" />
+            card_view:layout_constraintStart_toEndOf="@+id/txtHora" />
 
-        <ImageButton
-            android:id="@+id/bookmarkFavorito"
+        <ImageView
+            android:id="@+id/imageBookMarkFavorito"
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/ic_bookmark_black_24dp"
+            android:src="@drawable/ic_bookmark_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

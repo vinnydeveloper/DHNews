@@ -41,7 +41,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/imagedetalhenoticia" />
+                    android:src="@drawable/imagem_detalhe" />
                 <View
                     android:id="@+id/view3"
                     android:layout_width="match_parent"

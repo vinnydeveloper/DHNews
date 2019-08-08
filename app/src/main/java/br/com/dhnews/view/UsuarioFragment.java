@@ -28,7 +28,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class UsuarioFragment extends Fragment {
     CircleImageView circleImageViewUser;
     TextView nomeCompletoText;
-    Button  btnLogout;
+    TextView  btnLogout;
 
     private FirebaseAuth mAuth;
     public UsuarioFragment() {
