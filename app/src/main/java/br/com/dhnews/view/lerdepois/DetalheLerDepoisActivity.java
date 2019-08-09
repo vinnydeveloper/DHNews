@@ -59,10 +59,9 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
     private void initViews() {
         textViewTituloDetalheLerDepois = findViewById(R.id.textViewTituloDetalheLerDepois);
-        textViewSubTituloDetalheLerDepois = findViewById(R.id.textViewSubTituloDetalheLerDepois);
         textViewHorarioDetalheLerDepois = findViewById(R.id.textViewHorarioDetalheLerDepois);
         textViewAssuntoDetalheLerDepois = findViewById(R.id.textViewAssuntoDetalheLerDepois);
-        textViewConteudoDetalheLerDepois = findViewById(R.id.textViewConteudoDetalheLerDepois);
+        textViewConteudoDetalheLerDepois = findViewById(R.id.textViewConteudoNoticiaDetalhe);
         imageViewBackDetalheLerDepois = findViewById(R.id.imagemBackDetalheLerDepois);
         imageViewShareDetalheLerDepois = findViewById(R.id.imagemShareDetalheLerDepois);
         imageViewBookMarkDetalheLerDepois = findViewById(R.id.imagemBookMarkDetalheLerDepois);

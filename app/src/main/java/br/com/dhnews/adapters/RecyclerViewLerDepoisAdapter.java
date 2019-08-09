@@ -29,12 +29,10 @@ import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerViewLerDepoisAdapter.ViewHolder> {
     private List<Article> listaNoticias;
-    private FavoriteItemClick favoriteItemClick;
 
 
-    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias, FavoriteItemClick favoriteItemClick) {
+    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias) {
         this.listaNoticias = listaNoticias;
-        this.favoriteItemClick = favoriteItemClick;
 
     }
 
@@ -42,7 +40,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewLerDepoisAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate
-                (R.layout.item_ler_depois, parent, false);
+                (R.layout.layout_lista_item_noticias, parent, false);
 
         return new ViewHolder(view);
 
@@ -56,7 +54,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         viewHolder.itemView.setOnClickListener(v -> {
             String transitionName = "image_" + position;
             Intent intent = new Intent(viewHolder.itemView.getContext(),
-                    DetalheLerDepoisActivity.class);
+                    DetalheNoticiaActivity.class);
             intent.putExtra("NOTICIAS", result);
             intent.putExtra("transitionName", transitionName);
 
@@ -70,17 +68,6 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         });
     }
 
-    public void update(List<Article> resultList) {
-        this.listaNoticias = resultList;
-        notifyDataSetChanged();
-
-    }
-
-    public void removeItem(Noticias result) {
-        listaNoticias.remove(result);
-        notifyDataSetChanged();
-    }
-
     @Override
     public int getItemCount() {
         return listaNoticias.size();
@@ -90,7 +77,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         private TextView tituloNoticia;
         private TextView descricaoNoticia;
         private TextView horaNoticia;
-        private TextView fonteNoticia;
+        private TextView categoriaNoticia;
         private ImageView imagemNoticias;
         private ImageView imagemBookMarkListaNoticia;
 
@@ -99,16 +86,16 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
             tituloNoticia = itemView.findViewById(R.id.txtTitulo);
             descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
             horaNoticia = itemView.findViewById(R.id.txtHora);
-            fonteNoticia = itemView.findViewById(R.id.txtFonte);
+            categoriaNoticia = itemView.findViewById(R.id.txtFonte);
             imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
-            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imageBookMarkFavorito);
+            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imagemBookMarkListaNoticia);
         }
 
         public void bind(Article result) {
 
 
-            //Source autor = result.getSource();
-            //fonteNoticia.setText(autor.getName());
+            // Source autor = result.getSource();
+            // categoriaNoticia.setText(autor.getName());
             tituloNoticia.setText(result.getTitle());
             horaNoticia.setText(formatarData(result.getPublishedAt()));
             descricaoNoticia.setText(result.getDescription());
@@ -125,6 +112,14 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         }
     }
 
+    public void update(List<Article> resultList) {
+        this.listaNoticias = resultList;
+        notifyDataSetChanged();
 
+    }
+
+    public void clear() {
+        this.listaNoticias.clear();
+        notifyDataSetChanged();
+    }
 }
-
