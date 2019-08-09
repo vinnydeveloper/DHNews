@@ -1,4 +1,4 @@
-package br.com.dhnews.view.Splash;
+package br.com.dhnews.view.splash;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;

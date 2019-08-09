@@ -9,11 +9,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.dhnews.R;
-import br.com.dhnews.view.Autenticação.LoginFragment;
+import br.com.dhnews.view.autenticacao.LoginFragment;
 import br.com.dhnews.view.Favoritos.FavoritosFragment;
-import br.com.dhnews.view.Home.HomeFragment;
-import br.com.dhnews.view.Noticias.NoticiasFragment;
-import br.com.dhnews.view.Pesquisa.PesquisaFragment;
+import br.com.dhnews.view.home.HomeFragment;
+import br.com.dhnews.view.noticias.NoticiasFragment;
+import br.com.dhnews.view.pesquisa.PesquisaFragment;
 
 public class MainActivity extends AppCompatActivity {
 

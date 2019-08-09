@@ -1,4 +1,4 @@
-package br.com.dhnews.view.Home;
+package br.com.dhnews.view.home;
 
 
 import android.content.Intent;
@@ -19,7 +19,7 @@ import br.com.dhnews.adapters.RecyclerViewNoticiasAdapter;
 import br.com.dhnews.model.Noticias;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.view.MainActivity;
-import br.com.dhnews.view.Noticias.DetalheNoticiaActivity;
+import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
 
 
 /**

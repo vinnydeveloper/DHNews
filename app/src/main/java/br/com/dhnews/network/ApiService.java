@@ -1,4 +1,4 @@
-package br.com.dhnews.data.network;
+package br.com.dhnews.network;
 
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;

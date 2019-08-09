@@ -1,4 +1,4 @@
-package br.com.dhnews.view.noticias;
+package br.com.dhnews.view.Noticias;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -18,6 +18,8 @@ import br.com.dhnews.model.Noticias;
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.MainActivity;
+
+import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 

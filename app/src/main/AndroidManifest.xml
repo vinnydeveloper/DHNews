@@ -17,7 +17,7 @@
             android:label="@string/title_activity_home_activy"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.Splash.SplashActivity"
+            android:name=".view.splash.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".view.Noticias.DetalheNoticiaActivity" />
+        <activity android:name=".view.noticias.DetalheNoticiaActivity" />
     </application>
 
 </manifest>

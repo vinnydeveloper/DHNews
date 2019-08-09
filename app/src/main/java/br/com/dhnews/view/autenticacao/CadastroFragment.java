@@ -1,5 +1,5 @@
 
-package br.com.dhnews.view.Autenticação;
+package br.com.dhnews.view.autenticacao;
 
 
 import android.os.Bundle;
@@ -13,22 +13,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.dhnews.R;
-import br.com.dhnews.view.Home.HomeFragment;
 import br.com.dhnews.view.MainActivity;
-import br.com.dhnews.view.Noticias.NoticiasFragment;
+import br.com.dhnews.view.noticias.NoticiasFragment;
 
 /**
  * A simple {@link Fragment} subclass.

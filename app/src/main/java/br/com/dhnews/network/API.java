@@ -1,4 +1,4 @@
-package br.com.dhnews.data.network;
+package br.com.dhnews.network;
 
 import br.com.dhnews.model.noticias.Noticias;
 import io.reactivex.Observable;
