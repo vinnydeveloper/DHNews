@@ -17,19 +17,24 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import br.com.dhnews.R;
+import br.com.dhnews.interfaces.FavoriteItemClick;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.model.noticias.Article;
+import br.com.dhnews.model.noticias.Noticias;
 import br.com.dhnews.model.noticias.Source;
+import br.com.dhnews.view.lerdepois.DetalheLerDepoisActivity;
 import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
 
 import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerViewLerDepoisAdapter.ViewHolder> {
     private List<Article> listaNoticias;
+    private FavoriteItemClick favoriteItemClick;
 
 
-    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias) {
+    public RecyclerViewLerDepoisAdapter(List<Article> listaNoticias, FavoriteItemClick favoriteItemClick) {
         this.listaNoticias = listaNoticias;
+        this.favoriteItemClick = favoriteItemClick;
 
     }
 
@@ -51,7 +56,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         viewHolder.itemView.setOnClickListener(v -> {
             String transitionName = "image_" + position;
             Intent intent = new Intent(viewHolder.itemView.getContext(),
-                    DetalheNoticiaActivity.class);
+                    DetalheLerDepoisActivity.class);
             intent.putExtra("NOTICIAS", result);
             intent.putExtra("transitionName", transitionName);
 
@@ -63,6 +68,17 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
 
             viewHolder.itemView.getContext().startActivity(intent, options.toBundle());
         });
+    }
+
+    public void update(List<Article> resultList) {
+        this.listaNoticias = resultList;
+        notifyDataSetChanged();
+
+    }
+
+    public void removeItem(Noticias result) {
+        listaNoticias.remove(result);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -109,15 +125,6 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         }
     }
 
-    public void update(List<Article> resultList) {
-        this.listaNoticias = resultList;
-        notifyDataSetChanged();
 
-    }
-
-    public void clear() {
-        this.listaNoticias.clear();
-        notifyDataSetChanged();
-    }
 }
 

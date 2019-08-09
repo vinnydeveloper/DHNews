@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -27,7 +26,7 @@ public class UsuarioFragment extends Fragment {
     private GoogleSignInClient googleSignInClient;
     CircleImageView circleImageViewUser;
     TextView nomeCompletoText;
-    TextView  btnLogout;
+    TextView textViewLogout;
 
     private FirebaseAuth mAuth;
     public UsuarioFragment() {
@@ -44,8 +43,8 @@ public class UsuarioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_usuario, container, false);
 
         circleImageViewUser = view.findViewById(R.id.circleImageViewUser);
-        nomeCompletoText = view.findViewById(R.id.nomeCompletoText);
-        btnLogout = view.findViewById(R.id.btnDesconectarConta);
+        nomeCompletoText = view.findViewById(R.id.textViewNomeCompleto);
+        textViewLogout = view.findViewById(R.id.textViewDesconectarConta);
 
         FirebaseUser user = mAuth.getCurrentUser();
 
@@ -54,7 +53,7 @@ public class UsuarioFragment extends Fragment {
 
         }
 
-        btnLogout.setOnClickListener(v->{
+        textViewLogout.setOnClickListener(v->{
             mAuth.signOut();
             ((MainActivity) getActivity()).replaceFragment(new LoginFragment());
         });

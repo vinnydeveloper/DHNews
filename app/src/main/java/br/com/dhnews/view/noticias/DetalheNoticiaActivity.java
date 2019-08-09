@@ -50,6 +50,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalhe_noticia);
 
 
+
         //Metodo para inicializar as Views
         initViews();
         //setSupportActionBar(toolbar);

@@ -53,7 +53,7 @@ public class UsuarioActivity extends AppCompatActivity {
     public void initViews() {
         circleImage = findViewById(R.id.circleImageView);
         checkCulinaria = findViewById(R.id.checkCulinaria);
-        btnDesconectarConta = findViewById(R.id.btnDesconectarConta);
+        btnDesconectarConta = findViewById(R.id.textViewDesconectarConta);
         btnBackUser = findViewById(R.id.imagemBackUser);
     }
 

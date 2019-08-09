@@ -31,7 +31,6 @@
                 android:background="#fff">
 
 
-
                 <ImageView
                     android:id="@+id/imagemNoticiaLerDepois"
                     android:layout_width="match_parent"

@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/nomeCompletoText"
+        android:id="@+id/textViewNomeCompleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -32,7 +32,7 @@
         android:textSize="26sp" />
 
     <TextView
-        android:id="@+id/btnDesconectarConta"
+        android:id="@+id/textViewDesconectarConta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Desconectar da conta"
