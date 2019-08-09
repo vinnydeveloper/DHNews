@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,6 +22,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * A simple {@link Fragment} subclass.
  */
 public class UsuarioFragment extends Fragment {
+
+    public static final String GOOGLE_ACCOUNT = "google_account";
+    private GoogleSignInClient googleSignInClient;
     CircleImageView circleImageViewUser;
     TextView nomeCompletoText;
     TextView  btnLogout;

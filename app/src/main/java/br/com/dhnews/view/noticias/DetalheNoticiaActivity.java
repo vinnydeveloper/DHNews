@@ -1,6 +1,5 @@
 package br.com.dhnews.view.noticias;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -95,7 +94,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
         textViewFonteDetalheNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
-        imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
+        imageViewBookMarkDetalheNoticia = findViewById(R.id.imageBookmarkLerDepois);
     }
 
     private void retornaDetalheListaNoticias(Article noticias) {

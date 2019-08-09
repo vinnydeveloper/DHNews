@@ -54,7 +54,7 @@
             android:fontFamily="@font/lato"
             android:text="Descricao Noticia"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/imagemBookMarkListaNoticia"
+            app:layout_constraintBottom_toTopOf="@+id/imageBookMarkFavorito"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/iconeNoticia"
@@ -84,7 +84,7 @@
             android:layout_marginBottom="8dp"
             android:text="Politica"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/imagemBookMarkListaNoticia"
+            app:layout_constraintEnd_toStartOf="@+id/imageBookMarkFavorito"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toEndOf="@+id/txtHora" />

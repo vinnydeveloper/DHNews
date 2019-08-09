@@ -37,7 +37,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewLerDepoisAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate
-                (R.layout.layout_lista_item_noticias, parent, false);
+                (R.layout.item_ler_depois, parent, false);
 
         return new ViewHolder(view);
 
@@ -74,7 +74,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         private TextView tituloNoticia;
         private TextView descricaoNoticia;
         private TextView horaNoticia;
-        private TextView categoriaNoticia;
+        private TextView fonteNoticia;
         private ImageView imagemNoticias;
         private ImageView imagemBookMarkListaNoticia;
 
@@ -83,16 +83,16 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
             tituloNoticia = itemView.findViewById(R.id.txtTitulo);
             descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
             horaNoticia = itemView.findViewById(R.id.txtHora);
-            categoriaNoticia = itemView.findViewById(R.id.txtFonte);
+            fonteNoticia = itemView.findViewById(R.id.txtFonte);
             imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
-            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imagemBookMarkListaNoticia);
+            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imageBookMarkFavorito);
         }
 
         public void bind(Article result) {
 
 
-           // Source autor = result.getSource();
-           // categoriaNoticia.setText(autor.getName());
+            //Source autor = result.getSource();
+            //fonteNoticia.setText(autor.getName());
             tituloNoticia.setText(result.getTitle());
             horaNoticia.setText(formatarData(result.getPublishedAt()));
             descricaoNoticia.setText(result.getDescription());
