@@ -119,7 +119,7 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
        }
    }
         public void update(List<Article> resultList) {
-            this.listaNoticias = resultList;
+            this.listaNoticias.addAll(resultList);
             notifyDataSetChanged();
 
         }

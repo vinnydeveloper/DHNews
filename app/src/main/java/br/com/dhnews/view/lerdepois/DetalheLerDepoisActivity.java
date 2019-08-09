@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import br.com.dhnews.R;
-import br.com.dhnews.model.Article;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.MainActivity;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
@@ -71,17 +71,15 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
     private void retornaDetalheListaLerDepois(Article article) {
 
-        textViewTituloDetalheLerDepois.setText(article.getTituloNoticia());
+        textViewTituloDetalheLerDepois.setText(article.getTitle());
 
-        textViewSubTituloDetalheLerDepois.setText(article.getDescricaoNoticia());
+        textViewSubTituloDetalheLerDepois.setText(article.getDescription());
 
-        textViewHorarioDetalheLerDepois.setText(article.getHoraNoticia());
+        textViewHorarioDetalheLerDepois.setText(article.getPublishedAt());
 
-        textViewAssuntoDetalheLerDepois.setText(article.getAssuntoNoticia());
+        textViewConteudoDetalheLerDepois.setText(article.getContent());
 
-        textViewConteudoDetalheLerDepois.setText(article.getDescricaoNoticia());
-
-        imageViewFotoDetalheLerDepois.setImageResource(article.getImagemNoticias());
+        //imageViewFotoDetalheLerDepois.setImageResource(article.getUrlToImage());
 
     }
 

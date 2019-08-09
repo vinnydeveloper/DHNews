@@ -78,13 +78,13 @@
 
 
     <CheckBox
-        android:id="@+id/checkPoliticas"
+        android:id="@+id/checkCiencia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Política"
+        android:text="Ciencia"
         android:textSize="18sp" />
 
     <CheckBox
@@ -119,23 +119,23 @@
         android:textSize="18sp" />
 
     <CheckBox
-        android:id="@+id/checkModa"
+        android:id="@+id/checkSaude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Moda"
+        android:text="Saude"
         android:textSize="18sp" />
 
     <CheckBox
-        android:id="@+id/checkCulinaria"
+        android:id="@+id/checkNegocios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Culinária"
+        android:text="Negocios"
         android:textSize="18sp" />
 
     <Button

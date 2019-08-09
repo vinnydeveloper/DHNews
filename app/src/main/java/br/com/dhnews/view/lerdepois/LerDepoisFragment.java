@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +30,10 @@ import br.com.dhnews.adapters.RecyclerViewLerDepoisAdapter;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.model.noticias.Article;
+import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.autenticacao.LoginFragment;
+import br.com.dhnews.view.autenticacao.UsuarioFragment;
+import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +65,13 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user == null ){
+            ((MainActivity) getActivity()).replaceFragment(new LoginFragment());
+            Toast.makeText(((MainActivity) getActivity()).getApplicationContext(), "Faça login ou se cadastre para ter acesso ao recurso!", Toast.LENGTH_LONG).show();
+            return view;
+
+        }
         recyclerViewNoticias.setAdapter(adapter);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("noticias").child(user.getUid()).child("items");
         ValueEventListener articletListener = new ValueEventListener() {
@@ -112,10 +124,6 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
 
     }
 
-    @Override
-    public void onClick(br.com.dhnews.model.Article article) {
-
-    }
 
     @Override
     public void onClick(Usuario usuario) {

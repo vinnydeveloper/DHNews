@@ -4,29 +4,52 @@ package br.com.dhnews.view.home;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.dhnews.adapters.RecyclerViewLerDepoisAdapter;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.R;
 import br.com.dhnews.adapters.RecyclerViewNoticiasAdapter;
-import br.com.dhnews.model.Article;
 import br.com.dhnews.model.Usuario;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.autenticacao.LoginFragment;
 import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
+import br.com.dhnews.viewmodel.NoticiasViewModel;
+
+import static br.com.dhnews.util.AppUtil.isNetworkConnected;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements RecyclerViewClickListener {
-
+    private List<Article> noticiasList = new ArrayList<>();
+    RecyclerViewNoticiasAdapter adapter;
+    private NoticiasViewModel viewModel;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private List<String> favoritos;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -42,47 +65,56 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
         RecyclerView recyclerViewNoticias = view.findViewById(R.id.listaNoticiasRecyclerView);
 
         // Configurar recyclerview e adapater
-        RecyclerViewNoticiasAdapter adapter;
-    //    adapter = new RecyclerViewNoticiasAdapter(getNoticias());
+
+        adapter = new RecyclerViewNoticiasAdapter(noticiasList);
 
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
-       // recyclerViewNoticias.setAdapter(adapter);
+        recyclerViewNoticias.setAdapter(adapter);
+
+        viewModel = ViewModelProviders.of(this).get(NoticiasViewModel.class);
+
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null ){
+            ((MainActivity) getActivity()).replaceFragment(new LoginFragment());
+            Toast.makeText(((MainActivity) getActivity()).getApplicationContext(), "Faça login ou se cadastre para ter acesso ao recurso!", Toast.LENGTH_LONG).show();
+            return view;
+
+        }
+
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("noticias").child(user.getUid()).child("favoritos");
+        ValueEventListener articletListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                List<Article> noticias = new ArrayList<>();
+                for(DataSnapshot templateSnapshot : dataSnapshot.getChildren()) {
+
+                    // I've tried a million different things here, but all result in the error
+                    // This is the error line
+                    String item = templateSnapshot.getValue(String.class);
+
+                    viewModel.getNoticiasFavoritas(item, 2);
+                    viewModel.getResults().observe(getViewLifecycleOwner(), results -> adapter.update(results));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("ERRO", "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        mDatabase.addValueEventListener(articletListener);
 
         return view;
     }
 
-    private List<Article> getNoticias() {
 
-        List<Article> noticias = new ArrayList<>();
 
-  
-        noticias.add(new Article("Investigação no RJ",
-                "'Querem me atingir', diz Bolsonaro sobre quebra do sigilo de Flávio.",
-                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias02));
-
-        noticias.add(new Article("Educação",
-                "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
-
-        noticias.add(new Article("Economia",
-                "Dólar fecha a R$ 4,03 e bolsa atinge menor pontuação do ano.",
-                "Há 5 horas   —  ", "Economia", R.drawable.imagenoticia04));
-
-        noticias.add(new Article("Vaga no Supremo",
-                "Bolsonaro nega que tenha feito 'acordo' para indicar Moro ao STF.",
-                "Há 2 horas   —  ", "Política", R.drawable.imagenoticias01));
-
-        noticias.add(new Article("Educação",
-                "Presidente do Inep pede demissão após menos de 1 mês no cargo.",
-                "Há 2 horas   —  ", "Educação", R.drawable.imagenoticia03));
-
-        return noticias;
-    }
-
-    @Override
-    public void onClick(br.com.dhnews.model.noticias.Article article) {
-
-    }
 
     @Override
     public void onClick(Article article) {

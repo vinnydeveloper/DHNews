@@ -40,4 +40,7 @@ public class NoticiasRepository {
     public Observable<Noticias> searchItems(String item, int limite) {
         return ApiService.getApiService().buscaNoticia(item, 10,"pt", PUBLIC_KEY);
     }
+    public Observable<Noticias> getNoticiasFavoritas(String categoria, int limite) {
+        return ApiService.getApiService().buscaNoticia(categoria, 2,"pt", PUBLIC_KEY);
+    }
 }
