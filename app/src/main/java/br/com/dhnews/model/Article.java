@@ -3,7 +3,7 @@ package br.com.dhnews.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Noticias implements Parcelable {
+public class Article implements Parcelable {
 
     private String tituloNoticia;
     private String descricaoNoticia;
@@ -11,11 +11,11 @@ public class Noticias implements Parcelable {
     private String assuntoNoticia;
     private int imagemNoticias;
 
-    public Noticias() {
+    public Article() {
     }
 
-    public Noticias(String tituloNoticia, String descricaoNoticia, String horaNoticia,
-                    String assuntoNoticia, int imagemNoticias) {
+    public Article(String tituloNoticia, String descricaoNoticia, String horaNoticia,
+                   String assuntoNoticia, int imagemNoticias) {
         this.tituloNoticia = tituloNoticia;
         this.descricaoNoticia = descricaoNoticia;
         this.horaNoticia = horaNoticia;
@@ -23,7 +23,7 @@ public class Noticias implements Parcelable {
         this.imagemNoticias = imagemNoticias;
     }
 
-    protected Noticias(Parcel in) {
+    protected Article(Parcel in) {
         tituloNoticia = in.readString();
         descricaoNoticia = in.readString();
         horaNoticia = in.readString();
@@ -31,15 +31,15 @@ public class Noticias implements Parcelable {
         imagemNoticias = in.readInt();
     }
 
-    public static final Creator<Noticias> CREATOR = new Creator<Noticias>() {
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
         @Override
-        public Noticias createFromParcel(Parcel in) {
-            return new Noticias(in);
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
         }
 
         @Override
-        public Noticias[] newArray(int size) {
-            return new Noticias[size];
+        public Article[] newArray(int size) {
+            return new Article[size];
         }
     };
 

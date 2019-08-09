@@ -2,20 +2,19 @@ package br.com.dhnews.view.autenticacao;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import br.com.dhnews.R;
 import br.com.dhnews.view.MainActivity;
-import br.com.dhnews.view.autenticacao.LoginFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**

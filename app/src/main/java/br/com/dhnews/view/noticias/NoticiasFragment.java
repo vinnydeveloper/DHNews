@@ -70,8 +70,12 @@ public class NoticiasFragment extends Fragment implements RecyclerViewClickListe
 
 
     @Override
-    public void onClick(br.com.dhnews.model.Noticias noticias) {
+    public void onClick(Article article) {
 
+    }
+
+    @Override
+    public void onClick(br.com.dhnews.model.Article article) {
     }
 
     @Override

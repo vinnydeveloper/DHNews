@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.lerdepois.DetalheLerDepoisActivity"></activity>
+        <activity android:name=".view.lerdepois.LerDepoisActivity" />
+        <activity android:name=".view.autenticacao.UsuarioActivity" />
         <activity
             android:name=".view.MainActivity"
             android:label="@string/title_activity_home_activy"

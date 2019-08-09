@@ -1,58 +1,63 @@
-package br.com.dhnews.view.Noticias;
+package br.com.dhnews.view.noticias;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import br.com.dhnews.model.Noticias;
+import java.util.Random;
+
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
+import br.com.dhnews.model.noticias.Noticias;
 import br.com.dhnews.view.MainActivity;
 
 import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class DetalheNoticiaActivity extends AppCompatActivity {
 
-    //TextView
+    //Declaracao de atributos
     private TextView textViewTituloDetalheNoticia;
     private TextView textViewHorarioDetalheNoticia;
+    private TextView textViewFonteDetalheNoticia;
     private TextView textViewConteudoDetalheNoticia;
-    private TextView textViewFonteNoticia;
-
-
-    //ImageView
     private ImageView imageViewBackDetalheNoticia;
     private ImageView imageViewShareDetalheNoticia;
     private ImageView imageViewBookMarkDetalheNoticia;
     private ImageView imageViewDetalheNoticia;
-
-
-    //Toolbar
-    private Toolbar toolbar;
     private AppBarLayout appBarLayout;
-
-
-    //Data
     private Noticias noticias;
-    private Article result;
+    private Toolbar toolbar;
+    private View textViewFonteNoticia;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_noticia);
 
+
         //Metodo para inicializar as Views
         initViews();
+        //setSupportActionBar(toolbar);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
+
 
         //Valido se veio algum dado na intent
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -70,38 +75,40 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
 
 
                 //Metodo para chamar a tela de LoginFragment para cadastrar da opcao ler noticia depois
-                cadastraLerDepois();
+
+                imageViewBookMarkDetalheNoticia.setOnClickListener(v->cadastraLerDepois(noticias));
             }
         }
     }
 
-    @SuppressLint("WrongViewCast")
+    //  @SuppressLint("WrongViewCast")
     private void initViews() {
-        textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
-        //  textViewSubTituloDetalheNoticia = findViewById(R.id.textViewSubTituloNoticiaDetalhe);
-        textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
-        //   textViewAssuntoDetalheNoticia = findViewById(R.id.textViewAssuntoNoticiaDetalhe);
-        textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
+        toolbar = findViewById(R.id.toolbar);
         imageViewBackDetalheNoticia = findViewById(R.id.imageBack);
+        imageViewDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
+        appBarLayout = findViewById(R.id.appBar);
+        textViewConteudoDetalheNoticia = findViewById(R.id.textViewConteudoNoticiaDetalhe);
+
+
+        textViewTituloDetalheNoticia = findViewById(R.id.textViewTituloNoticiaDetalhe);
+        textViewHorarioDetalheNoticia = findViewById(R.id.textViewHorarioNoticiaDetalhe);
+        textViewFonteDetalheNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
         imageViewShareDetalheNoticia = findViewById(R.id.imagemShareNoticiaDetalhe);
         imageViewBookMarkDetalheNoticia = findViewById(R.id.imagemBookMarkNoticiaDetalhe);
-        imageViewDetalheNoticia = findViewById(R.id.imagemNoticiaDetalhe);
-        textViewFonteNoticia = findViewById(R.id.textViewFonteNoticiaDetalhe);
     }
 
     private void retornaDetalheListaNoticias(Article noticias) {
 
         textViewTituloDetalheNoticia.setText(noticias.getTitle());
 
-        // textViewSubTituloDetalheNoticia.setText(noticias.getDescription());
 
-        textViewHorarioDetalheNoticia.setText(noticias.getPublishedAt());
+        textViewHorarioDetalheNoticia.setText(formatarData(noticias.getPublishedAt()));
 
-        // textViewAssuntoDetalheNoticia.setText("Vinicus");
 
         // textViewFonteNoticia.setText(noticias.getSource());
         textViewConteudoDetalheNoticia.setText(noticias.getContent());
 
+        //   toolbar.setTitle(noticias.getTitle());
 
         if (noticias.getUrlToImage() != null) {
 
@@ -122,14 +129,14 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Chama a tela com a Lista de Noticias
+                //Chama a tela com a Lista de Article
 
                 //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
                 //chamar a tela/fragmento correspondente
                 Intent intentListaNoticias = new Intent(
                         DetalheNoticiaActivity.this, MainActivity.class);
 
-                //Chama o fragmento da tela de Noticias(atraves de um flag 'Tela' com valor
+                //Chama o fragmento da tela de Article(atraves de um flag 'Tela' com valor
                 //'Noticia')  para retornar para a lista de noticias
                 intentListaNoticias.putExtra("TELA", "NOTICIA");
 
@@ -162,22 +169,16 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         });
     }
 
-    private void cadastraLerDepois() {
-        imageViewBookMarkDetalheNoticia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void cadastraLerDepois(Article article) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        Random random = new Random();
+        DatabaseReference mNoticias = FirebaseDatabase.getInstance().getReference()
+                .child("noticias")
+                .child(user.getUid())
+                .child("items").child(Integer.toString(random.nextInt(10)));
+        mNoticias.setValue(article);
+        Toast.makeText(this, "Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
 
-                //Chama a Main Activity que verifica qual opcao do Menu Principal foi acionado para
-                //chamar a tela/fragmento correspondente
-                Intent intentLerDepois = new Intent(
-                        DetalheNoticiaActivity.this, MainActivity.class);
-
-                //Chama o fragmento da tela de LoginFragment(atraves de um flag 'Tela' com valor 'LoginFragment')
-                //para cadastrar o ler noticia depois
-                intentLerDepois.putExtra("TELA", "LOGIN");
-
-                startActivity(intentLerDepois);
-            }
-        });
     }
+
 }
