@@ -82,6 +82,19 @@ public class NoticiasViewModel extends AndroidViewModel {
         );
     }
 
+    public void getNoticiasFavoritas(String categoria, int limite) {
+
+        disposable.add(
+                repository.getNoticiasFavoritas(categoria, limite)
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(disposable1 -> loadingLiveData.setValue(true))
+                        .doAfterTerminate(() -> loadingLiveData.setValue(false))
+                        .subscribe(noticias -> resultLiveData.setValue(noticias.getArticles())
+                                , throwable -> errorLiveData.setValue(throwable))
+        );
+    }
+
     public void getFromLocal() {
 
         // Adicionamos a chamada a um disposible para podermos eliminar o disposable da destruição do viewmodel

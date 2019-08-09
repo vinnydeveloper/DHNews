@@ -4,23 +4,20 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.appbar.AppBarLayout;
-
 import br.com.dhnews.R;
-import br.com.dhnews.model.Article;
+import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.MainActivity;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
 
     //Declaracao de atributos
     private TextView textViewTituloDetalheLerDepois;
+    private TextView textViewSubTituloDetalheLerDepois;
     private TextView textViewHorarioDetalheLerDepois;
     private TextView textViewAssuntoDetalheLerDepois;
     private TextView textViewConteudoDetalheLerDepois;
@@ -28,8 +25,6 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
     private ImageView imageViewShareDetalheLerDepois;
     private ImageView imageViewBookMarkDetalheLerDepois;
     private ImageView imageViewFotoDetalheLerDepois;
-    private AppBarLayout appBarLayout;
-    private Toolbar toolbar;
     private Article article;
 
     @Override
@@ -64,29 +59,27 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
     private void initViews() {
         textViewTituloDetalheLerDepois = findViewById(R.id.textViewTituloDetalheLerDepois);
+        textViewSubTituloDetalheLerDepois = findViewById(R.id.textViewSubTituloDetalheLerDepois);
         textViewHorarioDetalheLerDepois = findViewById(R.id.textViewHorarioDetalheLerDepois);
         textViewAssuntoDetalheLerDepois = findViewById(R.id.textViewAssuntoDetalheLerDepois);
-        textViewConteudoDetalheLerDepois = findViewById(R.id.textViewConteudoNoticiaDetalhe);
-        imageViewBackDetalheLerDepois = findViewById(R.id.imageBackDetalheLerDepois);
-        imageViewShareDetalheLerDepois = findViewById(R.id.imageShareDetalheLerDepois);
-        imageViewBookMarkDetalheLerDepois = findViewById(R.id.imageBookmarkLerDepois);
-        imageViewFotoDetalheLerDepois = findViewById(R.id.imagemNoticiaLerDepois);
-        appBarLayout = findViewById(R.id.appBar);
-        toolbar = findViewById(R.id.toolbar);
-
+        textViewConteudoDetalheLerDepois = findViewById(R.id.textViewConteudoDetalheLerDepois);
+        imageViewBackDetalheLerDepois = findViewById(R.id.imagemBackDetalheLerDepois);
+        imageViewShareDetalheLerDepois = findViewById(R.id.imagemShareDetalheLerDepois);
+        imageViewBookMarkDetalheLerDepois = findViewById(R.id.imagemBookMarkDetalheLerDepois);
+        imageViewFotoDetalheLerDepois = findViewById(R.id.imagemDetalheLerDepois);
     }
 
     private void retornaDetalheListaLerDepois(Article article) {
 
-        textViewTituloDetalheLerDepois.setText(article.getTituloNoticia());
+        textViewTituloDetalheLerDepois.setText(article.getTitle());
 
-        textViewHorarioDetalheLerDepois.setText(article.getHoraNoticia());
+        textViewSubTituloDetalheLerDepois.setText(article.getDescription());
 
-        textViewAssuntoDetalheLerDepois.setText(article.getAssuntoNoticia());
+        textViewHorarioDetalheLerDepois.setText(article.getPublishedAt());
 
-        textViewConteudoDetalheLerDepois.setText(article.getDescricaoNoticia());
+        textViewConteudoDetalheLerDepois.setText(article.getContent());
 
-        imageViewFotoDetalheLerDepois.setImageResource(article.getImagemNoticias());
+        //imageViewFotoDetalheLerDepois.setImageResource(article.getUrlToImage());
 
     }
 
@@ -136,7 +129,6 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void desmarcaLerDepois() {
         imageViewBookMarkDetalheLerDepois.setOnClickListener(new View.OnClickListener() {

@@ -19,5 +19,11 @@ public interface API {
                                       @Query("pageSize") int limite,
                                       @Query("language") String country,
                                       @Query("apikey") String apikey);
+    @GET("top-headlines")
+    Single<Noticias> getNoticias(@Query("category") String categoria,
+                                 @Query("pageSize") int limite,
+                                 @Query("language") String country,
+                                 @Query("apikey") String apikey);
+
 
 }

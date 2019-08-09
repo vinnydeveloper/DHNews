@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +30,10 @@ import br.com.dhnews.adapters.RecyclerViewLerDepoisAdapter;
 import br.com.dhnews.interfaces.RecyclerViewClickListener;
 import br.com.dhnews.model.Usuario;
 import br.com.dhnews.model.noticias.Article;
-import br.com.dhnews.model.noticias.Noticias;
+import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.autenticacao.LoginFragment;
+import br.com.dhnews.view.autenticacao.UsuarioFragment;
+import br.com.dhnews.view.noticias.DetalheNoticiaActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +41,7 @@ import br.com.dhnews.model.noticias.Noticias;
 public class LerDepoisFragment extends Fragment implements RecyclerViewClickListener {
 
     private ImageButton btnRemoverNoticia;
-    private RecyclerViewLerDepoisAdapter adapter;
+    RecyclerViewLerDepoisAdapter adapter;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
@@ -62,6 +65,13 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
         recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user == null ){
+            ((MainActivity) getActivity()).replaceFragment(new LoginFragment());
+            Toast.makeText(((MainActivity) getActivity()).getApplicationContext(), "Faça login ou se cadastre para ter acesso ao recurso!", Toast.LENGTH_LONG).show();
+            return view;
+
+        }
         recyclerViewNoticias.setAdapter(adapter);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("noticias").child(user.getUid()).child("items");
         ValueEventListener articletListener = new ValueEventListener() {
@@ -69,7 +79,7 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 List<Article> noticias = new ArrayList<>();
-                for (DataSnapshot templateSnapshot : dataSnapshot.getChildren()) {
+                for(DataSnapshot templateSnapshot : dataSnapshot.getChildren()){
 
                     // I've tried a million different things here, but all result in the error
                     // This is the error line
@@ -77,7 +87,12 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
                     noticias.add(article);
                 }
 
-                adapter.update(noticias);
+                adapter = new RecyclerViewLerDepoisAdapter(noticias);
+
+                recyclerViewNoticias.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                recyclerViewNoticias.setAdapter(adapter);
+                // ...
             }
 
 
@@ -91,58 +106,27 @@ public class LerDepoisFragment extends Fragment implements RecyclerViewClickList
         mDatabase.addValueEventListener(articletListener);
 
 
+        //btnRemoverNoticia = view.findViewById(R.id.btnBookMarkLerDepois);
+
         return view;
     }
+
+    //Recebe lista
 
     @Override
     public void onClick(Article article) {
 
+        Intent intent = new Intent(getContext(), DetalheLerDepoisActivity.class);
+
+        intent.putExtra("NOTICIAS", article);
+
+        startActivity(intent);
+
     }
 
-    @Override
-    public void onClick(br.com.dhnews.model.Article article) {
-
-    }
 
     @Override
     public void onClick(Usuario usuario) {
 
     }
-
-    //Recebe lista
-
-
-//    public void removeFavoriteClickListener(Noticias result) {
-//
-//        // Pegamos a instancia do firebase, objeto necessario para salvar no banco de dados
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//
-//        // pegamos a referencia para onde no firebase queremos salvar nossos dados
-//        DatabaseReference reference = database.getReference("favorites");
-//
-//        // Adicionamos o listener par pegar os resultados do firebase
-//        reference.orderByChild("id").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                // Quando retornar algo do firebase percorremos os dados e colocamos na lista
-//                for (DataSnapshot resultSnapshot : dataSnapshot.getChildren()) {
-//                    Noticias resultFirebase = resultSnapshot.getValue(Noticias.class);
-//
-//                    // Se acho o mesmo id removemos o item
-//                    if (result.getId().equals(resultFirebase.getId())) {
-//                        resultSnapshot.getRef().removeValue();
-//                        adapter.removeItem(result);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 }
-
-

@@ -23,6 +23,7 @@ import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.model.noticias.Noticias;
 import br.com.dhnews.view.MainActivity;
+import br.com.dhnews.view.autenticacao.UsuarioFragment;
 
 import static br.com.dhnews.util.AppUtil.formatarData;
 
@@ -170,8 +171,17 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
         });
     }
 
-    private void cadastraLerDepois(Article article) {
+    private String cadastraLerDepois(Article article) {
         FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null ){
+            Intent intentListaNoticias = new Intent(
+                    DetalheNoticiaActivity.this, MainActivity.class);
+            intentListaNoticias.putExtra("TELA", "LOGIN");
+            Toast.makeText(this, "Faça login ou se cadastre para ter acesso ao recurso!", Toast.LENGTH_LONG).show();
+            startActivity(intentListaNoticias);
+
+            return "deu ruim";
+        }
         Random random = new Random();
         DatabaseReference mNoticias = FirebaseDatabase.getInstance().getReference()
                 .child("noticias")
@@ -179,7 +189,7 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
                 .child("items").child(Integer.toString(random.nextInt(10)));
         mNoticias.setValue(article);
         Toast.makeText(this, "Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
-
+        return "deu bom";
     }
 
 }

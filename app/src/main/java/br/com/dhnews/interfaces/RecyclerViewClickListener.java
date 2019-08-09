@@ -6,7 +6,6 @@ import br.com.dhnews.model.Usuario;
 public interface RecyclerViewClickListener {
 
     void onClick(Article article);
-    void onClick(br.com.dhnews.model.Article article);
 
     void onClick(Usuario usuario);
 }
