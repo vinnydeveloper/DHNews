@@ -179,7 +179,6 @@ public class DetalheNoticiaActivity extends AppCompatActivity {
             intentListaNoticias.putExtra("TELA", "LOGIN");
             Toast.makeText(this, "Faça login ou se cadastre para ter acesso ao recurso!", Toast.LENGTH_LONG).show();
             startActivity(intentListaNoticias);
-
             return "deu ruim";
         }
         Random random = new Random();

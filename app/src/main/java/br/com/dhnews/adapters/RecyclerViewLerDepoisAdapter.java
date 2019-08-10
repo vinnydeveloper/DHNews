@@ -40,7 +40,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewLerDepoisAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate
-                (R.layout.layout_lista_item_noticias, parent, false);
+                (R.layout.item_favoritos, parent, false);
 
         return new ViewHolder(view);
 
@@ -54,7 +54,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
         viewHolder.itemView.setOnClickListener(v -> {
             String transitionName = "image_" + position;
             Intent intent = new Intent(viewHolder.itemView.getContext(),
-                    DetalheNoticiaActivity.class);
+                    DetalheLerDepoisActivity.class);
             intent.putExtra("NOTICIAS", result);
             intent.putExtra("transitionName", transitionName);
 

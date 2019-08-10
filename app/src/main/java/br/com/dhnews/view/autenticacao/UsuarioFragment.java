@@ -2,6 +2,7 @@ package br.com.dhnews.view.autenticacao;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +15,11 @@ import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,7 @@ public class UsuarioFragment extends Fragment {
     CheckBox checkEntre;
     CheckBox checkSaude;
     CheckBox checkNegocios;
+    private DatabaseReference mDatabase;
 
 
     private FirebaseAuth mAuth;
@@ -67,7 +72,7 @@ public class UsuarioFragment extends Fragment {
         checkEntre = view.findViewById(R.id.checkEntre);
         checkSaude = view.findViewById(R.id.checkSaude);
         checkNegocios = view.findViewById(R.id.checkNegocios);
-
+        mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -75,6 +80,41 @@ public class UsuarioFragment extends Fragment {
 
         if (user != null) {
             nomeCompletoText.setText(user.getDisplayName());
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("noticias").child(user.getUid()).child("favoritos");
+            ValueEventListener articletListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get Post object and use the values to update the UI
+                    List<Article> noticias = new ArrayList<>();
+                    for(DataSnapshot templateSnapshot : dataSnapshot.getChildren()) {
+
+                        // I've tried a million different things here, but all result in the error
+                        // This is the error line
+                        String item = templateSnapshot.getValue(String.class);
+                        if(item.equals("science"))
+                         checkCiencia.setChecked(true);
+                        if(item.equals("technology"))
+                        checkTec.setChecked(true);
+                        if(item.equals("sports"))
+                        checkEsporte.setChecked(true);
+                        if(item.equals("entertainment"))
+                        checkEntre.setChecked(true);
+                        if(item.equals("health"))
+                        checkSaude.setChecked(true);
+                        if(item.equals("business"))
+                        checkNegocios.setChecked(true);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w("ERRO", "loadPost:onCancelled", databaseError.toException());
+                    // ...
+                }
+            };
+            mDatabase.addValueEventListener(articletListener);
+
 
         }
 
