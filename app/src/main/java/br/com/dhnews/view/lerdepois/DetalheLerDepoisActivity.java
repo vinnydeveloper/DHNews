@@ -52,7 +52,8 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
                 compartilharNoticiaLerDepois();
 
                 //Metodo para desmarcar a opção ler depois da noticia
-                desmarcaLerDepois();
+                imageViewBookMarkDetalheLerDepois.setOnClickListener(v-> desmarcaLerDepois());
+
             }
         }
     }
