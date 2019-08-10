@@ -9,15 +9,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import br.com.dhnews.R;
 import br.com.dhnews.model.noticias.Article;
 import br.com.dhnews.view.MainActivity;
+
+import static br.com.dhnews.util.AppUtil.formatarData;
 
 public class DetalheLerDepoisActivity extends AppCompatActivity {
 
     //Declaracao de atributos
     private TextView textViewTituloDetalheLerDepois;
-    private TextView textViewSubTituloDetalheLerDepois;
     private TextView textViewHorarioDetalheLerDepois;
     private TextView textViewAssuntoDetalheLerDepois;
     private TextView textViewConteudoDetalheLerDepois;
@@ -73,13 +76,20 @@ public class DetalheLerDepoisActivity extends AppCompatActivity {
 
         textViewTituloDetalheLerDepois.setText(article.getTitle());
 
-        textViewSubTituloDetalheLerDepois.setText(article.getDescription());
 
-        textViewHorarioDetalheLerDepois.setText(article.getPublishedAt());
+        textViewHorarioDetalheLerDepois.setText(formatarData(article.getPublishedAt()));
 
         textViewConteudoDetalheLerDepois.setText(article.getContent());
 
-        //imageViewFotoDetalheLerDepois.setImageResource(article.getUrlToImage());
+        if (article.getUrlToImage() != null) {
+
+            Picasso.get().setIndicatorsEnabled(true);
+            Picasso.get()
+                    .load(article.getUrlToImage())
+                    .error(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(imageViewFotoDetalheLerDepois);
+        }
 
     }
 

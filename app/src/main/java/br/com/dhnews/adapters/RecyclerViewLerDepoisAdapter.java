@@ -40,7 +40,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerViewLerDepoisAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate
-                (R.layout.item_favoritos, parent, false);
+                (R.layout.item_ler_depois, parent, false);
 
         return new ViewHolder(view);
 
