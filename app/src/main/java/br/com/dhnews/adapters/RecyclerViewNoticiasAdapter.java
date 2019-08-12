@@ -113,13 +113,18 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
                Picasso.get()
                        .load(result.getUrlToImage())
                        .error(R.mipmap.ic_launcher)
-                       .placeholder(R.mipmap.ic_launcher)
+                       .placeholder(R.drawable.progress_animation)
                        .into(imagemNoticias);
            }
        }
    }
         public void update(List<Article> resultList) {
-            this.listaNoticias.addAll(resultList);
+            for (Article item: resultList) {
+                if(!this.listaNoticias.contains(item)){
+                    this.listaNoticias.add(item);
+                }
+            }
+
             notifyDataSetChanged();
 
         }

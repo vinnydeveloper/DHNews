@@ -97,7 +97,8 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
                     String item = templateSnapshot.getValue(String.class);
 
                     viewModel.getNoticiasFavoritas(item, 2);
-                    viewModel.getResults().observe(getViewLifecycleOwner(), results -> adapter.update(results));
+                    viewModel.getResults().observe(getViewLifecycleOwner(), results ->
+                            adapter.update(results));
                 }
             }
 
@@ -138,4 +139,8 @@ public class HomeFragment extends Fragment implements RecyclerViewClickListener 
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

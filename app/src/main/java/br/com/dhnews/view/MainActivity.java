@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_user:
                     replaceFragment(new LoginFragment());
+                    getSupportFragmentManager().isDestroyed();
                     return true;
                 case R.id.navigation_home:
                     replaceFragment(new HomeFragment());
+                    getSupportFragmentManager().isDestroyed();
                     return true;
                 case R.id.navigation_public:
                     replaceFragment(new NoticiasFragment());
@@ -60,13 +62,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Valida a flag e o fragmento que precisa ser exibido
         if (tela != null && tela.equals("LOGIN")) {
+            navigation.setSelectedItemId(R.id.navigation_user);
             replaceFragment(new LoginFragment());
         } else if (tela != null && tela.equals("NOTICIA")) {
+            navigation.setSelectedItemId(R.id.navigation_public);
             replaceFragment(new NoticiasFragment());
         } else if (tela != null && tela.equals("LERDEPOIS")) {
+            navigation.setSelectedItemId(R.id.navigation_mark);
             replaceFragment(new LerDepoisFragment());
         } else {
             replaceFragment(new NoticiasFragment());
+            navigation.setSelectedItemId(R.id.navigation_public);
 
         }
     }

@@ -106,7 +106,7 @@ public class RecyclerViewLerDepoisAdapter extends RecyclerView.Adapter<RecyclerV
                 Picasso.get()
                         .load(result.getUrlToImage())
                         .error(R.mipmap.ic_launcher)
-                        .placeholder(R.mipmap.ic_launcher)
+                        .placeholder(R.drawable.progress_animation)
                         .into(imagemNoticias);
             }
         }

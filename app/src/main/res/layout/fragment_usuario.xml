@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Desconectar da conta"
+        android:textColor="#F44336"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         />
@@ -145,8 +146,8 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
-        android:text="Selecionar Interesses"
-        android:textColor="#F44336"
+        android:text="Salvar Interesses"
+        android:textColor="@color/primary_text"
         android:backgroundTintMode="screen"
         />
 
