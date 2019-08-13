@@ -54,7 +54,7 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
         viewHolder.bind(result);
 
         viewHolder.itemView.setOnClickListener(v -> {
-        String transitionName = "image_" + position;
+            String transitionName = "image_" + position;
             Intent intent = new Intent(viewHolder.itemView.getContext(),
                     DetalheNoticiaActivity.class);
             intent.putExtra("NOTICIAS", result);
@@ -75,62 +75,62 @@ public class RecyclerViewNoticiasAdapter extends RecyclerView.Adapter<RecyclerVi
     public int getItemCount() {
         return listaNoticias.size();
     }
- {
+    {
     }
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-       private TextView tituloNoticia;
-       private TextView descricaoNoticia;
-       private TextView horaNoticia;
-       private TextView categoriaNoticia;
-       private ImageView imagemNoticias;
-       private ImageView imagemBookMarkListaNoticia;
+        private TextView tituloNoticia;
+        private TextView descricaoNoticia;
+        private TextView horaNoticia;
+        private TextView categoriaNoticia;
+        private ImageView imagemNoticias;
+        private ImageView imagemBookMarkListaNoticia;
 
-       public ViewHolder(@NonNull View itemView) {
-           super(itemView);
-           tituloNoticia = itemView.findViewById(R.id.txtTitulo);
-           descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
-           horaNoticia = itemView.findViewById(R.id.txtHora);
-           categoriaNoticia = itemView.findViewById(R.id.txtFonte);
-           imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
-           imagemBookMarkListaNoticia = itemView.findViewById(R.id.imagemBookMarkListaNoticia);
-       }
-
-       public void bind(Article result) {
-
-
-           Source autor = result.getSource();
-           categoriaNoticia.setText(autor.getName());
-           tituloNoticia.setText(result.getTitle());
-           horaNoticia.setText(formatarData(result.getPublishedAt()));
-           descricaoNoticia.setText(result.getDescription());
-
-           if (result.getUrlToImage() != null) {
-
-               Picasso.get().setIndicatorsEnabled(true);
-               Picasso.get()
-                       .load(result.getUrlToImage())
-                       .error(R.mipmap.ic_launcher)
-                       .placeholder(R.drawable.progress_animation)
-                       .into(imagemNoticias);
-           }
-       }
-   }
-        public void update(List<Article> resultList) {
-            for (Article item: resultList) {
-                if(!this.listaNoticias.contains(item)){
-                    this.listaNoticias.add(item);
-                }
-            }
-
-            notifyDataSetChanged();
-
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tituloNoticia = itemView.findViewById(R.id.txtTitulo);
+            descricaoNoticia = itemView.findViewById(R.id.txtDescricao);
+            horaNoticia = itemView.findViewById(R.id.txtHora);
+            categoriaNoticia = itemView.findViewById(R.id.txtFonte);
+            imagemNoticias = itemView.findViewById(R.id.iconeNoticia);
+            imagemBookMarkListaNoticia = itemView.findViewById(R.id.imagemBookMarkListaNoticia);
         }
 
-        public void clear(){
-        this.listaNoticias.clear();
-        notifyDataSetChanged();
+        public void bind(Article result) {
+
+
+            Source autor = result.getSource();
+            categoriaNoticia.setText(autor.getName());
+            tituloNoticia.setText(result.getTitle());
+            horaNoticia.setText(formatarData(result.getPublishedAt()));
+            descricaoNoticia.setText(result.getDescription());
+
+            if (result.getUrlToImage() != null) {
+
+                Picasso.get().setIndicatorsEnabled(true);
+                Picasso.get()
+                        .load(result.getUrlToImage())
+                        .error(R.mipmap.ic_launcher)
+                        .placeholder(R.drawable.progress_animation)
+                        .into(imagemNoticias);
+            }
         }
     }
+    public void update(List<Article> resultList) {
+        for (Article item: resultList) {
+            if(!this.listaNoticias.contains(item)){
+                this.listaNoticias.add(item);
+            }
+        }
+
+        notifyDataSetChanged();
+
+    }
+
+    public void clear(){
+        this.listaNoticias.clear();
+        notifyDataSetChanged();
+    }
+}

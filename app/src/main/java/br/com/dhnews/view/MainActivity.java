@@ -19,35 +19,31 @@ import br.com.dhnews.view.pesquisa.PesquisaFragment;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            = item -> {
+                switch (item.getItemId()) {
 
 
-                case R.id.navigation_mark:
-                    replaceFragment(new LerDepoisFragment());
-                    return true;
-                case R.id.navigation_user:
-                    replaceFragment(new LoginFragment());
-                    getSupportFragmentManager().isDestroyed();
-                    return true;
-                case R.id.navigation_home:
-                    replaceFragment(new HomeFragment());
-                    getSupportFragmentManager().isDestroyed();
-                    return true;
-                case R.id.navigation_public:
-                    replaceFragment(new NoticiasFragment());
-                    return true;
-                case R.id.navigation_search:
-                    replaceFragment(new PesquisaFragment());
-                    return true;
+                    case R.id.navigation_mark:
+                        replaceFragment(new LerDepoisFragment());
+                        return true;
+                    case R.id.navigation_user:
+                        replaceFragment(new LoginFragment());
+                        getSupportFragmentManager().isDestroyed();
+                        return true;
+                    case R.id.navigation_home:
+                        replaceFragment(new HomeFragment());
+                        getSupportFragmentManager().isDestroyed();
+                        return true;
+                    case R.id.navigation_public:
+                        replaceFragment(new NoticiasFragment());
+                        return true;
+                    case R.id.navigation_search:
+                        replaceFragment(new PesquisaFragment());
+                        return true;
 
-            }
-            return false;
-        }
-    };
+                }
+                return false;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
